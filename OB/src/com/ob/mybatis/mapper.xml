@@ -4,10 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- mapper 태그의 namespace 속성 필수 작성 -->
-<mapper namespace="members">
+<mapper namespace="Room">
 <!-- 예시  -->
-	<select id="list" resultType="com.ob.vo.RoomVO">
-		SELECT * FROM MEMBERS ORDER BY IDX
+	<select id="list" resultType="com.ob.vo.RoomVO" >
+		SELECT * FROM ARS_T ORDER BY A_IDX
 	</select>
 </mapper>  
 

@@ -20,6 +20,12 @@ public class Controller extends HttpServlet {
 
 		String path = "";
 		Command comm = null;
+		
+		if (type.equals("list")) {
+			comm = new TestListCommand();
+		}
+		path = comm.exec(request, response);
+		request.getRequestDispatcher(path).forward(request, response);
 
 		// @@@@@@@@@@@@@@@@@@@@@이런식 으로 구현 @@@@@@@@@@@@@@@@@@@@@@@@@@/
 
