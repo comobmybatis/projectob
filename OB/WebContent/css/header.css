@@ -1,0 +1,41 @@
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+#logo {
+	height: 40px;
+	width: auto;
+}
+
+#menu {
+	background-color: antiquewhite;
+	width: 100%;
+	height: 50px;
+}
+
+#menu ul {
+	width: 600px;
+	margin: auto;
+	/*        border: 1px solid black;*/
+	line-height: 50px;
+}
+
+#menu ul>li {
+	display: inline-block;
+	width: 80px;
+}
+
+#menu ul>li>a {
+	text-decoration: none;
+	background-color: brown;
+	color: white;
+	display: inline-block; /* a태그에 크기지정을 위해 */
+	width: 100%;
+	text-align: center;
+}
+
+#menu ul>li>a:hover {
+	background-color: rosybrown;
+}
