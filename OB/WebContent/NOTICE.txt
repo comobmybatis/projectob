@@ -1,1 +1,1 @@
-Preference => web=UTF-8로 변경
+Preference => web=UTF-8로 변경.
