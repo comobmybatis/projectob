@@ -68,11 +68,10 @@ section:after {
 
 	<jsp:include page="header.jsp"></jsp:include>
 	<header>
-		<h2>EVENT게시판</h2>
+		<h2>탬플릿2</h2>
 	</header>
 	<!-- -----------------------------------------------------------------  여기까지 살리고 밑에서 부터  내용 만드시면됩니다 -->
 	<!-- 내용 쓰는곳 -->
-
 	<section>
 		<nav>
 			<ul>

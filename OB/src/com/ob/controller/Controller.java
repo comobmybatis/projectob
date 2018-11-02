@@ -16,6 +16,8 @@ import com.ob.command.MainCommand;
 import com.ob.command.NoticeCommand;
 import com.ob.command.PremiumCommand;
 import com.ob.command.QuestionCommand;
+import com.ob.command.Test1Command;
+import com.ob.command.Test2Command;
 import com.ob.command.TestListCommand;
 import com.ob.command.LoginCommand;
 
@@ -51,6 +53,10 @@ public class Controller extends HttpServlet {
 			comm = new MainCommand();
 		} else if (type.equals("login")){
 			comm = new LoginCommand();
+		} else if (type.equals("test1")){
+			comm = new Test1Command();
+		}else if (type.equals("test2")){
+			comm = new Test2Command();
 		}
 		path = comm.exec(request, response);
 		request.getRequestDispatcher(path).forward(request, response);

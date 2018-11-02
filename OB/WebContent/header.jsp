@@ -126,8 +126,8 @@ body {
 			src="imgs/bitcamp_logo.png" alt="회사로고"></a>
 		<div class="menubar">
 			<ul>
-				<li><a href="#">TEST#</a></li>
-				<li><a href="#">TEST#</a></li>
+				<li><a href="controller?type=test1">TEST1</a></li>
+				<li><a href="controller?type=test2">TEST2</a></li>
 				<li><a href="controller?type=location">지역</a></li>
 				<li><a href="controller?type=event">이벤트</a></li>
 				<li><a href="#" id="current">더보기</a>
