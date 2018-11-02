@@ -23,7 +23,7 @@ public class Controller extends HttpServlet {
 		Command comm = null;
 
 		// @@@@@@@@@@@@@@@@@@@@@이런식 으로 구현 @@@@@@@@@@@@@@@@@@@@@@@@@@/
-		
+
 		/*
 		 * if (type.equals("all")) { comm = new ListCommand(); path = comm.exec(request,
 		 * response);
@@ -44,15 +44,18 @@ public class Controller extends HttpServlet {
 		 * comm.exec(request, response); // request.getRequestDispatcher(path) //
 		 * .forward(request, response); }
 		 */
-		
+
 		if (type.equals("main")) {
-			comm = new mainCommand();
+			comm = new MainCommand();
+
 		} else if (type.equals("location")) {
 			comm = new locationCommand();
 		} else if (type.equals("list")) {
 			comm = new TestListCommand();
+		} else if (type.equals("event")) {
+			comm = new EventCommand();
 		}
-		
+
 		path = comm.exec(request, response); // request.getRequestDispatcher(path) //
 		request.getRequestDispatcher(path).forward(request, response);
 	}
