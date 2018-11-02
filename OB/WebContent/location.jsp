@@ -10,7 +10,6 @@
 	<jsp:include page="header.jsp"/>
 	<div>
 		<h2>지역리스트</h2>
-		
 	</div>
 	<jsp:include page="footer.jsp"/>
 </body>
