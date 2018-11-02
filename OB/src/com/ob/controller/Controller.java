@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ob.command.Command;
+import com.ob.command.locationCommand;
 
-@WebServlet("/Controller")
+@WebServlet("/controller")
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -22,7 +23,7 @@ public class Controller extends HttpServlet {
 		Command comm = null;
 
 		// @@@@@@@@@@@@@@@@@@@@@이런식 으로 구현 @@@@@@@@@@@@@@@@@@@@@@@@@@/
-
+		
 		/*
 		 * if (type.equals("all")) { comm = new ListCommand(); path = comm.exec(request,
 		 * response);
@@ -43,6 +44,15 @@ public class Controller extends HttpServlet {
 		 * comm.exec(request, response); // request.getRequestDispatcher(path) //
 		 * .forward(request, response); }
 		 */
+		
+		if (type.equals("")) {
+			
+		} else if (type.equals("location")) {
+				comm = new locationCommand();
+		}
+		
+		path = comm.exec(request, response); // request.getRequestDispatcher(path) //
+		request.getRequestDispatcher(path).forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
