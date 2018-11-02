@@ -10,7 +10,7 @@
 <body>
 	<div class="header-wrap">
 	<div id="header">
-		<a href="controller?type=main"><img id="logo" src="imgs/logo.jpg" alt="회사로고"></a>
+		<a href="controller?type=main"><img id="logo" src="imgs/bitcamp_logo.png" alt="회사로고"></a>
 	</div>
 	<div id="menu">
 		<ul>

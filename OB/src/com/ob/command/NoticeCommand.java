@@ -7,6 +7,12 @@ public class NoticeCommand implements Command {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		// 게시판 커맨드
+		
+		
+		
+		
+		
+		
 		String path = "notice.jsp";
 				
 		return path;
