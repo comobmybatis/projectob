@@ -9,10 +9,9 @@
 </head>
 <body>
 	<div id="footer">
-		비트캠프
-		<address>
-			비트캠프<br> 주소: 서울시 서초구<br> 전화: 02-111-1111
-		</address>
+		<ul>
+		
+		</ul>
 	</div>
 
 </body>

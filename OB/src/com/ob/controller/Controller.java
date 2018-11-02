@@ -8,7 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ob.command.AgreeCommand;
 import com.ob.command.Command;
+import com.ob.command.NoticeCommand;
+import com.ob.command.PremiumCommand;
+import com.ob.command.QuestionCommand;
 
 @WebServlet("/Controller")
 public class Controller extends HttpServlet {
@@ -23,32 +27,18 @@ public class Controller extends HttpServlet {
 		
 		if (type.equals("list")) {
 			comm = new TestListCommand();
+		} else if (type.equals("notice")) {
+			comm = new NoticeCommand();
+		} else if (type.equals("question")) {
+			comm = new QuestionCommand();
+		} else if (type.equals("premium")) {
+			comm = new PremiumCommand();
+		} else if (type.equals("agree")) {
+			comm = new AgreeCommand();
 		}
 		path = comm.exec(request, response);
 		request.getRequestDispatcher(path).forward(request, response);
 
-		// @@@@@@@@@@@@@@@@@@@@@이런식 으로 구현 @@@@@@@@@@@@@@@@@@@@@@@@@@/
-
-		/*
-		 * if (type.equals("all")) { comm = new ListCommand(); path = comm.exec(request,
-		 * response);
-		 * 
-		 * // 응답페이지(list.jsp) 지정하고 페이지 전환 // request.getRequestDispatcher(path) //
-		 * .forward(request, response); } else if (type.equals("dept")) { path =
-		 * "dept.jsp"; // request.getRequestDispatcher(path) // .forward(request,
-		 * response); } else if (type.equals("deptList")) { comm = new
-		 * DeptListCommand(); path = comm.exec(request, response);
-		 * 
-		 * } else if (type.equals("fullname"))
-		 * 
-		 * { path = "fullname.jsp"; // request.getRequestDispatcher(path) //
-		 * .forward(request, response); } else if (type.equals("fullnameList")) { comm =
-		 * new FullnameListCommand(); path = comm.exec(request, response);
-		 * 
-		 * } else if (type.equals("search")) { comm = new SearchCommand(); path =
-		 * comm.exec(request, response); // request.getRequestDispatcher(path) //
-		 * .forward(request, response); }
-		 */
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
