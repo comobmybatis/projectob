@@ -21,12 +21,6 @@ public class Controller extends HttpServlet {
 
 		String path = "";
 		Command comm = null;
-		
-		if (type.equals("list")) {
-			comm = new TestListCommand();
-		}
-		path = comm.exec(request, response);
-		request.getRequestDispatcher(path).forward(request, response);
 
 		// @@@@@@@@@@@@@@@@@@@@@이런식 으로 구현 @@@@@@@@@@@@@@@@@@@@@@@@@@/
 		
@@ -51,10 +45,12 @@ public class Controller extends HttpServlet {
 		 * .forward(request, response); }
 		 */
 		
-		if (type.equals("")) {
-			
+		if (type.equals("main")) {
+			comm = new mainCommand();
 		} else if (type.equals("location")) {
-				comm = new locationCommand();
+			comm = new locationCommand();
+		} else if (type.equals("list")) {
+			comm = new TestListCommand();
 		}
 		
 		path = comm.exec(request, response); // request.getRequestDispatcher(path) //

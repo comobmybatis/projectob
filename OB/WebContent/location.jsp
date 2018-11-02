@@ -4,9 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>location.jsp</title>
 </head>
 <body>
-
+	<jsp:include page="header.jsp"/>
+	<div>
+		<h2>지역리스트</h2>
+		
+	</div>
+	<jsp:include page="footer.jsp"/>
 </body>
 </html>

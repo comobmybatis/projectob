@@ -11,7 +11,7 @@
 <body>
 
 	<div id="header">
-		<img id="logo" src="imgs/bitcamp_logo.png" alt="회사로고">
+		<a href="controller?type=main"><img id="logo" src="imgs/bitcamp_logo.png" alt="회사로고"></a>
 	</div>
 	<div id="menu">
 		<ul>
