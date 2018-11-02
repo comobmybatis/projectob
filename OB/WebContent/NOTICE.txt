@@ -1,1 +1,3 @@
-~~
+홈페이지 시작 
+Main 
+중요jsp파일 (main.jsp / header.jsp / footer.jsp /body.jsp) +css폴더

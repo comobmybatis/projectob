@@ -18,11 +18,11 @@
 			<li>전화번호: 0000-0000 | 메일:<a href="goni@gmail.com"> goni@gmail.com</a></li>
 		</ul>
 		<div>
-			<a href="#"><img alt="f_1" src="imgs/f_img/F-1.png"></a>
-			<a href="#"><img alt="f_2" src="imgs/f_img/F-2.png"></a>
-			<a href="#"><img alt="f_3" src="imgs/f_img/F-3.png"></a>
-			<a href="#"><img alt="f_4" src="imgs/f_img/F-4.png"></a>
-			<a href="#"><img alt="f_5" src="imgs/f_img/F-5.png"></a>
+			<span><a href="#"><img alt="f_1" src="imgs/f_img/F-1.png"></a></span>
+			<span><a href="#"><img alt="f_2" src="imgs/f_img/F-2.png"></a></span>
+			<span><a href="#"><img alt="f_3" src="imgs/f_img/F-3.png"></a></span>
+			<span><a href="#"><img alt="f_4" src="imgs/f_img/F-4.png"></a></span>
+			<span><a href="#"><img alt="f_5" src="imgs/f_img/F-5.png"></a></span>
 		</div>
 	</div>
 </body>
