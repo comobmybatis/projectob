@@ -10,11 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ob.command.AgreeCommand;
 import com.ob.command.Command;
+import com.ob.command.EventCommand;
+import com.ob.command.MainCommand;
 import com.ob.command.NoticeCommand;
 import com.ob.command.PremiumCommand;
 import com.ob.command.QuestionCommand;
-
-import com.ob.command.locationCommand;
+import com.ob.command.TestListCommand;
+import com.ob.command.LocationCommand;
 
 
 @WebServlet("/controller")
@@ -39,7 +41,7 @@ public class Controller extends HttpServlet {
 		} else if (type.equals("agree")) {
 			comm = new AgreeCommand();
 		} else if (type.equals("location")) {
-			comm = new locationCommand();
+			comm = new LocationCommand();
 		} else if (type.equals("list")) {
 			comm = new TestListCommand();
 		} else if (type.equals("event")) {
