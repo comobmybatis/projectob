@@ -1,42 +1,42 @@
---юл╟мю╨ юс╫ц фдюоют╢о╢ы. ев╫╨ф╝©К
+--Л²╢Й╡┐Л²─ Л·└Л▀° М▄▄Л²╪Л·┘К▀┬К▀╓. М┘▄Л┼╓М┼╦Л ╘
 
 
---ARS(accommodation reservation system) : ╪В╧з©╧╬Ю╫ц╫╨еш
---2╟Ёюг евюл╨М(╟т╫ц╠ш, ╢Я╠ш)
---╪В╧з евюл╨М(ARS_T)
+--ARS(accommodation reservation system) : Л┬≥К╟∙Л≤┬Л∙╫Л▀°Л┼╓М┘°
+--2Й╟°Л²≤ М┘▄Л²╢К╦■(Й╡▄Л▀°Й╦─, К▄⌠Й╦─)
+--Л┬≥К╟∙ М┘▄Л²╢К╦■(ARS_T)
 -- (A_IDX , A_NAME , A_LOCATION , CONTENT ,A_CHECK_IN ,A_CHECK_OUT ,A_COMPANY ,REG_DATE ,A_IMG_NAME ,A_CODE ,HIT )
 CREATE TABLE ARS_T (
-	A_IDX NUMBER(6) CONSTRAINT ARS_T_PK PRIMARY KEY,  -- id ╪В╧з юн╣╕╫╨
-	A_NAME VARCHAR2(50), --╪В╪р юл╦╖
-    A_LOCATION VARCHAR(100), -- ╪В╪р ю╖д║
-    CONTENT CLOB, --╪В╪р ╪Ё╦М CLOB ╢б юз╥АгЭ ╪с╪╨ю╦╥н ECLIPSE DB ╨р╥╞©ц▀  resulttTypeю╩   Stringе╦ют╟З ╣©юо
-    A_CHECK_IN DATE, -- ц╪е╘юн
-    A_CHECK_OUT DATE, -- ц╪е╘╬ф©Т
-	A_COMPANY VARCHAR2(20), --╪В╪р ╬Вц╪юл╦╖
-	REG_DATE DATE, -- ╬Вц╪╟║ ->╪В╪р╣Н╥оюо╫ц
-	A_IMG_NAME VARCHAR2(50), --╪В╪р юл╧лаЖ фдюо╦М
-	A_CODE VARCHAR2(20), --╟Э╦╝дз╣Е
-	HIT NUMBER(4) --а╤х╦╪Ж
+	A_IDX NUMBER(6) CONSTRAINT ARS_T_PK PRIMARY KEY,  -- id Л┬≥К╟∙ Л²╦К█╠Л┼╓
+	A_NAME VARCHAR2(50), --Л┬≥Л├▄ Л²╢К╕└
+    A_LOCATION VARCHAR(100), -- Л┬≥Л├▄ Л°└Л╧≤
+    CONTENT CLOB, --Л┬≥Л├▄ Л└╓К╙┘ CLOB К┼■ Л·░Кё▄М≤∙ Л├█Л└╠Л°╪К║° ECLIPSE DB К╤┬К÷╛Л≤╛б▀б  resulttTypeЛ²└   StringМ┐─Л·┘ЙЁ╪ К▐≥Л²╪
+    A_CHECK_IN DATE, -- Л╡╢М│╛Л²╦
+    A_CHECK_OUT DATE, -- Л╡╢М│╛Л∙└Л⌡┐
+	A_COMPANY VARCHAR2(20), --Л┬≥Л├▄ Л≈┘Л╡╢Л²╢К╕└
+	REG_DATE DATE, -- Л≈┘Л╡╢Й╟─ ->Л┬≥Л├▄К⌠╠К║²Л²╪Л▀°
+	A_IMG_NAME VARCHAR2(50), --Л┬≥Л├▄ Л²╢К╞╦Л╖─ М▄▄Л²╪К╙┘
+	A_CODE VARCHAR2(20), --Й╢─К╕╛Л╫■К⌠°
+	HIT NUMBER(4) --Л║╟М ▄Л┬≤
 
 );
 
---BBS(bulletin board system) : юЭюз╟т╫цфг
---2╟Ёюг евюл╨М(╟т╫ц╠ш, ╢Я╠ш)
---╟т╫ц╠ш евюл╨М(BBS_T)
+--BBS(bulletin board system) : Л═└Л·░Й╡▄Л▀°М▄░
+--2Й╟°Л²≤ М┘▄Л²╢К╦■(Й╡▄Л▀°Й╦─, К▄⌠Й╦─)
+--Й╡▄Л▀°Й╦─ М┘▄Л²╢К╦■(BBS_T)
 CREATE TABLE BBS_T (
 	B_IDX NUMBER(6) CONSTRAINT BBS_T_PK PRIMARY KEY,
-	SUBJECT VARCHAR2(50), --╠ша╕╦Я
-	WRITER VARCHAR2(20), --юш╪╨юз
-	CONTENT CLOB, --╠шЁ╩©К
-	FILE_NAME VARCHAR2(50), --╫га╕ юЗюЕ╣г╢б фдюо╦М
-	ORI_NAME VARCHAR2(50), --©Ь╨╩ фдюо╦М
-	PWD VARCHAR2(20), --╬охё
-	WRITE_DATE DATE, --юш╪╨юо╫ц
-	IP VARCHAR2(15), --юш╪╨юз IPаж╪р
-	HIT NUMBER(4) --а╤х╦╪Ж
+	SUBJECT VARCHAR2(50), --Й╦─Л═°К╙╘
+	WRITER VARCHAR2(20), --Л·▒Л└╠Л·░
+	CONTENT CLOB, --Й╦─К┌╢Л ╘
+	FILE_NAME VARCHAR2(50), --Л▀╓Л═° Л═─Л·╔К░≤К┼■ М▄▄Л²╪К╙┘
+	ORI_NAME VARCHAR2(50), --Л⌡░КЁ╦ М▄▄Л²╪К╙┘
+	PWD VARCHAR2(20), --Л∙■М≤╦
+	WRITE_DATE DATE, --Л·▒Л└╠Л²╪Л▀°
+	IP VARCHAR2(15), --Л·▒Л└╠Л·░ IPЛё╪Л├▄
+	HIT NUMBER(4) --Л║╟М ▄Л┬≤
 );
 
---╟т╫ц╠ш©║ ╢Кгя ╢Я╠ш(COMMENT_T)
+--Й╡▄Л▀°Й╦─Л≈░ К▄─М∙° К▄⌠Й╦─(COMMENT_T)
 CREATE TABLE COMMENT_T (
 	C_IDX NUMBER(6) CONSTRAINT COMM_T_PK PRIMARY KEY,
 	WRITER VARCHAR2(20),
@@ -44,57 +44,57 @@ CREATE TABLE COMMENT_T (
 	PWD VARCHAR2(20),
 	WRITE_DATE DATE,
 	IP VARCHAR2(15),
-	B_IDX NUMBER(6), --╟т╫ц╠ш ╧Ьхё
+	B_IDX NUMBER(6), --Й╡▄Л▀°Й╦─ К╡┬М≤╦
 	CONSTRAINT COMM_T_FK FOREIGN KEY (B_IDX) REFERENCES BBS_T(B_IDX)
 );
 
---╫цдЖ╫╨ цъ╟║
+--Л▀°М──Л┼╓ Л╤■Й╟─
 CREATE SEQUENCE ARS_T_SEQ NOCACHE;
 CREATE SEQUENCE BBS_T_SEQ NOCACHE;
 CREATE SEQUENCE COMMENT_T_SEQ NOCACHE;
 
 --------------------------------------------
---╪В╧з╬В╪р ╦Я╥о а╤х╦╦╕ ю╖гя ╩Ыгц ╣╔юле╦ юш╪╨
+--Л┬≥К╟∙Л≈┘Л├▄ К╙╘К║² Л║╟М ▄К╔╪ Л°└М∙° Л┐≤М■▄ К█╟Л²╢М┐─ Л·▒Л└╠
 INSERT INTO ARS_T(A_IDX , A_NAME , A_LOCATION , CONTENT ,A_CHECK_IN ,A_CHECK_OUT ,A_COMPANY ,REG_DATE ,A_IMG_NAME ,A_CODE ,HIT )
-VALUES (ars_t_seq.nextval,'AHotel','╪╜©О╫ц ╦╤фВ╠╦ ','╠З╡Щгь©Д',null,null,'sCOMPANY',null,'asd1_zf.jpg','1',0);
+VALUES (ars_t_seq.nextval,'AHotel','Л└°Л ╦Л▀° К╖┬М▐╛Й╣╛ ','Й╧╗К│≈М∙╢Л ■',null,null,'sCOMPANY',null,'asd1_zf.jpg','1',0);
 INSERT INTO ARS_T(A_IDX , A_NAME , A_LOCATION , CONTENT ,A_CHECK_IN ,A_CHECK_OUT ,A_COMPANY ,REG_DATE ,A_IMG_NAME ,A_CODE ,HIT )
-VALUES (ars_t_seq.nextval,'BHotel','╪╜©О╫ц ©╣╣НфВ╠╦ ','╦╦а╥гу╢о╢ы',null,null,'tCOMPANY',null,'asd2_f.jpg','2',0);
+VALUES (ars_t_seq.nextval,'BHotel','Л└°Л ╦Л▀° Л≤│К⌠╠М▐╛Й╣╛ ','К╖▄Л║╠М∙╘К▀┬К▀╓',null,null,'tCOMPANY',null,'asd2_f.jpg','2',0);
 
 
---╠ш ╦Я╥о а╤х╦╦╕ ю╖гя ╩Ыгц ╣╔юле╦ юш╪╨
+--Й╦─ К╙╘К║² Л║╟М ▄К╔╪ Л°└М∙° Л┐≤М■▄ К█╟Л²╢М┐─ Л·▒Л└╠
 -- BBS_T
 insert into bbs_t 
-values (bbs_t_seq.nextval, 'ев╫╨ф╝1','ев╫╨ем','ев╫╨ф╝1-Ё╩©К','','','1234',sysdate,'127.0.0.1',0);
+values (bbs_t_seq.nextval, 'М┘▄Л┼╓М┼╦1','М┘▄Л┼╓М└╟','М┘▄Л┼╓М┼╦1-К┌╢Л ╘','','','1234',sysdate,'127.0.0.1',0);
 insert into bbs_t 
-values (bbs_t_seq.nextval, 'ев╫╨ф╝2','ев╫╨ем','ев╫╨ф╝2-Ё╩©К','','','1234',sysdate,'127.0.0.1',0);
+values (bbs_t_seq.nextval, 'М┘▄Л┼╓М┼╦2','М┘▄Л┼╓М└╟','М┘▄Л┼╓М┼╦2-К┌╢Л ╘','','','1234',sysdate,'127.0.0.1',0);
 insert into bbs_t 
-values (bbs_t_seq.nextval, 'ев╫╨ф╝3','ев╫╨ем','ев╫╨ф╝3-Ё╩©К','','','1234',sysdate,'127.0.0.1',0);
+values (bbs_t_seq.nextval, 'М┘▄Л┼╓М┼╦3','М┘▄Л┼╓М└╟','М┘▄Л┼╓М┼╦3-К┌╢Л ╘','','','1234',sysdate,'127.0.0.1',0);
 insert into bbs_t 
-values (bbs_t_seq.nextval, 'ев╫╨ф╝4','ев╫╨ем','ев╫╨ф╝4-Ё╩©К','','','1234',sysdate,'127.0.0.1',0);
+values (bbs_t_seq.nextval, 'М┘▄Л┼╓М┼╦4','М┘▄Л┼╓М└╟','М┘▄Л┼╓М┼╦4-К┌╢Л ╘','','','1234',sysdate,'127.0.0.1',0);
 insert into bbs_t 
-values (bbs_t_seq.nextval, 'ев╫╨ф╝5','ев╫╨ем','ев╫╨ф╝5-Ё╩©К','','','1234',sysdate,'127.0.0.1',0);
+values (bbs_t_seq.nextval, 'М┘▄Л┼╓М┼╦5','М┘▄Л┼╓М└╟','М┘▄Л┼╓М┼╦5-К┌╢Л ╘','','','1234',sysdate,'127.0.0.1',0);
 insert into bbs_t 
-values (bbs_t_seq.nextval, 'ев╫╨ф╝6','ев╫╨ем','ев╫╨ф╝6-Ё╩©К','','','1234',sysdate,'127.0.0.1',0);
+values (bbs_t_seq.nextval, 'М┘▄Л┼╓М┼╦6','М┘▄Л┼╓М└╟','М┘▄Л┼╓М┼╦6-К┌╢Л ╘','','','1234',sysdate,'127.0.0.1',0);
 insert into bbs_t 
-values (bbs_t_seq.nextval, 'ев╫╨ф╝7','ев╫╨ем','ев╫╨ф╝7-Ё╩©К','','','1234',sysdate,'127.0.0.1',0);
+values (bbs_t_seq.nextval, 'М┘▄Л┼╓М┼╦7','М┘▄Л┼╓М└╟','М┘▄Л┼╓М┼╦7-К┌╢Л ╘','','','1234',sysdate,'127.0.0.1',0);
 insert into bbs_t 
-values (bbs_t_seq.nextval, 'ев╫╨ф╝8','ев╫╨ем','ев╫╨ф╝8-Ё╩©К','','','1234',sysdate,'127.0.0.1',0);
+values (bbs_t_seq.nextval, 'М┘▄Л┼╓М┼╦8','М┘▄Л┼╓М└╟','М┘▄Л┼╓М┼╦8-К┌╢Л ╘','','','1234',sysdate,'127.0.0.1',0);
 insert into bbs_t 
-values (bbs_t_seq.nextval, 'ев╫╨ф╝9','ев╫╨ем','ев╫╨ф╝9-Ё╩©К','','','1234',sysdate,'127.0.0.1',0);
+values (bbs_t_seq.nextval, 'М┘▄Л┼╓М┼╦9','М┘▄Л┼╓М└╟','М┘▄Л┼╓М┼╦9-К┌╢Л ╘','','','1234',sysdate,'127.0.0.1',0);
 insert into bbs_t 
-values (bbs_t_seq.nextval, 'ев╫╨ф╝10','ев╫╨ем','ев╫╨ф╝10-Ё╩©К','','','1234',sysdate,'127.0.0.1',0);
+values (bbs_t_seq.nextval, 'М┘▄Л┼╓М┼╦10','М┘▄Л┼╓М└╟','М┘▄Л┼╓М┼╦10-К┌╢Л ╘','','','1234',sysdate,'127.0.0.1',0);
 commit;
 
---╠ш ╦Я╥о а╤х╦╦╕ ю╖гя ╩Ыгц ╣╔юле╦ юш╪╨
+--Й╦─ К╙╘К║² Л║╟М ▄К╔╪ Л°└М∙° Л┐≤М■▄ К█╟Л²╢М┐─ Л·▒Л└╠
 --- COMMENT_T
 INSERT INTO COMMENT_T
-VALUES (COMMENT_T_SEQ.NEXTVAL, 'Cев╫╨ем', 'C-Ё╩©К1',
+VALUES (COMMENT_T_SEQ.NEXTVAL, 'CМ┘▄Л┼╓М└╟', 'C-К┌╢Л ╘1',
         '1234', SYSDATE, '127.0.0.1', 10);
 INSERT INTO COMMENT_T
-VALUES (COMMENT_T_SEQ.NEXTVAL, 'Cев╫╨ем', 'C-Ё╩©К2',
+VALUES (COMMENT_T_SEQ.NEXTVAL, 'CМ┘▄Л┼╓М└╟', 'C-К┌╢Л ╘2',
         '1234', SYSDATE, '127.0.0.1', 10); 
 INSERT INTO COMMENT_T
-VALUES (COMMENT_T_SEQ.NEXTVAL, 'Cев╫╨ем', 'C-Ё╩©К3',
+VALUES (COMMENT_T_SEQ.NEXTVAL, 'CМ┘▄Л┼╓М└╟', 'C-К┌╢Л ╘3',
         '1234', SYSDATE, '127.0.0.1', 10); 
 COMMIT;        
 
