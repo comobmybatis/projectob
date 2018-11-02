@@ -7,7 +7,7 @@
 <title>welcome</title>
 <script>
 	function start() {
-		location.href = "../../Controller?type=list"
+		location.href = "../../controller?type=list"
 	}
 </script>
 </head>

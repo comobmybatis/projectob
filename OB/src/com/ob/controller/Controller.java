@@ -14,7 +14,10 @@ import com.ob.command.NoticeCommand;
 import com.ob.command.PremiumCommand;
 import com.ob.command.QuestionCommand;
 
-@WebServlet("/Controller")
+import com.ob.command.locationCommand;
+
+
+@WebServlet("/controller")
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -35,10 +38,17 @@ public class Controller extends HttpServlet {
 			comm = new PremiumCommand();
 		} else if (type.equals("agree")) {
 			comm = new AgreeCommand();
+		} else if (type.equals("location")) {
+			comm = new locationCommand();
+		} else if (type.equals("list")) {
+			comm = new TestListCommand();
+		} else if (type.equals("event")) {
+			comm = new EventCommand();
+		} else if (type.equals("main")) {
+			comm = new MainCommand();
 		}
 		path = comm.exec(request, response);
 		request.getRequestDispatcher(path).forward(request, response);
-
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
