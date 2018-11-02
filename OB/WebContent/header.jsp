@@ -16,7 +16,8 @@
 		<ul>
 			<li><a href="#">menu1</a></li>
 			<li><a href="#">menu2</a></li>
-			<li><a href="#">menu3</a></li>
+			<li><a href="controller?type=location">지역</a></li>
+			<li><a href="controller?type=event">이벤트</a></li>
 		  	<li class="dropdown">
 		  		<a class="dropbtn">더보기</a>
 		  		<div class="dropdown-content">
@@ -26,8 +27,7 @@
 		  			<a href="controller?type=agree">약관 및 동의사항</a>
 		  		</div>
 		  	</li>
-			<li><a href="controller?type=location">지역</a></li>
-			<li><a href="controller?type=event">이벤트</a></li>
+		
 			<li><a href="#">menu4</a></li>
 			<li><a href="#">menu5</a></li>
 		</ul>
