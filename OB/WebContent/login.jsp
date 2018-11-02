@@ -11,6 +11,8 @@
 	<div>
 		<h2>·Î±×ÀÎ</h2>
 		
+		
+		
 	</div>
 	<jsp:include page="footer.jsp"/>
 </body>

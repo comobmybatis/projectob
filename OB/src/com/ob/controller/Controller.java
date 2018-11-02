@@ -17,6 +17,7 @@ import com.ob.command.PremiumCommand;
 import com.ob.command.QuestionCommand;
 import com.ob.command.TestListCommand;
 import com.ob.command.LocationCommand;
+import com.ob.command.LoginCommand;
 
 
 @WebServlet("/controller")
@@ -48,6 +49,8 @@ public class Controller extends HttpServlet {
 			comm = new EventCommand();
 		} else if (type.equals("main")) {
 			comm = new MainCommand();
+		} else if (type.equals("login")) {
+			comm = new LoginCommand();
 		}
 		path = comm.exec(request, response);
 		request.getRequestDispatcher(path).forward(request, response);
