@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>탬플릿</title>
+<title>HEADER</title>
 <link href="./css/plus.css" rel="stylesheet" type="text/css">
 </head>
 
