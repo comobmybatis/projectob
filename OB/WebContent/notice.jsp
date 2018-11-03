@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>테스트 2페이지입니다</title>
+<title>NOTICE.JSP</title>
 <meta charset="utf-8">
 	<style>
 		nav a {
@@ -21,8 +21,6 @@
 	<header>
 		<h2>탬플릿2</h2>
 	</header>
-	<!-- -----------------------------------------------------------------  여기까지 살리고 밑에서 부터  내용 만드시면됩니다 -->
-	<!-- 내용 쓰는곳 -->
 	<section>
 		<nav>
 			<ul>
@@ -34,9 +32,7 @@
 		</nav>
 
 		<article>
-			<h1>가나다라마바사</h1>
-			<p>P 태그로 나눈 구역1.</p>
-			<p>p 태그로 나눈 구역2</p>
+			
 		</article>
 	</section>
 

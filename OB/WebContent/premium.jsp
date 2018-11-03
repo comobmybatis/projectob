@@ -1,12 +1,49 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>PREMIUM.JSP</title>
+<meta charset="utf-8">
+	<style>
+		nav a {
+			text-decoration: none;
+		}
+		#li3 {
+			font-size: 2em;
+			font-weight: bold;
+		}
+	</style>
 </head>
 <body>
+
+	<jsp:include page="header.jsp"></jsp:include>
+	<header>
+		<h2>탬플릿2</h2>
+	</header>
+	<section>
+		<nav>
+			<ul>
+				<li><a href="controller?type=notice">공지사항</a></li>
+				<li><a href="controller?type=question">자주 묻는 질문</a></li>
+				<li id="li3">프리미엄 후기</li>
+				<li><a href="controller?type=agree">약관 및 동의사항</a></li>
+			</ul>
+		</nav>
+
+		<article>
+			<h1>가나다라마바사</h1>
+			<p>P 태그로 나눈 구역1.</p>
+			<p>p 태그로 나눈 구역2</p>
+		</article>
+	</section>
+
+
+
+	<!-- -----------------------------------------------------------------  ------------------------ -->
+	<footer>
+		<jsp:include page="footer.jsp"></jsp:include>
+	</footer>
 
 </body>
 </html>
