@@ -1,6 +1,6 @@
 
 ----------------------------------------------------------------------------------------------------------
--- ½ÃÄı½º
+-- ì‹œí€¸ìŠ¤
 -------------------------------
 
 CREATE SEQUENCE obhotel_user_seq START WITH 2 INCREMENT BY 1;
@@ -16,370 +16,370 @@ CREATE SEQUENCE obhotel_reservation_seq START WITH 1 INCREMENT BY 1;
 commit;
 
 ----------------------------------------------------------------------------------------------------------
--- ·Î±×ÀÎ
+-- ë¡œê·¸ì¸
 -------------------------------
 
 CREATE TABLE obhotel_user (
-	id			NUMBER NOT NULL,		-- »ç¿ëÀÚ °íÀ¯¹øÈ£
-	account		VARCHAR2(20) NOT NULL,	-- °èÁ¤¸í
-	password	VARCHAR2(20) NOT NULL,	-- ºñ¹Ğ¹øÈ£
-	nickname	VARCHAR2(20) NOT NULL,	-- »ç¿ëÀÚ¸í
-	birthday	DATE NOT NULL,			-- »ıÀÏ
-	zipcode		VARCHAR(5) NOT NULL,	-- ¿ìÆí¹øÈ£
-	address1	VARCHAR2(200) NOT NULL,	-- ÁÖ¼Ò1  (¼­¿ï½Ã) // (°æÁÖ½Ã) // (ºÎ»ê)
-	address2	VARCHAR2(200) NOT NULL,	-- ÁÖ¼Ò2  ¸¶Æ÷±¸ ~~~~
-	email		VARCHAR2(80) NOT NULL,	-- ÀÌ¸ŞÀÏ (FIXME: ±æÀÌ Á¶Àı ÇÊ¿ä)
-	e_confirm	NUMBER(1) NOT NULL,		-- ÀÌ¸ŞÀÏ ¼Ò½Ä ¼ö½Å ¿©ºÎ  // ÀÌº¥Æ® ¼Ò½Ä ¼ö½Å ¿©ºÎ
-	tel			VARCHAR(11) NOT NULL,	-- ¿¬¶ôÃ³
-	CONSTRAINT obhotel_user_pk PRIMARY KEY (id)  -- obhotel_user_pk ¶ó´Â ÀÌ¸§À¸·Î id¸¦ primary key·Î ÁöÁ¤
+	id			NUMBER NOT NULL,		-- ì‚¬ìš©ì ê³ ìœ ë²ˆí˜¸
+	account		VARCHAR2(20) NOT NULL,	-- ê³„ì •ëª…
+	password	VARCHAR2(20) NOT NULL,	-- ë¹„ë°€ë²ˆí˜¸
+	nickname	VARCHAR2(20) NOT NULL,	-- ì‚¬ìš©ìëª…
+	birthday	DATE NOT NULL,			-- ìƒì¼
+	zipcode		VARCHAR(5) NOT NULL,	-- ìš°í¸ë²ˆí˜¸
+	address1	VARCHAR2(200) NOT NULL,	-- ì£¼ì†Œ1  (ì„œìš¸ì‹œ) // (ê²½ì£¼ì‹œ) // (ë¶€ì‚°)
+	address2	VARCHAR2(200) NOT NULL,	-- ì£¼ì†Œ2  ë§ˆí¬êµ¬ ~~~~
+	email		VARCHAR2(80) NOT NULL,	-- ì´ë©”ì¼ (FIXME: ê¸¸ì´ ì¡°ì ˆ í•„ìš”)
+	e_confirm	NUMBER(1) NOT NULL,		-- ì´ë©”ì¼ ì†Œì‹ ìˆ˜ì‹  ì—¬ë¶€  // ì´ë²¤íŠ¸ ì†Œì‹ ìˆ˜ì‹  ì—¬ë¶€
+	tel			VARCHAR(11) NOT NULL,	-- ì—°ë½ì²˜
+	CONSTRAINT obhotel_user_pk PRIMARY KEY (id)  -- obhotel_user_pk ë¼ëŠ” ì´ë¦„ìœ¼ë¡œ idë¥¼ primary keyë¡œ ì§€ì •
 );
 
 -------------------------------
--- °ü¸®ÀÚ ¸ñ·Ï
+-- ê´€ë¦¬ì ëª©ë¡
 -------------------------------
 
 CREATE TABLE obhotel_admin (
-	id			NUMBER NOT NULL,		-- °ü¸®ÀÚ °íÀ¯¹øÈ£
-	user_id		NUMBER NOT NULL,		-- »ç¿ëÀÚ °íÀ¯¹øÈ£
-	lv			NUMBER NOT NULL,		-- °ü¸®ÀÚ ·¹º§
-	CONSTRAINT obhotel_admin_pk PRIMARY KEY (id), --obhotel_admin_pk¶ó´Â º°ÄªÀ¸·Î id¸¦ ÇÁ¶óÀÌ¸Ó¸®Å°·Î ÁöÁ¤
+	id			NUMBER NOT NULL,		-- ê´€ë¦¬ì ê³ ìœ ë²ˆí˜¸
+	user_id		NUMBER NOT NULL,		-- ì‚¬ìš©ì ê³ ìœ ë²ˆí˜¸
+	lv			NUMBER NOT NULL,		-- ê´€ë¦¬ì ë ˆë²¨
+	CONSTRAINT obhotel_admin_pk PRIMARY KEY (id), --obhotel_admin_pkë¼ëŠ” ë³„ì¹­ìœ¼ë¡œ idë¥¼ í”„ë¼ì´ë¨¸ë¦¬í‚¤ë¡œ ì§€ì •
 	CONSTRAINT obhotel_admin_user_id_fk FOREIGN KEY (user_id) REFERENCES obhotel_user (id) 
-    -- obhotel_admin_user_id_fk ¶ó´Â º°ÄªÀ¸·Î ¿Ü·¡Å° ÁöÁ¤ (obhotel_userÀÇ id¸¦ ÂüÁ¶ÇÏ¸ç)
+    -- obhotel_admin_user_id_fk ë¼ëŠ” ë³„ì¹­ìœ¼ë¡œ ì™¸ë˜í‚¤ ì§€ì • (obhotel_userì˜ idë¥¼ ì°¸ì¡°í•˜ë©°)
 );
 
 -------------------------------
--- Äõ¸® »ùÇÃ
+-- ì¿¼ë¦¬ ìƒ˜í”Œ
 -------------------------------
 
-INSERT INTO obhotel_user VALUES (1, 'admin', '1234', 'admin', sysdate, '12345', '¼­¿ï½Ã', '¸¶Æ÷±¸ ³ë°í»êµ¿', 'admin@obhotel.com', 0, '01012345678');
+INSERT INTO obhotel_user VALUES (1, 'admin', '1234', 'admin', sysdate, '12345', 'ì„œìš¸ì‹œ', 'ë§ˆí¬êµ¬ ë…¸ê³ ì‚°ë™', 'admin@obhotel.com', 0, '01012345678');
 INSERT INTO obhotel_admin VALUES (1, 1, 1);
 
--- INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, '¾ÆÀÌµğ', 'ºñ¹Ğ¹øÈ£', '´Ğ³×ÀÓ', '»ıÀÏ', '¿ìÆí¹øÈ£', 'ÁÖ¼Ò1', 'ÁÖ¼Ò2', 'ÀÌ¸ŞÀÏ', ¼ö½Åµ¿ÀÇ0/1, '¿¬¶ôÃ³ 00000000000');
--- INSERT INTO obhotel_admin VALUES (obhotel_admin_seq.nextval, »ç¿ëÀÚ°íÀ¯¹øÈ£, °ü¸®ÀÚ·¹º§);
+-- INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'ì•„ì´ë””', 'ë¹„ë°€ë²ˆí˜¸', 'ë‹‰ë„¤ì„', 'ìƒì¼', 'ìš°í¸ë²ˆí˜¸', 'ì£¼ì†Œ1', 'ì£¼ì†Œ2', 'ì´ë©”ì¼', ìˆ˜ì‹ ë™ì˜0/1, 'ì—°ë½ì²˜ 00000000000');
+-- INSERT INTO obhotel_admin VALUES (obhotel_admin_seq.nextval, ì‚¬ìš©ìê³ ìœ ë²ˆí˜¸, ê´€ë¦¬ìë ˆë²¨);
 
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user1', '1234', '»ç¿ëÀÚ1', '99/2/1', 23456, 'ÁÖ¼Òx1', 'ÁÖ¼Ò1', 'user1@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user2', '1234', '»ç¿ëÀÚ2', '99/3/1', 46912, 'ÁÖ¼Òx2', 'ÁÖ¼Ò2', 'user2@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user3', '1234', '»ç¿ëÀÚ3', '99/4/1', 70368, 'ÁÖ¼Òx3', 'ÁÖ¼Ò3', 'user3@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user4', '1234', '»ç¿ëÀÚ4', '99/5/1', 93824, 'ÁÖ¼Òx4', 'ÁÖ¼Ò4', 'user4@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user5', '1234', '»ç¿ëÀÚ5', '99/6/1', 17280, 'ÁÖ¼Òx5', 'ÁÖ¼Ò5', 'user5@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user6', '1234', '»ç¿ëÀÚ6', '99/7/1', 40736, 'ÁÖ¼Òx6', 'ÁÖ¼Ò6', 'user6@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user7', '1234', '»ç¿ëÀÚ7', '99/8/1', 64192, 'ÁÖ¼Òx7', 'ÁÖ¼Ò7', 'user7@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user8', '1234', '»ç¿ëÀÚ8', '99/9/1', 87648, 'ÁÖ¼Òx8', 'ÁÖ¼Ò8', 'user8@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user9', '1234', '»ç¿ëÀÚ9', '99/10/1', 11104, 'ÁÖ¼Òx9', 'ÁÖ¼Ò9', 'user9@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user10', '1234', '»ç¿ëÀÚ10', '99/11/1', 34560, 'ÁÖ¼Òx10', 'ÁÖ¼Ò10', 'user10@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user11', '1234', '»ç¿ëÀÚ11', '99/1/1', 58016, 'ÁÖ¼Òx11', 'ÁÖ¼Ò11', 'user11@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user12', '1234', '»ç¿ëÀÚ12', '99/2/1', 81472, 'ÁÖ¼Òx12', 'ÁÖ¼Ò12', 'user12@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user13', '1234', '»ç¿ëÀÚ13', '99/3/1', 4928, 'ÁÖ¼Òx13', 'ÁÖ¼Ò13', 'user13@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user14', '1234', '»ç¿ëÀÚ14', '99/4/1', 28384, 'ÁÖ¼Òx14', 'ÁÖ¼Ò14', 'user14@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user15', '1234', '»ç¿ëÀÚ15', '99/5/1', 51840, 'ÁÖ¼Òx15', 'ÁÖ¼Ò15', 'user15@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user16', '1234', '»ç¿ëÀÚ16', '99/6/1', 75296, 'ÁÖ¼Òx16', 'ÁÖ¼Ò16', 'user16@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user17', '1234', '»ç¿ëÀÚ17', '99/7/1', 98752, 'ÁÖ¼Òx17', 'ÁÖ¼Ò17', 'user17@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user18', '1234', '»ç¿ëÀÚ18', '99/8/1', 22208, 'ÁÖ¼Òx18', 'ÁÖ¼Ò18', 'user18@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user19', '1234', '»ç¿ëÀÚ19', '99/9/1', 45664, 'ÁÖ¼Òx19', 'ÁÖ¼Ò19', 'user19@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user20', '1234', '»ç¿ëÀÚ20', '99/10/1', 69120, 'ÁÖ¼Òx20', 'ÁÖ¼Ò20', 'user20@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user21', '1234', '»ç¿ëÀÚ21', '99/11/1', 92576, 'ÁÖ¼Òx21', 'ÁÖ¼Ò21', 'user21@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user22', '1234', '»ç¿ëÀÚ22', '99/1/1', 16032, 'ÁÖ¼Òx22', 'ÁÖ¼Ò22', 'user22@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user23', '1234', '»ç¿ëÀÚ23', '99/2/1', 39488, 'ÁÖ¼Òx23', 'ÁÖ¼Ò23', 'user23@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user24', '1234', '»ç¿ëÀÚ24', '99/3/1', 62944, 'ÁÖ¼Òx24', 'ÁÖ¼Ò24', 'user24@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user25', '1234', '»ç¿ëÀÚ25', '99/4/1', 86400, 'ÁÖ¼Òx25', 'ÁÖ¼Ò25', 'user25@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user26', '1234', '»ç¿ëÀÚ26', '99/5/1', 9856, 'ÁÖ¼Òx26', 'ÁÖ¼Ò26', 'user26@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user27', '1234', '»ç¿ëÀÚ27', '99/6/1', 33312, 'ÁÖ¼Òx27', 'ÁÖ¼Ò27', 'user27@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user28', '1234', '»ç¿ëÀÚ28', '99/7/1', 56768, 'ÁÖ¼Òx28', 'ÁÖ¼Ò28', 'user28@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user29', '1234', '»ç¿ëÀÚ29', '99/8/1', 80224, 'ÁÖ¼Òx29', 'ÁÖ¼Ò29', 'user29@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user30', '1234', '»ç¿ëÀÚ30', '99/9/1', 3680, 'ÁÖ¼Òx30', 'ÁÖ¼Ò30', 'user30@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user31', '1234', '»ç¿ëÀÚ31', '99/10/1', 27136, 'ÁÖ¼Òx31', 'ÁÖ¼Ò31', 'user31@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user32', '1234', '»ç¿ëÀÚ32', '99/11/1', 50592, 'ÁÖ¼Òx32', 'ÁÖ¼Ò32', 'user32@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user33', '1234', '»ç¿ëÀÚ33', '99/1/1', 74048, 'ÁÖ¼Òx33', 'ÁÖ¼Ò33', 'user33@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user34', '1234', '»ç¿ëÀÚ34', '99/2/1', 97504, 'ÁÖ¼Òx34', 'ÁÖ¼Ò34', 'user34@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user35', '1234', '»ç¿ëÀÚ35', '99/3/1', 20960, 'ÁÖ¼Òx35', 'ÁÖ¼Ò35', 'user35@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user36', '1234', '»ç¿ëÀÚ36', '99/4/1', 44416, 'ÁÖ¼Òx36', 'ÁÖ¼Ò36', 'user36@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user37', '1234', '»ç¿ëÀÚ37', '99/5/1', 67872, 'ÁÖ¼Òx37', 'ÁÖ¼Ò37', 'user37@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user38', '1234', '»ç¿ëÀÚ38', '99/6/1', 91328, 'ÁÖ¼Òx38', 'ÁÖ¼Ò38', 'user38@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user39', '1234', '»ç¿ëÀÚ39', '99/7/1', 14784, 'ÁÖ¼Òx39', 'ÁÖ¼Ò39', 'user39@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user40', '1234', '»ç¿ëÀÚ40', '99/8/1', 38240, 'ÁÖ¼Òx40', 'ÁÖ¼Ò40', 'user40@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user41', '1234', '»ç¿ëÀÚ41', '99/9/1', 61696, 'ÁÖ¼Òx41', 'ÁÖ¼Ò41', 'user41@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user42', '1234', '»ç¿ëÀÚ42', '99/10/1', 85152, 'ÁÖ¼Òx42', 'ÁÖ¼Ò42', 'user42@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user43', '1234', '»ç¿ëÀÚ43', '99/11/1', 8608, 'ÁÖ¼Òx43', 'ÁÖ¼Ò43', 'user43@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user44', '1234', '»ç¿ëÀÚ44', '99/1/1', 32064, 'ÁÖ¼Òx44', 'ÁÖ¼Ò44', 'user44@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user45', '1234', '»ç¿ëÀÚ45', '99/2/1', 55520, 'ÁÖ¼Òx45', 'ÁÖ¼Ò45', 'user45@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user46', '1234', '»ç¿ëÀÚ46', '99/3/1', 78976, 'ÁÖ¼Òx46', 'ÁÖ¼Ò46', 'user46@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user47', '1234', '»ç¿ëÀÚ47', '99/4/1', 2432, 'ÁÖ¼Òx47', 'ÁÖ¼Ò47', 'user47@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user48', '1234', '»ç¿ëÀÚ48', '99/5/1', 25888, 'ÁÖ¼Òx48', 'ÁÖ¼Ò48', 'user48@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user49', '1234', '»ç¿ëÀÚ49', '99/6/1', 49344, 'ÁÖ¼Òx49', 'ÁÖ¼Ò49', 'user49@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user50', '1234', '»ç¿ëÀÚ50', '99/7/1', 72800, 'ÁÖ¼Òx50', 'ÁÖ¼Ò50', 'user50@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user51', '1234', '»ç¿ëÀÚ51', '99/8/1', 96256, 'ÁÖ¼Òx51', 'ÁÖ¼Ò51', 'user51@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user52', '1234', '»ç¿ëÀÚ52', '99/9/1', 19712, 'ÁÖ¼Òx52', 'ÁÖ¼Ò52', 'user52@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user53', '1234', '»ç¿ëÀÚ53', '99/10/1', 43168, 'ÁÖ¼Òx53', 'ÁÖ¼Ò53', 'user53@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user54', '1234', '»ç¿ëÀÚ54', '99/11/1', 66624, 'ÁÖ¼Òx54', 'ÁÖ¼Ò54', 'user54@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user55', '1234', '»ç¿ëÀÚ55', '99/1/1', 90080, 'ÁÖ¼Òx55', 'ÁÖ¼Ò55', 'user55@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user56', '1234', '»ç¿ëÀÚ56', '99/2/1', 13536, 'ÁÖ¼Òx56', 'ÁÖ¼Ò56', 'user56@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user57', '1234', '»ç¿ëÀÚ57', '99/3/1', 36992, 'ÁÖ¼Òx57', 'ÁÖ¼Ò57', 'user57@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user58', '1234', '»ç¿ëÀÚ58', '99/4/1', 60448, 'ÁÖ¼Òx58', 'ÁÖ¼Ò58', 'user58@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user59', '1234', '»ç¿ëÀÚ59', '99/5/1', 83904, 'ÁÖ¼Òx59', 'ÁÖ¼Ò59', 'user59@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user60', '1234', '»ç¿ëÀÚ60', '99/6/1', 7360, 'ÁÖ¼Òx60', 'ÁÖ¼Ò60', 'user60@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user61', '1234', '»ç¿ëÀÚ61', '99/7/1', 30816, 'ÁÖ¼Òx61', 'ÁÖ¼Ò61', 'user61@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user62', '1234', '»ç¿ëÀÚ62', '99/8/1', 54272, 'ÁÖ¼Òx62', 'ÁÖ¼Ò62', 'user62@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user63', '1234', '»ç¿ëÀÚ63', '99/9/1', 77728, 'ÁÖ¼Òx63', 'ÁÖ¼Ò63', 'user63@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user64', '1234', '»ç¿ëÀÚ64', '99/10/1', 1184, 'ÁÖ¼Òx64', 'ÁÖ¼Ò64', 'user64@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user65', '1234', '»ç¿ëÀÚ65', '99/11/1', 24640, 'ÁÖ¼Òx65', 'ÁÖ¼Ò65', 'user65@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user66', '1234', '»ç¿ëÀÚ66', '99/1/1', 48096, 'ÁÖ¼Òx66', 'ÁÖ¼Ò66', 'user66@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user67', '1234', '»ç¿ëÀÚ67', '99/2/1', 71552, 'ÁÖ¼Òx67', 'ÁÖ¼Ò67', 'user67@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user68', '1234', '»ç¿ëÀÚ68', '99/3/1', 95008, 'ÁÖ¼Òx68', 'ÁÖ¼Ò68', 'user68@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user69', '1234', '»ç¿ëÀÚ69', '99/4/1', 18464, 'ÁÖ¼Òx69', 'ÁÖ¼Ò69', 'user69@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user70', '1234', '»ç¿ëÀÚ70', '99/5/1', 41920, 'ÁÖ¼Òx70', 'ÁÖ¼Ò70', 'user70@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user71', '1234', '»ç¿ëÀÚ71', '99/6/1', 65376, 'ÁÖ¼Òx71', 'ÁÖ¼Ò71', 'user71@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user72', '1234', '»ç¿ëÀÚ72', '99/7/1', 88832, 'ÁÖ¼Òx72', 'ÁÖ¼Ò72', 'user72@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user73', '1234', '»ç¿ëÀÚ73', '99/8/1', 12288, 'ÁÖ¼Òx73', 'ÁÖ¼Ò73', 'user73@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user74', '1234', '»ç¿ëÀÚ74', '99/9/1', 35744, 'ÁÖ¼Òx74', 'ÁÖ¼Ò74', 'user74@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user75', '1234', '»ç¿ëÀÚ75', '99/10/1', 59200, 'ÁÖ¼Òx75', 'ÁÖ¼Ò75', 'user75@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user76', '1234', '»ç¿ëÀÚ76', '99/11/1', 82656, 'ÁÖ¼Òx76', 'ÁÖ¼Ò76', 'user76@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user77', '1234', '»ç¿ëÀÚ77', '99/1/1', 6112, 'ÁÖ¼Òx77', 'ÁÖ¼Ò77', 'user77@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user78', '1234', '»ç¿ëÀÚ78', '99/2/1', 29568, 'ÁÖ¼Òx78', 'ÁÖ¼Ò78', 'user78@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user79', '1234', '»ç¿ëÀÚ79', '99/3/1', 53024, 'ÁÖ¼Òx79', 'ÁÖ¼Ò79', 'user79@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user80', '1234', '»ç¿ëÀÚ80', '99/4/1', 76480, 'ÁÖ¼Òx80', 'ÁÖ¼Ò80', 'user80@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user81', '1234', '»ç¿ëÀÚ81', '99/5/1', 99936, 'ÁÖ¼Òx81', 'ÁÖ¼Ò81', 'user81@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user82', '1234', '»ç¿ëÀÚ82', '99/6/1', 23392, 'ÁÖ¼Òx82', 'ÁÖ¼Ò82', 'user82@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user83', '1234', '»ç¿ëÀÚ83', '99/7/1', 46848, 'ÁÖ¼Òx83', 'ÁÖ¼Ò83', 'user83@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user84', '1234', '»ç¿ëÀÚ84', '99/8/1', 70304, 'ÁÖ¼Òx84', 'ÁÖ¼Ò84', 'user84@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user85', '1234', '»ç¿ëÀÚ85', '99/9/1', 93760, 'ÁÖ¼Òx85', 'ÁÖ¼Ò85', 'user85@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user86', '1234', '»ç¿ëÀÚ86', '99/10/1', 17216, 'ÁÖ¼Òx86', 'ÁÖ¼Ò86', 'user86@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user87', '1234', '»ç¿ëÀÚ87', '99/11/1', 40672, 'ÁÖ¼Òx87', 'ÁÖ¼Ò87', 'user87@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user88', '1234', '»ç¿ëÀÚ88', '99/1/1', 64128, 'ÁÖ¼Òx88', 'ÁÖ¼Ò88', 'user88@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user89', '1234', '»ç¿ëÀÚ89', '99/2/1', 87584, 'ÁÖ¼Òx89', 'ÁÖ¼Ò89', 'user89@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user90', '1234', '»ç¿ëÀÚ90', '99/3/1', 11040, 'ÁÖ¼Òx90', 'ÁÖ¼Ò90', 'user90@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user91', '1234', '»ç¿ëÀÚ91', '99/4/1', 34496, 'ÁÖ¼Òx91', 'ÁÖ¼Ò91', 'user91@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user92', '1234', '»ç¿ëÀÚ92', '99/5/1', 57952, 'ÁÖ¼Òx92', 'ÁÖ¼Ò92', 'user92@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user93', '1234', '»ç¿ëÀÚ93', '99/6/1', 81408, 'ÁÖ¼Òx93', 'ÁÖ¼Ò93', 'user93@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user94', '1234', '»ç¿ëÀÚ94', '99/7/1', 4864, 'ÁÖ¼Òx94', 'ÁÖ¼Ò94', 'user94@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user95', '1234', '»ç¿ëÀÚ95', '99/8/1', 28320, 'ÁÖ¼Òx95', 'ÁÖ¼Ò95', 'user95@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user96', '1234', '»ç¿ëÀÚ96', '99/9/1', 51776, 'ÁÖ¼Òx96', 'ÁÖ¼Ò96', 'user96@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user97', '1234', '»ç¿ëÀÚ97', '99/10/1', 75232, 'ÁÖ¼Òx97', 'ÁÖ¼Ò97', 'user97@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user98', '1234', '»ç¿ëÀÚ98', '99/11/1', 98688, 'ÁÖ¼Òx98', 'ÁÖ¼Ò98', 'user98@gmail.com', 0, '00000000011');
-INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user99', '1234', '»ç¿ëÀÚ99', '99/1/1', 22144, 'ÁÖ¼Òx99', 'ÁÖ¼Ò99', 'user99@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user1', '1234', 'ì‚¬ìš©ì1', '99/2/1', 23456, 'ì£¼ì†Œx1', 'ì£¼ì†Œ1', 'user1@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user2', '1234', 'ì‚¬ìš©ì2', '99/3/1', 46912, 'ì£¼ì†Œx2', 'ì£¼ì†Œ2', 'user2@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user3', '1234', 'ì‚¬ìš©ì3', '99/4/1', 70368, 'ì£¼ì†Œx3', 'ì£¼ì†Œ3', 'user3@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user4', '1234', 'ì‚¬ìš©ì4', '99/5/1', 93824, 'ì£¼ì†Œx4', 'ì£¼ì†Œ4', 'user4@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user5', '1234', 'ì‚¬ìš©ì5', '99/6/1', 17280, 'ì£¼ì†Œx5', 'ì£¼ì†Œ5', 'user5@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user6', '1234', 'ì‚¬ìš©ì6', '99/7/1', 40736, 'ì£¼ì†Œx6', 'ì£¼ì†Œ6', 'user6@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user7', '1234', 'ì‚¬ìš©ì7', '99/8/1', 64192, 'ì£¼ì†Œx7', 'ì£¼ì†Œ7', 'user7@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user8', '1234', 'ì‚¬ìš©ì8', '99/9/1', 87648, 'ì£¼ì†Œx8', 'ì£¼ì†Œ8', 'user8@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user9', '1234', 'ì‚¬ìš©ì9', '99/10/1', 11104, 'ì£¼ì†Œx9', 'ì£¼ì†Œ9', 'user9@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user10', '1234', 'ì‚¬ìš©ì10', '99/11/1', 34560, 'ì£¼ì†Œx10', 'ì£¼ì†Œ10', 'user10@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user11', '1234', 'ì‚¬ìš©ì11', '99/1/1', 58016, 'ì£¼ì†Œx11', 'ì£¼ì†Œ11', 'user11@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user12', '1234', 'ì‚¬ìš©ì12', '99/2/1', 81472, 'ì£¼ì†Œx12', 'ì£¼ì†Œ12', 'user12@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user13', '1234', 'ì‚¬ìš©ì13', '99/3/1', 4928, 'ì£¼ì†Œx13', 'ì£¼ì†Œ13', 'user13@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user14', '1234', 'ì‚¬ìš©ì14', '99/4/1', 28384, 'ì£¼ì†Œx14', 'ì£¼ì†Œ14', 'user14@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user15', '1234', 'ì‚¬ìš©ì15', '99/5/1', 51840, 'ì£¼ì†Œx15', 'ì£¼ì†Œ15', 'user15@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user16', '1234', 'ì‚¬ìš©ì16', '99/6/1', 75296, 'ì£¼ì†Œx16', 'ì£¼ì†Œ16', 'user16@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user17', '1234', 'ì‚¬ìš©ì17', '99/7/1', 98752, 'ì£¼ì†Œx17', 'ì£¼ì†Œ17', 'user17@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user18', '1234', 'ì‚¬ìš©ì18', '99/8/1', 22208, 'ì£¼ì†Œx18', 'ì£¼ì†Œ18', 'user18@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user19', '1234', 'ì‚¬ìš©ì19', '99/9/1', 45664, 'ì£¼ì†Œx19', 'ì£¼ì†Œ19', 'user19@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user20', '1234', 'ì‚¬ìš©ì20', '99/10/1', 69120, 'ì£¼ì†Œx20', 'ì£¼ì†Œ20', 'user20@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user21', '1234', 'ì‚¬ìš©ì21', '99/11/1', 92576, 'ì£¼ì†Œx21', 'ì£¼ì†Œ21', 'user21@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user22', '1234', 'ì‚¬ìš©ì22', '99/1/1', 16032, 'ì£¼ì†Œx22', 'ì£¼ì†Œ22', 'user22@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user23', '1234', 'ì‚¬ìš©ì23', '99/2/1', 39488, 'ì£¼ì†Œx23', 'ì£¼ì†Œ23', 'user23@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user24', '1234', 'ì‚¬ìš©ì24', '99/3/1', 62944, 'ì£¼ì†Œx24', 'ì£¼ì†Œ24', 'user24@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user25', '1234', 'ì‚¬ìš©ì25', '99/4/1', 86400, 'ì£¼ì†Œx25', 'ì£¼ì†Œ25', 'user25@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user26', '1234', 'ì‚¬ìš©ì26', '99/5/1', 9856, 'ì£¼ì†Œx26', 'ì£¼ì†Œ26', 'user26@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user27', '1234', 'ì‚¬ìš©ì27', '99/6/1', 33312, 'ì£¼ì†Œx27', 'ì£¼ì†Œ27', 'user27@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user28', '1234', 'ì‚¬ìš©ì28', '99/7/1', 56768, 'ì£¼ì†Œx28', 'ì£¼ì†Œ28', 'user28@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user29', '1234', 'ì‚¬ìš©ì29', '99/8/1', 80224, 'ì£¼ì†Œx29', 'ì£¼ì†Œ29', 'user29@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user30', '1234', 'ì‚¬ìš©ì30', '99/9/1', 3680, 'ì£¼ì†Œx30', 'ì£¼ì†Œ30', 'user30@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user31', '1234', 'ì‚¬ìš©ì31', '99/10/1', 27136, 'ì£¼ì†Œx31', 'ì£¼ì†Œ31', 'user31@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user32', '1234', 'ì‚¬ìš©ì32', '99/11/1', 50592, 'ì£¼ì†Œx32', 'ì£¼ì†Œ32', 'user32@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user33', '1234', 'ì‚¬ìš©ì33', '99/1/1', 74048, 'ì£¼ì†Œx33', 'ì£¼ì†Œ33', 'user33@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user34', '1234', 'ì‚¬ìš©ì34', '99/2/1', 97504, 'ì£¼ì†Œx34', 'ì£¼ì†Œ34', 'user34@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user35', '1234', 'ì‚¬ìš©ì35', '99/3/1', 20960, 'ì£¼ì†Œx35', 'ì£¼ì†Œ35', 'user35@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user36', '1234', 'ì‚¬ìš©ì36', '99/4/1', 44416, 'ì£¼ì†Œx36', 'ì£¼ì†Œ36', 'user36@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user37', '1234', 'ì‚¬ìš©ì37', '99/5/1', 67872, 'ì£¼ì†Œx37', 'ì£¼ì†Œ37', 'user37@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user38', '1234', 'ì‚¬ìš©ì38', '99/6/1', 91328, 'ì£¼ì†Œx38', 'ì£¼ì†Œ38', 'user38@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user39', '1234', 'ì‚¬ìš©ì39', '99/7/1', 14784, 'ì£¼ì†Œx39', 'ì£¼ì†Œ39', 'user39@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user40', '1234', 'ì‚¬ìš©ì40', '99/8/1', 38240, 'ì£¼ì†Œx40', 'ì£¼ì†Œ40', 'user40@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user41', '1234', 'ì‚¬ìš©ì41', '99/9/1', 61696, 'ì£¼ì†Œx41', 'ì£¼ì†Œ41', 'user41@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user42', '1234', 'ì‚¬ìš©ì42', '99/10/1', 85152, 'ì£¼ì†Œx42', 'ì£¼ì†Œ42', 'user42@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user43', '1234', 'ì‚¬ìš©ì43', '99/11/1', 8608, 'ì£¼ì†Œx43', 'ì£¼ì†Œ43', 'user43@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user44', '1234', 'ì‚¬ìš©ì44', '99/1/1', 32064, 'ì£¼ì†Œx44', 'ì£¼ì†Œ44', 'user44@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user45', '1234', 'ì‚¬ìš©ì45', '99/2/1', 55520, 'ì£¼ì†Œx45', 'ì£¼ì†Œ45', 'user45@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user46', '1234', 'ì‚¬ìš©ì46', '99/3/1', 78976, 'ì£¼ì†Œx46', 'ì£¼ì†Œ46', 'user46@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user47', '1234', 'ì‚¬ìš©ì47', '99/4/1', 2432, 'ì£¼ì†Œx47', 'ì£¼ì†Œ47', 'user47@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user48', '1234', 'ì‚¬ìš©ì48', '99/5/1', 25888, 'ì£¼ì†Œx48', 'ì£¼ì†Œ48', 'user48@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user49', '1234', 'ì‚¬ìš©ì49', '99/6/1', 49344, 'ì£¼ì†Œx49', 'ì£¼ì†Œ49', 'user49@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user50', '1234', 'ì‚¬ìš©ì50', '99/7/1', 72800, 'ì£¼ì†Œx50', 'ì£¼ì†Œ50', 'user50@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user51', '1234', 'ì‚¬ìš©ì51', '99/8/1', 96256, 'ì£¼ì†Œx51', 'ì£¼ì†Œ51', 'user51@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user52', '1234', 'ì‚¬ìš©ì52', '99/9/1', 19712, 'ì£¼ì†Œx52', 'ì£¼ì†Œ52', 'user52@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user53', '1234', 'ì‚¬ìš©ì53', '99/10/1', 43168, 'ì£¼ì†Œx53', 'ì£¼ì†Œ53', 'user53@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user54', '1234', 'ì‚¬ìš©ì54', '99/11/1', 66624, 'ì£¼ì†Œx54', 'ì£¼ì†Œ54', 'user54@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user55', '1234', 'ì‚¬ìš©ì55', '99/1/1', 90080, 'ì£¼ì†Œx55', 'ì£¼ì†Œ55', 'user55@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user56', '1234', 'ì‚¬ìš©ì56', '99/2/1', 13536, 'ì£¼ì†Œx56', 'ì£¼ì†Œ56', 'user56@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user57', '1234', 'ì‚¬ìš©ì57', '99/3/1', 36992, 'ì£¼ì†Œx57', 'ì£¼ì†Œ57', 'user57@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user58', '1234', 'ì‚¬ìš©ì58', '99/4/1', 60448, 'ì£¼ì†Œx58', 'ì£¼ì†Œ58', 'user58@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user59', '1234', 'ì‚¬ìš©ì59', '99/5/1', 83904, 'ì£¼ì†Œx59', 'ì£¼ì†Œ59', 'user59@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user60', '1234', 'ì‚¬ìš©ì60', '99/6/1', 7360, 'ì£¼ì†Œx60', 'ì£¼ì†Œ60', 'user60@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user61', '1234', 'ì‚¬ìš©ì61', '99/7/1', 30816, 'ì£¼ì†Œx61', 'ì£¼ì†Œ61', 'user61@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user62', '1234', 'ì‚¬ìš©ì62', '99/8/1', 54272, 'ì£¼ì†Œx62', 'ì£¼ì†Œ62', 'user62@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user63', '1234', 'ì‚¬ìš©ì63', '99/9/1', 77728, 'ì£¼ì†Œx63', 'ì£¼ì†Œ63', 'user63@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user64', '1234', 'ì‚¬ìš©ì64', '99/10/1', 1184, 'ì£¼ì†Œx64', 'ì£¼ì†Œ64', 'user64@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user65', '1234', 'ì‚¬ìš©ì65', '99/11/1', 24640, 'ì£¼ì†Œx65', 'ì£¼ì†Œ65', 'user65@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user66', '1234', 'ì‚¬ìš©ì66', '99/1/1', 48096, 'ì£¼ì†Œx66', 'ì£¼ì†Œ66', 'user66@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user67', '1234', 'ì‚¬ìš©ì67', '99/2/1', 71552, 'ì£¼ì†Œx67', 'ì£¼ì†Œ67', 'user67@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user68', '1234', 'ì‚¬ìš©ì68', '99/3/1', 95008, 'ì£¼ì†Œx68', 'ì£¼ì†Œ68', 'user68@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user69', '1234', 'ì‚¬ìš©ì69', '99/4/1', 18464, 'ì£¼ì†Œx69', 'ì£¼ì†Œ69', 'user69@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user70', '1234', 'ì‚¬ìš©ì70', '99/5/1', 41920, 'ì£¼ì†Œx70', 'ì£¼ì†Œ70', 'user70@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user71', '1234', 'ì‚¬ìš©ì71', '99/6/1', 65376, 'ì£¼ì†Œx71', 'ì£¼ì†Œ71', 'user71@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user72', '1234', 'ì‚¬ìš©ì72', '99/7/1', 88832, 'ì£¼ì†Œx72', 'ì£¼ì†Œ72', 'user72@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user73', '1234', 'ì‚¬ìš©ì73', '99/8/1', 12288, 'ì£¼ì†Œx73', 'ì£¼ì†Œ73', 'user73@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user74', '1234', 'ì‚¬ìš©ì74', '99/9/1', 35744, 'ì£¼ì†Œx74', 'ì£¼ì†Œ74', 'user74@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user75', '1234', 'ì‚¬ìš©ì75', '99/10/1', 59200, 'ì£¼ì†Œx75', 'ì£¼ì†Œ75', 'user75@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user76', '1234', 'ì‚¬ìš©ì76', '99/11/1', 82656, 'ì£¼ì†Œx76', 'ì£¼ì†Œ76', 'user76@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user77', '1234', 'ì‚¬ìš©ì77', '99/1/1', 6112, 'ì£¼ì†Œx77', 'ì£¼ì†Œ77', 'user77@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user78', '1234', 'ì‚¬ìš©ì78', '99/2/1', 29568, 'ì£¼ì†Œx78', 'ì£¼ì†Œ78', 'user78@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user79', '1234', 'ì‚¬ìš©ì79', '99/3/1', 53024, 'ì£¼ì†Œx79', 'ì£¼ì†Œ79', 'user79@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user80', '1234', 'ì‚¬ìš©ì80', '99/4/1', 76480, 'ì£¼ì†Œx80', 'ì£¼ì†Œ80', 'user80@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user81', '1234', 'ì‚¬ìš©ì81', '99/5/1', 99936, 'ì£¼ì†Œx81', 'ì£¼ì†Œ81', 'user81@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user82', '1234', 'ì‚¬ìš©ì82', '99/6/1', 23392, 'ì£¼ì†Œx82', 'ì£¼ì†Œ82', 'user82@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user83', '1234', 'ì‚¬ìš©ì83', '99/7/1', 46848, 'ì£¼ì†Œx83', 'ì£¼ì†Œ83', 'user83@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user84', '1234', 'ì‚¬ìš©ì84', '99/8/1', 70304, 'ì£¼ì†Œx84', 'ì£¼ì†Œ84', 'user84@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user85', '1234', 'ì‚¬ìš©ì85', '99/9/1', 93760, 'ì£¼ì†Œx85', 'ì£¼ì†Œ85', 'user85@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user86', '1234', 'ì‚¬ìš©ì86', '99/10/1', 17216, 'ì£¼ì†Œx86', 'ì£¼ì†Œ86', 'user86@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user87', '1234', 'ì‚¬ìš©ì87', '99/11/1', 40672, 'ì£¼ì†Œx87', 'ì£¼ì†Œ87', 'user87@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user88', '1234', 'ì‚¬ìš©ì88', '99/1/1', 64128, 'ì£¼ì†Œx88', 'ì£¼ì†Œ88', 'user88@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user89', '1234', 'ì‚¬ìš©ì89', '99/2/1', 87584, 'ì£¼ì†Œx89', 'ì£¼ì†Œ89', 'user89@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user90', '1234', 'ì‚¬ìš©ì90', '99/3/1', 11040, 'ì£¼ì†Œx90', 'ì£¼ì†Œ90', 'user90@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user91', '1234', 'ì‚¬ìš©ì91', '99/4/1', 34496, 'ì£¼ì†Œx91', 'ì£¼ì†Œ91', 'user91@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user92', '1234', 'ì‚¬ìš©ì92', '99/5/1', 57952, 'ì£¼ì†Œx92', 'ì£¼ì†Œ92', 'user92@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user93', '1234', 'ì‚¬ìš©ì93', '99/6/1', 81408, 'ì£¼ì†Œx93', 'ì£¼ì†Œ93', 'user93@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user94', '1234', 'ì‚¬ìš©ì94', '99/7/1', 4864, 'ì£¼ì†Œx94', 'ì£¼ì†Œ94', 'user94@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user95', '1234', 'ì‚¬ìš©ì95', '99/8/1', 28320, 'ì£¼ì†Œx95', 'ì£¼ì†Œ95', 'user95@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user96', '1234', 'ì‚¬ìš©ì96', '99/9/1', 51776, 'ì£¼ì†Œx96', 'ì£¼ì†Œ96', 'user96@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user97', '1234', 'ì‚¬ìš©ì97', '99/10/1', 75232, 'ì£¼ì†Œx97', 'ì£¼ì†Œ97', 'user97@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user98', '1234', 'ì‚¬ìš©ì98', '99/11/1', 98688, 'ì£¼ì†Œx98', 'ì£¼ì†Œ98', 'user98@gmail.com', 0, '00000000011');
+INSERT INTO obhotel_user VALUES (obhotel_user_seq.nextval, 'user99', '1234', 'ì‚¬ìš©ì99', '99/1/1', 22144, 'ì£¼ì†Œx99', 'ì£¼ì†Œ99', 'user99@gmail.com', 0, '00000000011');
 commit;
 
 
 ----------------------------------------------------------------------------------------------------------
--- °øÁö»çÇ×, ÀÌº¥Æ® (°Ô½ÃÆÇ)
+-- ê³µì§€ì‚¬í•­, ì´ë²¤íŠ¸ (ê²Œì‹œíŒ)
 -------------------------------
 
 CREATE TABLE obhotel_board (
-	id			NUMBER NOT NULL,		-- °Ô½Ã¹° °íÀ¯¹øÈ£
-	user_id		NUMBER NOT NULL,		-- ÀÛ¼ºÀÚ °íÀ¯¹øÈ£
-	type		NUMBER NOT NULL,		-- °Ô½Ã¹° Á¾·ù (0:Àß¸øµÈ°ª/1:°øÁö»çÇ×/2:ÀÌº¥Æ®/3:¹æ¸í·Ï/4:ex-ÇÁ¸®¹Ì¾öÈÄ±â )
-	title		VARCHAR2(40) NOT NULL,	-- Á¦¸ñ
-	content		VARCHAR2(400) NOT NULL,	-- ³»¿ë
-	write_date	DATE NOT NULL,			-- ÀÛ¼ºÀÏ
-	read_count	NUMBER NOT NULL,		-- Á¶È¸¼ö
-    --- °Ô½ÃÆÇ db¿¡´Â È¸¿ø Á¤º¸ password°¡ µé¾î°¡¸é ¾ÈµÉµí ´Ù ¼¼¼Ç¿¡ ¹Ş¾Æ ÀÏÄ¡ÇÏ´ÂÁö °ª ºñ±³
+	id			NUMBER NOT NULL,		-- ê²Œì‹œë¬¼ ê³ ìœ ë²ˆí˜¸
+	user_id		NUMBER NOT NULL,		-- ì‘ì„±ì ê³ ìœ ë²ˆí˜¸
+	type		NUMBER NOT NULL,		-- ê²Œì‹œë¬¼ ì¢…ë¥˜ (0:ì˜ëª»ëœê°’/1:ê³µì§€ì‚¬í•­/2:ì´ë²¤íŠ¸/3:ë°©ëª…ë¡/4:ex-í”„ë¦¬ë¯¸ì—„í›„ê¸° )
+	title		VARCHAR2(40) NOT NULL,	-- ì œëª©
+	content		VARCHAR2(400) NOT NULL,	-- ë‚´ìš©
+	write_date	DATE NOT NULL,			-- ì‘ì„±ì¼
+	read_count	NUMBER NOT NULL,		-- ì¡°íšŒìˆ˜
+    --- ê²Œì‹œíŒ dbì—ëŠ” íšŒì› ì •ë³´ passwordê°€ ë“¤ì–´ê°€ë©´ ì•ˆë ë“¯ ë‹¤ ì„¸ì…˜ì— ë°›ì•„ ì¼ì¹˜í•˜ëŠ”ì§€ ê°’ ë¹„êµ
 	
 	CONSTRAINT obhotel_board_pk PRIMARY KEY (id),
 	CONSTRAINT obhotel_board_user_id_fk FOREIGN KEY (user_id) REFERENCES obhotel_user (id)
-    -- update insert --> vo.get ÇØ¼­ ¿Ü·¡Å° °ª ²À ³Ö¾îÁÖ±â  // »èÁ¦ÇÒ¶§´Â °Ô½Ã¹° °íÀ¯¹øÈ£ id °ª¸¸ Áö¿ìµµ·Ï
-    --°£·«ÇÏ°Ô id¸¦ ÇÁ¶óÀÌ¸Ó¸®Å°·Î ÁöÁ¤
-    --obhotel_user ¾ÆÀÌµğ¸¦ Âü°íÇÏ¿© user_id
+    -- update insert --> vo.get í•´ì„œ ì™¸ë˜í‚¤ ê°’ ê¼­ ë„£ì–´ì£¼ê¸°  // ì‚­ì œí• ë•ŒëŠ” ê²Œì‹œë¬¼ ê³ ìœ ë²ˆí˜¸ id ê°’ë§Œ ì§€ìš°ë„ë¡
+    --ê°„ëµí•˜ê²Œ idë¥¼ í”„ë¼ì´ë¨¸ë¦¬í‚¤ë¡œ ì§€ì •
+    --obhotel_user ì•„ì´ë””ë¥¼ ì°¸ê³ í•˜ì—¬ user_id
 );
 
 -- INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, ...);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 2, 'ÀÌº¥Æ®Á¦¸ñ1', 'ÀÌº¥Æ®³»¿ë1', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 2, 'ÀÌº¥Æ®Á¦¸ñ2', 'ÀÌº¥Æ®³»¿ë2', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 2, 'ÀÌº¥Æ®Á¦¸ñ3', 'ÀÌº¥Æ®³»¿ë3', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 2, 'ÀÌº¥Æ®Á¦¸ñ4', 'ÀÌº¥Æ®³»¿ë4', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 2, 'ÀÌº¥Æ®Á¦¸ñ5', 'ÀÌº¥Æ®³»¿ë5', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 2, 'ì´ë²¤íŠ¸ì œëª©1', 'ì´ë²¤íŠ¸ë‚´ìš©1', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 2, 'ì´ë²¤íŠ¸ì œëª©2', 'ì´ë²¤íŠ¸ë‚´ìš©2', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 2, 'ì´ë²¤íŠ¸ì œëª©3', 'ì´ë²¤íŠ¸ë‚´ìš©3', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 2, 'ì´ë²¤íŠ¸ì œëª©4', 'ì´ë²¤íŠ¸ë‚´ìš©4', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 2, 'ì´ë²¤íŠ¸ì œëª©5', 'ì´ë²¤íŠ¸ë‚´ìš©5', sysdate, 0);
 
 
 
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 1, '°øÁö»çÇ×Á¦¸ñ1', '°øÁö»çÇ×³»¿ë1', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 1, '°øÁö»çÇ×Á¦¸ñ2', '°øÁö»çÇ×³»¿ë2', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 1, '°øÁö»çÇ×Á¦¸ñ3', '°øÁö»çÇ×³»¿ë3', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 1, '°øÁö»çÇ×Á¦¸ñ4', '°øÁö»çÇ×³»¿ë4', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 1, '°øÁö»çÇ×Á¦¸ñ5', '°øÁö»çÇ×³»¿ë5', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 1, 'ê³µì§€ì‚¬í•­ì œëª©1', 'ê³µì§€ì‚¬í•­ë‚´ìš©1', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 1, 'ê³µì§€ì‚¬í•­ì œëª©2', 'ê³µì§€ì‚¬í•­ë‚´ìš©2', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 1, 'ê³µì§€ì‚¬í•­ì œëª©3', 'ê³µì§€ì‚¬í•­ë‚´ìš©3', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 1, 'ê³µì§€ì‚¬í•­ì œëª©4', 'ê³µì§€ì‚¬í•­ë‚´ìš©4', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 1, 'ê³µì§€ì‚¬í•­ì œëª©5', 'ê³µì§€ì‚¬í•­ë‚´ìš©5', sysdate, 0);
 
 
 
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ1', '¹æ¸í·Ï³»¿ë1', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ3', '¹æ¸í·Ï³»¿ë2', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ3', '¹æ¸í·Ï³»¿ë3', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ4', '¹æ¸í·Ï³»¿ë4', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ5', '¹æ¸í·Ï³»¿ë5', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ6', '¹æ¸í·Ï³»¿ë6', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ7', '¹æ¸í·Ï³»¿ë7', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ8', '¹æ¸í·Ï³»¿ë8', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ9', '¹æ¸í·Ï³»¿ë9', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ10', '¹æ¸í·Ï³»¿ë10', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ11', '¹æ¸í·Ï³»¿ë11', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ012', '¹æ¸í·Ï³»¿ë012', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ013', '¹æ¸í·Ï³»¿ë013', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ014', '¹æ¸í·Ï³»¿ë014', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ015', '¹æ¸í·Ï³»¿ë015', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ016', '¹æ¸í·Ï³»¿ë016', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ017', '¹æ¸í·Ï³»¿ë017', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ018', '¹æ¸í·Ï³»¿ë018', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ019', '¹æ¸í·Ï³»¿ë019', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ020', '¹æ¸í·Ï³»¿ë020', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ021', '¹æ¸í·Ï³»¿ë021', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ022', '¹æ¸í·Ï³»¿ë022', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ023', '¹æ¸í·Ï³»¿ë023', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ024', '¹æ¸í·Ï³»¿ë024', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ025', '¹æ¸í·Ï³»¿ë025', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ026', '¹æ¸í·Ï³»¿ë026', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ027', '¹æ¸í·Ï³»¿ë027', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ028', '¹æ¸í·Ï³»¿ë028', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ029', '¹æ¸í·Ï³»¿ë029', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ030', '¹æ¸í·Ï³»¿ë030', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ031', '¹æ¸í·Ï³»¿ë031', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ032', '¹æ¸í·Ï³»¿ë032', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ033', '¹æ¸í·Ï³»¿ë033', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ034', '¹æ¸í·Ï³»¿ë034', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ035', '¹æ¸í·Ï³»¿ë035', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ036', '¹æ¸í·Ï³»¿ë036', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ037', '¹æ¸í·Ï³»¿ë037', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ038', '¹æ¸í·Ï³»¿ë038', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ039', '¹æ¸í·Ï³»¿ë039', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ040', '¹æ¸í·Ï³»¿ë040', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ041', '¹æ¸í·Ï³»¿ë041', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ042', '¹æ¸í·Ï³»¿ë042', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ043', '¹æ¸í·Ï³»¿ë043', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ044', '¹æ¸í·Ï³»¿ë044', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ045', '¹æ¸í·Ï³»¿ë045', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ046', '¹æ¸í·Ï³»¿ë046', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ047', '¹æ¸í·Ï³»¿ë047', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ048', '¹æ¸í·Ï³»¿ë048', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ049', '¹æ¸í·Ï³»¿ë049', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ050', '¹æ¸í·Ï³»¿ë050', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ051', '¹æ¸í·Ï³»¿ë051', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ052', '¹æ¸í·Ï³»¿ë052', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ053', '¹æ¸í·Ï³»¿ë053', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ054', '¹æ¸í·Ï³»¿ë054', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ055', '¹æ¸í·Ï³»¿ë055', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ056', '¹æ¸í·Ï³»¿ë056', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ057', '¹æ¸í·Ï³»¿ë057', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ058', '¹æ¸í·Ï³»¿ë058', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ059', '¹æ¸í·Ï³»¿ë059', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ060', '¹æ¸í·Ï³»¿ë060', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ061', '¹æ¸í·Ï³»¿ë061', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ062', '¹æ¸í·Ï³»¿ë062', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ063', '¹æ¸í·Ï³»¿ë063', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ064', '¹æ¸í·Ï³»¿ë064', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ065', '¹æ¸í·Ï³»¿ë065', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ066', '¹æ¸í·Ï³»¿ë066', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ067', '¹æ¸í·Ï³»¿ë067', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ068', '¹æ¸í·Ï³»¿ë068', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ069', '¹æ¸í·Ï³»¿ë069', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ070', '¹æ¸í·Ï³»¿ë070', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ071', '¹æ¸í·Ï³»¿ë071', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ072', '¹æ¸í·Ï³»¿ë072', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ073', '¹æ¸í·Ï³»¿ë073', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ074', '¹æ¸í·Ï³»¿ë074', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ075', '¹æ¸í·Ï³»¿ë075', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ076', '¹æ¸í·Ï³»¿ë076', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ077', '¹æ¸í·Ï³»¿ë077', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ078', '¹æ¸í·Ï³»¿ë078', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ079', '¹æ¸í·Ï³»¿ë079', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ080', '¹æ¸í·Ï³»¿ë080', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ081', '¹æ¸í·Ï³»¿ë081', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ082', '¹æ¸í·Ï³»¿ë082', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ083', '¹æ¸í·Ï³»¿ë083', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ084', '¹æ¸í·Ï³»¿ë084', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ085', '¹æ¸í·Ï³»¿ë085', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ086', '¹æ¸í·Ï³»¿ë086', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ087', '¹æ¸í·Ï³»¿ë087', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ088', '¹æ¸í·Ï³»¿ë088', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ089', '¹æ¸í·Ï³»¿ë089', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ090', '¹æ¸í·Ï³»¿ë090', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ091', '¹æ¸í·Ï³»¿ë091', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ092', '¹æ¸í·Ï³»¿ë092', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ093', '¹æ¸í·Ï³»¿ë093', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ094', '¹æ¸í·Ï³»¿ë094', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ095', '¹æ¸í·Ï³»¿ë095', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ096', '¹æ¸í·Ï³»¿ë096', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ097', '¹æ¸í·Ï³»¿ë097', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ098', '¹æ¸í·Ï³»¿ë098', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ099', '¹æ¸í·Ï³»¿ë099', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ100', '¹æ¸í·Ï³»¿ë100', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ101', '¹æ¸í·Ï³»¿ë101', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ102', '¹æ¸í·Ï³»¿ë102', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ103', '¹æ¸í·Ï³»¿ë103', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ104', '¹æ¸í·Ï³»¿ë104', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ105', '¹æ¸í·Ï³»¿ë105', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ106', '¹æ¸í·Ï³»¿ë106', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ107', '¹æ¸í·Ï³»¿ë107', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ108', '¹æ¸í·Ï³»¿ë108', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ109', '¹æ¸í·Ï³»¿ë109', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ110', '¹æ¸í·Ï³»¿ë110', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ111', '¹æ¸í·Ï³»¿ë111', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ112', '¹æ¸í·Ï³»¿ë112', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ113', '¹æ¸í·Ï³»¿ë113', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ114', '¹æ¸í·Ï³»¿ë114', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ115', '¹æ¸í·Ï³»¿ë115', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ116', '¹æ¸í·Ï³»¿ë116', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ117', '¹æ¸í·Ï³»¿ë117', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ118', '¹æ¸í·Ï³»¿ë118', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ119', '¹æ¸í·Ï³»¿ë119', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ120', '¹æ¸í·Ï³»¿ë120', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ121', '¹æ¸í·Ï³»¿ë121', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ122', '¹æ¸í·Ï³»¿ë122', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ123', '¹æ¸í·Ï³»¿ë123', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ124', '¹æ¸í·Ï³»¿ë124', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ125', '¹æ¸í·Ï³»¿ë125', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ126', '¹æ¸í·Ï³»¿ë126', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ127', '¹æ¸í·Ï³»¿ë127', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ128', '¹æ¸í·Ï³»¿ë128', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ129', '¹æ¸í·Ï³»¿ë129', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ130', '¹æ¸í·Ï³»¿ë130', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ131', '¹æ¸í·Ï³»¿ë131', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ132', '¹æ¸í·Ï³»¿ë132', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ133', '¹æ¸í·Ï³»¿ë133', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ134', '¹æ¸í·Ï³»¿ë134', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ135', '¹æ¸í·Ï³»¿ë135', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ136', '¹æ¸í·Ï³»¿ë136', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ137', '¹æ¸í·Ï³»¿ë137', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ138', '¹æ¸í·Ï³»¿ë138', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ139', '¹æ¸í·Ï³»¿ë139', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ140', '¹æ¸í·Ï³»¿ë140', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ141', '¹æ¸í·Ï³»¿ë141', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ142', '¹æ¸í·Ï³»¿ë142', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ143', '¹æ¸í·Ï³»¿ë143', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ144', '¹æ¸í·Ï³»¿ë144', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ145', '¹æ¸í·Ï³»¿ë145', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ146', '¹æ¸í·Ï³»¿ë146', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ147', '¹æ¸í·Ï³»¿ë147', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ148', '¹æ¸í·Ï³»¿ë148', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ149', '¹æ¸í·Ï³»¿ë149', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ150', '¹æ¸í·Ï³»¿ë150', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ151', '¹æ¸í·Ï³»¿ë151', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ152', '¹æ¸í·Ï³»¿ë152', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ153', '¹æ¸í·Ï³»¿ë153', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ154', '¹æ¸í·Ï³»¿ë154', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ155', '¹æ¸í·Ï³»¿ë155', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ156', '¹æ¸í·Ï³»¿ë156', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ157', '¹æ¸í·Ï³»¿ë157', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ158', '¹æ¸í·Ï³»¿ë158', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ159', '¹æ¸í·Ï³»¿ë159', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ160', '¹æ¸í·Ï³»¿ë160', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ161', '¹æ¸í·Ï³»¿ë161', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ162', '¹æ¸í·Ï³»¿ë162', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ163', '¹æ¸í·Ï³»¿ë163', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ164', '¹æ¸í·Ï³»¿ë164', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ165', '¹æ¸í·Ï³»¿ë165', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ166', '¹æ¸í·Ï³»¿ë166', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ167', '¹æ¸í·Ï³»¿ë167', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ168', '¹æ¸í·Ï³»¿ë168', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ169', '¹æ¸í·Ï³»¿ë169', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ170', '¹æ¸í·Ï³»¿ë170', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ171', '¹æ¸í·Ï³»¿ë171', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ172', '¹æ¸í·Ï³»¿ë172', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ173', '¹æ¸í·Ï³»¿ë173', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ174', '¹æ¸í·Ï³»¿ë174', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ175', '¹æ¸í·Ï³»¿ë175', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ176', '¹æ¸í·Ï³»¿ë176', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ177', '¹æ¸í·Ï³»¿ë177', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ178', '¹æ¸í·Ï³»¿ë178', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ179', '¹æ¸í·Ï³»¿ë179', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ180', '¹æ¸í·Ï³»¿ë180', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ181', '¹æ¸í·Ï³»¿ë181', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ182', '¹æ¸í·Ï³»¿ë182', sysdate, 0);
-INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, '¹æ¸í·ÏÁ¦¸ñ183', '¹æ¸í·Ï³»¿ë183', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©1', 'ë°©ëª…ë¡ë‚´ìš©1', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©3', 'ë°©ëª…ë¡ë‚´ìš©2', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©3', 'ë°©ëª…ë¡ë‚´ìš©3', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©4', 'ë°©ëª…ë¡ë‚´ìš©4', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©5', 'ë°©ëª…ë¡ë‚´ìš©5', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©6', 'ë°©ëª…ë¡ë‚´ìš©6', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©7', 'ë°©ëª…ë¡ë‚´ìš©7', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©8', 'ë°©ëª…ë¡ë‚´ìš©8', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©9', 'ë°©ëª…ë¡ë‚´ìš©9', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©10', 'ë°©ëª…ë¡ë‚´ìš©10', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©11', 'ë°©ëª…ë¡ë‚´ìš©11', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©012', 'ë°©ëª…ë¡ë‚´ìš©012', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©013', 'ë°©ëª…ë¡ë‚´ìš©013', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©014', 'ë°©ëª…ë¡ë‚´ìš©014', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©015', 'ë°©ëª…ë¡ë‚´ìš©015', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©016', 'ë°©ëª…ë¡ë‚´ìš©016', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©017', 'ë°©ëª…ë¡ë‚´ìš©017', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©018', 'ë°©ëª…ë¡ë‚´ìš©018', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©019', 'ë°©ëª…ë¡ë‚´ìš©019', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©020', 'ë°©ëª…ë¡ë‚´ìš©020', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©021', 'ë°©ëª…ë¡ë‚´ìš©021', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©022', 'ë°©ëª…ë¡ë‚´ìš©022', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©023', 'ë°©ëª…ë¡ë‚´ìš©023', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©024', 'ë°©ëª…ë¡ë‚´ìš©024', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©025', 'ë°©ëª…ë¡ë‚´ìš©025', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©026', 'ë°©ëª…ë¡ë‚´ìš©026', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©027', 'ë°©ëª…ë¡ë‚´ìš©027', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©028', 'ë°©ëª…ë¡ë‚´ìš©028', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©029', 'ë°©ëª…ë¡ë‚´ìš©029', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©030', 'ë°©ëª…ë¡ë‚´ìš©030', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©031', 'ë°©ëª…ë¡ë‚´ìš©031', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©032', 'ë°©ëª…ë¡ë‚´ìš©032', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©033', 'ë°©ëª…ë¡ë‚´ìš©033', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©034', 'ë°©ëª…ë¡ë‚´ìš©034', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©035', 'ë°©ëª…ë¡ë‚´ìš©035', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©036', 'ë°©ëª…ë¡ë‚´ìš©036', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©037', 'ë°©ëª…ë¡ë‚´ìš©037', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©038', 'ë°©ëª…ë¡ë‚´ìš©038', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©039', 'ë°©ëª…ë¡ë‚´ìš©039', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©040', 'ë°©ëª…ë¡ë‚´ìš©040', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©041', 'ë°©ëª…ë¡ë‚´ìš©041', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©042', 'ë°©ëª…ë¡ë‚´ìš©042', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©043', 'ë°©ëª…ë¡ë‚´ìš©043', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©044', 'ë°©ëª…ë¡ë‚´ìš©044', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©045', 'ë°©ëª…ë¡ë‚´ìš©045', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©046', 'ë°©ëª…ë¡ë‚´ìš©046', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©047', 'ë°©ëª…ë¡ë‚´ìš©047', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©048', 'ë°©ëª…ë¡ë‚´ìš©048', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©049', 'ë°©ëª…ë¡ë‚´ìš©049', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©050', 'ë°©ëª…ë¡ë‚´ìš©050', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©051', 'ë°©ëª…ë¡ë‚´ìš©051', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©052', 'ë°©ëª…ë¡ë‚´ìš©052', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©053', 'ë°©ëª…ë¡ë‚´ìš©053', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©054', 'ë°©ëª…ë¡ë‚´ìš©054', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©055', 'ë°©ëª…ë¡ë‚´ìš©055', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©056', 'ë°©ëª…ë¡ë‚´ìš©056', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©057', 'ë°©ëª…ë¡ë‚´ìš©057', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©058', 'ë°©ëª…ë¡ë‚´ìš©058', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©059', 'ë°©ëª…ë¡ë‚´ìš©059', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©060', 'ë°©ëª…ë¡ë‚´ìš©060', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©061', 'ë°©ëª…ë¡ë‚´ìš©061', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©062', 'ë°©ëª…ë¡ë‚´ìš©062', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©063', 'ë°©ëª…ë¡ë‚´ìš©063', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©064', 'ë°©ëª…ë¡ë‚´ìš©064', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©065', 'ë°©ëª…ë¡ë‚´ìš©065', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©066', 'ë°©ëª…ë¡ë‚´ìš©066', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©067', 'ë°©ëª…ë¡ë‚´ìš©067', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©068', 'ë°©ëª…ë¡ë‚´ìš©068', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©069', 'ë°©ëª…ë¡ë‚´ìš©069', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©070', 'ë°©ëª…ë¡ë‚´ìš©070', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©071', 'ë°©ëª…ë¡ë‚´ìš©071', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©072', 'ë°©ëª…ë¡ë‚´ìš©072', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©073', 'ë°©ëª…ë¡ë‚´ìš©073', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©074', 'ë°©ëª…ë¡ë‚´ìš©074', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©075', 'ë°©ëª…ë¡ë‚´ìš©075', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©076', 'ë°©ëª…ë¡ë‚´ìš©076', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©077', 'ë°©ëª…ë¡ë‚´ìš©077', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©078', 'ë°©ëª…ë¡ë‚´ìš©078', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©079', 'ë°©ëª…ë¡ë‚´ìš©079', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©080', 'ë°©ëª…ë¡ë‚´ìš©080', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©081', 'ë°©ëª…ë¡ë‚´ìš©081', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©082', 'ë°©ëª…ë¡ë‚´ìš©082', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©083', 'ë°©ëª…ë¡ë‚´ìš©083', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©084', 'ë°©ëª…ë¡ë‚´ìš©084', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©085', 'ë°©ëª…ë¡ë‚´ìš©085', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©086', 'ë°©ëª…ë¡ë‚´ìš©086', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©087', 'ë°©ëª…ë¡ë‚´ìš©087', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©088', 'ë°©ëª…ë¡ë‚´ìš©088', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©089', 'ë°©ëª…ë¡ë‚´ìš©089', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©090', 'ë°©ëª…ë¡ë‚´ìš©090', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©091', 'ë°©ëª…ë¡ë‚´ìš©091', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©092', 'ë°©ëª…ë¡ë‚´ìš©092', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©093', 'ë°©ëª…ë¡ë‚´ìš©093', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©094', 'ë°©ëª…ë¡ë‚´ìš©094', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©095', 'ë°©ëª…ë¡ë‚´ìš©095', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©096', 'ë°©ëª…ë¡ë‚´ìš©096', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©097', 'ë°©ëª…ë¡ë‚´ìš©097', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©098', 'ë°©ëª…ë¡ë‚´ìš©098', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©099', 'ë°©ëª…ë¡ë‚´ìš©099', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©100', 'ë°©ëª…ë¡ë‚´ìš©100', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©101', 'ë°©ëª…ë¡ë‚´ìš©101', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©102', 'ë°©ëª…ë¡ë‚´ìš©102', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©103', 'ë°©ëª…ë¡ë‚´ìš©103', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©104', 'ë°©ëª…ë¡ë‚´ìš©104', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©105', 'ë°©ëª…ë¡ë‚´ìš©105', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©106', 'ë°©ëª…ë¡ë‚´ìš©106', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©107', 'ë°©ëª…ë¡ë‚´ìš©107', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©108', 'ë°©ëª…ë¡ë‚´ìš©108', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©109', 'ë°©ëª…ë¡ë‚´ìš©109', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©110', 'ë°©ëª…ë¡ë‚´ìš©110', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©111', 'ë°©ëª…ë¡ë‚´ìš©111', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©112', 'ë°©ëª…ë¡ë‚´ìš©112', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©113', 'ë°©ëª…ë¡ë‚´ìš©113', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©114', 'ë°©ëª…ë¡ë‚´ìš©114', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©115', 'ë°©ëª…ë¡ë‚´ìš©115', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©116', 'ë°©ëª…ë¡ë‚´ìš©116', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©117', 'ë°©ëª…ë¡ë‚´ìš©117', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©118', 'ë°©ëª…ë¡ë‚´ìš©118', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©119', 'ë°©ëª…ë¡ë‚´ìš©119', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©120', 'ë°©ëª…ë¡ë‚´ìš©120', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©121', 'ë°©ëª…ë¡ë‚´ìš©121', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©122', 'ë°©ëª…ë¡ë‚´ìš©122', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©123', 'ë°©ëª…ë¡ë‚´ìš©123', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©124', 'ë°©ëª…ë¡ë‚´ìš©124', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©125', 'ë°©ëª…ë¡ë‚´ìš©125', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©126', 'ë°©ëª…ë¡ë‚´ìš©126', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©127', 'ë°©ëª…ë¡ë‚´ìš©127', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©128', 'ë°©ëª…ë¡ë‚´ìš©128', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©129', 'ë°©ëª…ë¡ë‚´ìš©129', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©130', 'ë°©ëª…ë¡ë‚´ìš©130', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©131', 'ë°©ëª…ë¡ë‚´ìš©131', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©132', 'ë°©ëª…ë¡ë‚´ìš©132', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©133', 'ë°©ëª…ë¡ë‚´ìš©133', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©134', 'ë°©ëª…ë¡ë‚´ìš©134', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©135', 'ë°©ëª…ë¡ë‚´ìš©135', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©136', 'ë°©ëª…ë¡ë‚´ìš©136', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©137', 'ë°©ëª…ë¡ë‚´ìš©137', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©138', 'ë°©ëª…ë¡ë‚´ìš©138', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©139', 'ë°©ëª…ë¡ë‚´ìš©139', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©140', 'ë°©ëª…ë¡ë‚´ìš©140', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©141', 'ë°©ëª…ë¡ë‚´ìš©141', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©142', 'ë°©ëª…ë¡ë‚´ìš©142', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©143', 'ë°©ëª…ë¡ë‚´ìš©143', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©144', 'ë°©ëª…ë¡ë‚´ìš©144', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©145', 'ë°©ëª…ë¡ë‚´ìš©145', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©146', 'ë°©ëª…ë¡ë‚´ìš©146', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©147', 'ë°©ëª…ë¡ë‚´ìš©147', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©148', 'ë°©ëª…ë¡ë‚´ìš©148', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©149', 'ë°©ëª…ë¡ë‚´ìš©149', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©150', 'ë°©ëª…ë¡ë‚´ìš©150', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©151', 'ë°©ëª…ë¡ë‚´ìš©151', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©152', 'ë°©ëª…ë¡ë‚´ìš©152', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©153', 'ë°©ëª…ë¡ë‚´ìš©153', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©154', 'ë°©ëª…ë¡ë‚´ìš©154', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©155', 'ë°©ëª…ë¡ë‚´ìš©155', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©156', 'ë°©ëª…ë¡ë‚´ìš©156', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©157', 'ë°©ëª…ë¡ë‚´ìš©157', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©158', 'ë°©ëª…ë¡ë‚´ìš©158', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©159', 'ë°©ëª…ë¡ë‚´ìš©159', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©160', 'ë°©ëª…ë¡ë‚´ìš©160', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©161', 'ë°©ëª…ë¡ë‚´ìš©161', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©162', 'ë°©ëª…ë¡ë‚´ìš©162', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©163', 'ë°©ëª…ë¡ë‚´ìš©163', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©164', 'ë°©ëª…ë¡ë‚´ìš©164', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©165', 'ë°©ëª…ë¡ë‚´ìš©165', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©166', 'ë°©ëª…ë¡ë‚´ìš©166', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©167', 'ë°©ëª…ë¡ë‚´ìš©167', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©168', 'ë°©ëª…ë¡ë‚´ìš©168', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©169', 'ë°©ëª…ë¡ë‚´ìš©169', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©170', 'ë°©ëª…ë¡ë‚´ìš©170', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©171', 'ë°©ëª…ë¡ë‚´ìš©171', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©172', 'ë°©ëª…ë¡ë‚´ìš©172', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©173', 'ë°©ëª…ë¡ë‚´ìš©173', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©174', 'ë°©ëª…ë¡ë‚´ìš©174', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©175', 'ë°©ëª…ë¡ë‚´ìš©175', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©176', 'ë°©ëª…ë¡ë‚´ìš©176', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©177', 'ë°©ëª…ë¡ë‚´ìš©177', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©178', 'ë°©ëª…ë¡ë‚´ìš©178', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©179', 'ë°©ëª…ë¡ë‚´ìš©179', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©180', 'ë°©ëª…ë¡ë‚´ìš©180', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©181', 'ë°©ëª…ë¡ë‚´ìš©181', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©182', 'ë°©ëª…ë¡ë‚´ìš©182', sysdate, 0);
+INSERT INTO obhotel_board VALUES (obhotel_board_seq.nextval, 1, 3, 'ë°©ëª…ë¡ì œëª©183', 'ë°©ëª…ë¡ë‚´ìš©183', sysdate, 0);
 
 
 
@@ -391,27 +391,27 @@ commit;
 
 
 -------------------------------
--- °Ô½ÃÆÇ Ã·ºÎÆÄÀÏ
+-- ê²Œì‹œíŒ ì²¨ë¶€íŒŒì¼
 -------------------------------
 
 CREATE TABLE obhotel_board_file (
-	id			NUMBER NOT NULL,		-- Ã·ºÎÆÄÀÏ °íÀ¯¹øÈ£
-	board_id	NUMBER NOT NULL,		-- °Ô½Ã¹° °íÀ¯¹øÈ£
-	filename		VARCHAR2(256) NOT NULL,	-- ÆÄÀÏ¸í (SHA-256 ¹İÈ¯°ª + È®ÀåÀÚ . Æ÷ÇÔ ÃÑ 4ÀÚ = 70)
-	saved_filename	VARCHAR2(256) NOT NULL,	-- ÆÄÀÏ¸í (SHA-256 ¹İÈ¯°ª + È®ÀåÀÚ . Æ÷ÇÔ ÃÑ 4ÀÚ = 70)
-	filesize	NUMBER NOT NULL,		-- Ã·ºÎÆÄÀÏ Å©±â
+	id			NUMBER NOT NULL,		-- ì²¨ë¶€íŒŒì¼ ê³ ìœ ë²ˆí˜¸
+	board_id	NUMBER NOT NULL,		-- ê²Œì‹œë¬¼ ê³ ìœ ë²ˆí˜¸
+	filename		VARCHAR2(256) NOT NULL,	-- íŒŒì¼ëª… (SHA-256 ë°˜í™˜ê°’ + í™•ì¥ì . í¬í•¨ ì´ 4ì = 70)
+	saved_filename	VARCHAR2(256) NOT NULL,	-- íŒŒì¼ëª… (SHA-256 ë°˜í™˜ê°’ + í™•ì¥ì . í¬í•¨ ì´ 4ì = 70)
+	filesize	NUMBER NOT NULL,		-- ì²¨ë¶€íŒŒì¼ í¬ê¸°
 	CONSTRAINT obhotel_board_file_pk PRIMARY KEY (id),
 	CONSTRAINT obhotel_board_file_aid_fk FOREIGN KEY (board_id) REFERENCES obhotel_board (id) on delete cascade
-    --ON DELETE CASCADE : ±âÁØ Å×ÀÌºíÀÇ µ¥ÀÌÅÍ°¡ »èÁ¦µÇ¾úÀ» ¶§ ¿Ü·¡ Å° Å×ÀÌºíÀÇ µ¥ÀÌÅÍµéµµ ÀÚµ¿À¸·Î »èÁ¦
-    --obhotel_board Å×ÀÌºí¿¡ delete from obhotel_borad where id = '5'; ¸¦ ÇÏ¸é obhotel_board_file; ¿¡ ÀÖ´Â id = '5'µµ ÇÔ²² Áö¿öÁü
+    --ON DELETE CASCADE : ê¸°ì¤€ í…Œì´ë¸”ì˜ ë°ì´í„°ê°€ ì‚­ì œë˜ì—ˆì„ ë•Œ ì™¸ë˜ í‚¤ í…Œì´ë¸”ì˜ ë°ì´í„°ë“¤ë„ ìë™ìœ¼ë¡œ ì‚­ì œ
+    --obhotel_board í…Œì´ë¸”ì— delete from obhotel_borad where id = '5'; ë¥¼ í•˜ë©´ obhotel_board_file; ì— ìˆëŠ” id = '5'ë„ í•¨ê»˜ ì§€ì›Œì§
     
-    --Ãß°¡ÀûÀ¸·Î : ON UPDATE CASCADE : ±âÁØ Å×ÀÌºíÀÇ µ¥ÀÌÅÍ°¡ º¯°æµÇ¾úÀ» ¶§ ¿Ü·¡ Å° Å×ÀÌºíµµ ÀÚµ¿À¸·Î º¯°æ
+    --ì¶”ê°€ì ìœ¼ë¡œ : ON UPDATE CASCADE : ê¸°ì¤€ í…Œì´ë¸”ì˜ ë°ì´í„°ê°€ ë³€ê²½ë˜ì—ˆì„ ë•Œ ì™¸ë˜ í‚¤ í…Œì´ë¸”ë„ ìë™ìœ¼ë¡œ ë³€ê²½
     
 );
 
 
 -------------------------------
--- Äõ¸® »ùÇÃ
+-- ì¿¼ë¦¬ ìƒ˜í”Œ
 -------------------------------
 
 
@@ -428,89 +428,89 @@ commit;
 
 
 -------------------------------
--- °Ô½ÃÆÇ ´ñ±Û
+-- ê²Œì‹œíŒ ëŒ“ê¸€
 -------------------------------
 
 CREATE TABLE obhotel_board_reply (
-	id			NUMBER NOT NULL,		-- Ã·ºÎÆÄÀÏ °íÀ¯¹øÈ£
-	board_id	NUMBER NOT NULL,		-- °Ô½Ã¹° °íÀ¯¹øÈ£
-	user_id		NUMBER NOT NULL,		-- ÀÛ¼ºÀÚ °íÀ¯¹øÈ£
-	content		VARCHAR2(400) NOT NULL,	-- ³»¿ë
-	write_date	DATE NOT NULL,			-- ÀÛ¼ºÀÏ
+	id			NUMBER NOT NULL,		-- ì²¨ë¶€íŒŒì¼ ê³ ìœ ë²ˆí˜¸
+	board_id	NUMBER NOT NULL,		-- ê²Œì‹œë¬¼ ê³ ìœ ë²ˆí˜¸
+	user_id		NUMBER NOT NULL,		-- ì‘ì„±ì ê³ ìœ ë²ˆí˜¸
+	content		VARCHAR2(400) NOT NULL,	-- ë‚´ìš©
+	write_date	DATE NOT NULL,			-- ì‘ì„±ì¼
 
 	CONSTRAINT obhotel_board_reply_pk PRIMARY KEY (id),
 	CONSTRAINT obhotel_board_reply_bid_fk FOREIGN KEY (board_id) REFERENCES obhotel_board (id) on delete cascade,
 	CONSTRAINT obhotel_board_reply_uid_fk FOREIGN KEY (user_id) REFERENCES obhotel_user (id) on delete cascade
     --on delete cascade
-    --°°Àº ÀÇ¹Ì obhotel_board (°Ô½ÃÆÇ¿¡ id, È¸¿ø id °¡ »èÁ¦‰çÀ»½?ÄÚ¸ÇÆ® Å×ÀÌºí¿¡ µ¥ÀÌÅÍµµ ¸ğµÎ »èÁ¦!) 
+    --ê°™ì€ ì˜ë¯¸ obhotel_board (ê²Œì‹œíŒì— id, íšŒì› id ê°€ ì‚­ì œÂ‰ç‘›ë»¥?ì½”ë§¨íŠ¸ í…Œì´ë¸”ì— ë°ì´í„°ë„ ëª¨ë‘ ì‚­ì œ!) 
 );
 
 
 -------------------------------
--- Äõ¸® »ùÇÃ
+-- ì¿¼ë¦¬ ìƒ˜í”Œ
 -------------------------------
 
--- INSERT INTO obhotel_board_reply VALUES (obhotel_board_reply_seq.nextval, 11, 1, '´ñ±Û³»¿ë1', sysdate);
+-- INSERT INTO obhotel_board_reply VALUES (obhotel_board_reply_seq.nextval, 11, 1, 'ëŒ“ê¸€ë‚´ìš©1', sysdate);
 
-INSERT INTO obhotel_board_reply VALUES (obhotel_board_reply_seq.nextval, 11, 1, '´ñ±Û³»¿ë1', sysdate);
+INSERT INTO obhotel_board_reply VALUES (obhotel_board_reply_seq.nextval, 11, 1, 'ëŒ“ê¸€ë‚´ìš©1', sysdate);
 
 
 
 
 
 ----------------------------------------------------------------------------------------------------------
--- ¹æ Á¤º¸
+-- ë°© ì •ë³´
 -------------------------------
 
 CREATE TABLE obhotel_room_type (
-	id			NUMBER NOT NULL,		-- ¹æÁ¤º¸ °íÀ¯¹øÈ£
-	type		NUMBER NOT NULL,		-- ¹æ À¯Çü (1:standard/2:deluxe/3:twin-deluxe/4:superior/5:luxury)
-	max_pax		NUMBER NOT NULL,		-- ¼ö¿ë °¡´É ÀÎ¿ø
-	cost		NUMBER NOT NULL,		-- 1ÀÏ »ç¿ë¿ä±İ
+	id			NUMBER NOT NULL,		-- ë°©ì •ë³´ ê³ ìœ ë²ˆí˜¸
+	type		NUMBER NOT NULL,		-- ë°© ìœ í˜• (1:standard/2:deluxe/3:twin-deluxe/4:superior/5:luxury)
+	max_pax		NUMBER NOT NULL,		-- ìˆ˜ìš© ê°€ëŠ¥ ì¸ì›
+	cost		NUMBER NOT NULL,		-- 1ì¼ ì‚¬ìš©ìš”ê¸ˆ
 	CONSTRAINT obhotel_room_type PRIMARY KEY (id)
 );
 
 -------------------------------
--- ¹æ Á¤º¸ Ã·ºÎ ÆÄÀÏ
+-- ë°© ì •ë³´ ì²¨ë¶€ íŒŒì¼
 -------------------------------
 
 CREATE TABLE obhotel_room_file (
-	id			NUMBER NOT NULL,		-- ¹æ »ùÇÃ ÀÌ¹ÌÁö ÆÄÀÏ °íÀ¯¹øÈ£
-	room_type_id		NUMBER NOT NULL,		-- ¹æ °íÀ¯¹øÈ£
-	filename	VARCHAR2(70) NOT NULL,	-- ÆÄÀÏ¸í (SHA-256 ¹İÈ¯°ª + È®ÀåÀÚ . Æ÷ÇÔ ÃÑ 4ÀÚ = 70)
+	id			NUMBER NOT NULL,		-- ë°© ìƒ˜í”Œ ì´ë¯¸ì§€ íŒŒì¼ ê³ ìœ ë²ˆí˜¸
+	room_type_id		NUMBER NOT NULL,		-- ë°© ê³ ìœ ë²ˆí˜¸
+	filename	VARCHAR2(70) NOT NULL,	-- íŒŒì¼ëª… (SHA-256 ë°˜í™˜ê°’ + í™•ì¥ì . í¬í•¨ ì´ 4ì = 70)
 	CONSTRAINT obhotel_room_file_pk PRIMARY KEY (id),
 	CONSTRAINT obhotel_room_file_rtype_id_fk FOREIGN KEY (room_type_id) REFERENCES obhotel_room_type (id) on delete cascade
-    --obhotel_room_type Å×ÀÌºí id(¹æÁ¤º¸ °íÀ¯¹øÈ£)¸¦ ÂüÁ¶ÇÑ´Ù  ==obhotel_room_typeÅ×ÀÌºí¿¡¼­ (id) °ªÀ» Áö¿ì¸é obhotel_room_file¿¡ ÀÖ´Â ÀÏÄ¡ÇÏ´Â µ¥ÀÌÅÍ deletµÊ À§¿¡¶û °°À½
+    --obhotel_room_type í…Œì´ë¸” id(ë°©ì •ë³´ ê³ ìœ ë²ˆí˜¸)ë¥¼ ì°¸ì¡°í•œë‹¤  ==obhotel_room_typeí…Œì´ë¸”ì—ì„œ (id) ê°’ì„ ì§€ìš°ë©´ obhotel_room_fileì— ìˆëŠ” ì¼ì¹˜í•˜ëŠ” ë°ì´í„° deletë¨ ìœ„ì—ë‘ ê°™ìŒ
     --
 );
 
 -------------------------------
--- ¹æ ÇöÈ²
+-- ë°© í˜„í™©
 -------------------------------
 CREATE TABLE obhotel_room (
-	id			NUMBER NOT NULL,			-- ÇöÈ² °íÀ¯¹øÈ£
-	room_type_id		NUMBER NOT NULL,	-- ¹æÁ¤º¸ °íÀ¯¹øÈ£
-	room_num	NUMBER NOT NULL,			-- È£½Ç
+	id			NUMBER NOT NULL,			-- í˜„í™© ê³ ìœ ë²ˆí˜¸
+	room_type_id		NUMBER NOT NULL,	-- ë°©ì •ë³´ ê³ ìœ ë²ˆí˜¸
+	room_num	NUMBER NOT NULL,			-- í˜¸ì‹¤
 	CONSTRAINT obhotel_room PRIMARY KEY (id),
 	CONSTRAINT obhotel_room_rtype_id_fk FOREIGN KEY (room_type_id) REFERENCES obhotel_room_type (id) on delete cascade
 );
 
 -------------------------------
--- ¹æ Æò°¡
+-- ë°© í‰ê°€
 -------------------------------
 
 CREATE TABLE obhotel_room_eval (
-	id			NUMBER NOT NULL,		-- ¹æ Æò°¡ °íÀ¯¹øÈ£
-	user_id		NUMBER NOT NULL,		-- ÀÛ¼ºÀÚ °íÀ¯¹øÈ£
-	rate		NUMBER NOT NULL,		-- ÆòÁ¡ (±âÁØÀº Á¤ÇÏÁö ¾ÊÀ½ ÀÇ³íÇÏ±â)
-	content		VARCHAR2(80) NOT NULL,	-- ÇÑÁÙÆò
-	write_date	DATE NOT NULL,			-- ÀÛ¼ºÀÏ
+	id			NUMBER NOT NULL,		-- ë°© í‰ê°€ ê³ ìœ ë²ˆí˜¸
+	user_id		NUMBER NOT NULL,		-- ì‘ì„±ì ê³ ìœ ë²ˆí˜¸
+	rate		NUMBER NOT NULL,		-- í‰ì  (ê¸°ì¤€ì€ ì •í•˜ì§€ ì•ŠìŒ ì˜ë…¼í•˜ê¸°)
+	content		VARCHAR2(80) NOT NULL,	-- í•œì¤„í‰
+	write_date	DATE NOT NULL,			-- ì‘ì„±ì¼
 	CONSTRAINT obhotel_room_eval_pk PRIMARY KEY (id),
 	CONSTRAINT obhotel_room_eval_user_id_fk FOREIGN KEY (user_id) REFERENCES obhotel_user (id) on delete cascade
 );
 
 -------------------------------
--- Äõ¸® »ùÇÃ
+-- ì¿¼ë¦¬ ìƒ˜í”Œ
 -------------------------------
 
 -- INSERT INTO obhotel_room_type VALUES (obhotel_room_seq_type.nextval, ...);
@@ -574,26 +574,26 @@ commit;
 
 
 ----------------------------------------------------------------------------------------------------------
--- ¿¹¾à // ºó¹æÃ£±â °í¹ÎÁß.. eclipse ¿¡¼­ obhotel_reservation µ¥ÀÌÅÍ¸¦ ÀÔ·ÂÇÒ½Ã Ãß°¡ÀûÀ¸·Î DAO ÀÌ¿ëÇØ¼­ »óÅÂ¿©ºÎ 1,0À¸·Î ÇÒÁö. Àû¿ëX
--- ºó¹æÃ£±â obhotel_room_type Å×ÀÌºíÀÌ¶û obhotel_reservation ºñ±³ÇØ¼­ 1. ¿¹¾à¸ñ·Ï¿¡ ¾ø´Â ¹æ¸¸ Ç¥½ÃÇÏ±â 
+-- ì˜ˆì•½ // ë¹ˆë°©ì°¾ê¸° ê³ ë¯¼ì¤‘.. eclipse ì—ì„œ obhotel_reservation ë°ì´í„°ë¥¼ ì…ë ¥í• ì‹œ ì¶”ê°€ì ìœ¼ë¡œ DAO ì´ìš©í•´ì„œ ìƒíƒœì—¬ë¶€ 1,0ìœ¼ë¡œ í• ì§€. ì ìš©X
+-- ë¹ˆë°©ì°¾ê¸° obhotel_room_type í…Œì´ë¸”ì´ë‘ obhotel_reservation ë¹„êµí•´ì„œ 1. ì˜ˆì•½ëª©ë¡ì— ì—†ëŠ” ë°©ë§Œ í‘œì‹œí•˜ê¸° 
 -------------------------------
 
 CREATE TABLE obhotel_reservation (
-	id			NUMBER NOT NULL,		-- ¿¹¾à °íÀ¯¹øÈ£
-	user_id		NUMBER NOT NULL,		-- »ç¿ëÀÚ °íÀ¯¹øÈ£
-	room_id		NUMBER NOT NULL,		-- ¹æÁ¤º¸ °íÀ¯¹øÈ£ (¿¹¾à½Ã ¼±ÅÃÇÑ ¹æ Á¾·ù)
-	s_date		DATE NOT NULL,			-- ¼÷¹Ú ½ÃÀÛÀÏ
-	e_date		DATE NOT NULL,			-- ¼÷¹Ú Á¾·áÀÏ
-	r_date		DATE NOT NULL,			-- ¿¹¾àÀÏ
-	pax			NUMBER NOT NULL,		-- ÀÔ½Ç ¿¹Á¤ ÀÎ¿ø
-	breakfast	NUMBER(1) NOT NULL,		-- Á¶½Ä ¿©ºÎ
+	id			NUMBER NOT NULL,		-- ì˜ˆì•½ ê³ ìœ ë²ˆí˜¸
+	user_id		NUMBER NOT NULL,		-- ì‚¬ìš©ì ê³ ìœ ë²ˆí˜¸
+	room_id		NUMBER NOT NULL,		-- ë°©ì •ë³´ ê³ ìœ ë²ˆí˜¸ (ì˜ˆì•½ì‹œ ì„ íƒí•œ ë°© ì¢…ë¥˜)
+	s_date		DATE NOT NULL,			-- ìˆ™ë°• ì‹œì‘ì¼
+	e_date		DATE NOT NULL,			-- ìˆ™ë°• ì¢…ë£Œì¼
+	r_date		DATE NOT NULL,			-- ì˜ˆì•½ì¼
+	pax			NUMBER NOT NULL,		-- ì…ì‹¤ ì˜ˆì • ì¸ì›
+	breakfast	NUMBER(1) NOT NULL,		-- ì¡°ì‹ ì—¬ë¶€
 	CONSTRAINT obhotel_reservation_pk PRIMARY KEY (id),
 	CONSTRAINT obhotel_reservation_user_id_fk FOREIGN KEY (user_id) REFERENCES obhotel_user (id) on delete cascade,
 	CONSTRAINT obhotel_reservation_room_id_fk FOREIGN KEY (room_id) REFERENCES obhotel_room (id) on delete cascade
 );
 
 -------------------------------
--- Äõ¸® »ùÇÃ
+-- ì¿¼ë¦¬ ìƒ˜í”Œ
 -------------------------------
 
 -- INSERT INTO obhotel_reservation VALUES (obhotel_reservation_seq.nextval, ...);
