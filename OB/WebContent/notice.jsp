@@ -6,22 +6,71 @@
 <title>NOTICE.JSP</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <meta charset="utf-8">
-	<style>
-		nav a {
-			text-decoration: none;
+<style>
+nav a {
+	text-decoration: none;
+}
+
+#li1 {
+	font-size: 2em;
+	font-weight: bold;
+}
+.cate {
+	border: 1px solid #006F94;
+	background-color: #DCEEF0;
+	color: #006699;
+	font-weight: 500;
+	text-align: center;
+	width: 100px;
+	float: left;
+	padding-top: 10px;
+	height: 30px;
+	margin-right: 1px;
+	cursor: hand;
+}
+
+.over {
+	padding-top: 5px;
+	padding-bottom: 10px;
+	background-color: #57AFBC;
+	color: #EFEFEF;
+	font-weight: 500;
+	height: 35px;
+}
+</style>
+<script>
+	var actAns = null;
+	var actQue = null;
+	showFaq = function() {
+		if (actAns != null)
+			actAns.style.display = "inline";
+		if (actQue != null)
+			actQue.style.backgroundColor = '#EFEFEF';
+	}
+
+	hideFaq = function() {
+		if (actAns != null)
+			actAns.style.display = "none";
+		if (actQue != null)
+			actQue.style.backgroundColor = '#FFFFFF';
+		actAns = null;
+		actQue = null;
+	}
+
+	toggleFaq = function(i) {
+		var oTrAns = document.getElementById("oTr_FaqAns_" + i);
+		var oTrQue = document.getElementById("oTr_FaqQue_" + i);
+		imax = oTrAns.length;
+		if (oTrAns == actAns) {
+			hideFaq();
+		} else {
+			hideFaq();
+			actAns = oTrAns;
+			actQue = oTrQue;
+			showFaq();
 		}
-		#li1 {
-			font-size: 2em;
-			font-weight: bold;
-		}
-	</style>
-	<script>
-	$(function() {
-		$("#btn").on("click", function() {
-			$("#content").toggle("hidden");	
-		});
-	});
-	</script>
+	}
+</script>
 </head>
 <body>
 
@@ -41,44 +90,44 @@
 		</nav>
 
 		<article>
-			<table cellspacing="1" width="650" border="1" id="boardList"> 
-				<tr> 
-					<td colspan="3" width="50"><p align="center">서비스 공지사항</p></td>  
-				</tr> 
-				
-				<tr> 
-					<td width="50"><p align="center">1</p></td>
-					<td width="320">
-						<p align="left">제목1</p>
-							<div id="content" style="display: none"> 
-								내용1
-							</div> 
-					</td> 
-					<td><a href="#" id="btn">▼</a></td> 
-				</tr> 
-				
-				<tr> 
-					<td width="50"><p align="center">2</p></td> 
-					<td width="320">
-						<p align="left">제목2</p>
-							<div id="content" style="display: none">
-								내용2
-							</div>
-					</td> 
-					<td><a href="#" id="btn">Show</a></td> 
-				</tr> 
-				
-				<tr> 
-					<td width="50"><p align="center">3</p></td> 
-					<td width="320">
-						<p align="left">제목3</p>
-							<div id="content" style="display: none">
-								내용3
-							</div>
-					</td> 
-					<td><a href="#" id="btn">Show</a></td> 
-				</tr> 
-			</table> 		
+			<table width="674" border="0" cellspacing="0" cellpadding="3">
+
+				<tr id="oTr_FaqQue_0">
+					<td width="654" class="bottomline" onClick="toggleFaq(0)"
+						style="cursor: hand;">제목입니다</td>
+				</tr>
+				<tr id="oTr_FaqAns_0" style="display: none;">
+					<td colspan="2" bgcolor="#f8f8f8" class="bottomline pad10">답변하나
+						입니다.</td>
+				</tr>
+
+				<tr id="oTr_FaqQue_1">
+					<td width="654" class="bottomline" onClick="toggleFaq(1)"
+						style="cursor: hand;">제목입니다</td>
+				</tr>
+				<tr id="oTr_FaqAns_1" style="display: none;">
+					<td colspan="2" bgcolor="#f8f8f8" class="bottomline pad10">답변하나
+						입니다.</td>
+				</tr>
+
+				<tr id="oTr_FaqQue_2">
+					<td width="654" class="bottomline" onClick="toggleFaq(2)"
+						style="cursor: hand;">제목입니다</td>
+				</tr>
+				<tr id="oTr_FaqAns_2" style="display: none;">
+					<td colspan="2" bgcolor="#f8f8f8" class="bottomline pad10">답변하나
+						입니다.</td>
+				</tr>
+
+				<tr id="oTr_FaqQue_3">
+					<td width="654" class="bottomline" onClick="toggleFaq(3)"
+						style="cursor: hand;">제목입니다</td>
+				</tr>
+				<tr id="oTr_FaqAns_3" style="display: none;">
+					<td colspan="2" bgcolor="#f8f8f8" class="bottomline pad10">답변하나
+						입니다.</td>
+				</tr>
+			</table>
 		</article>
 	</section>
 
