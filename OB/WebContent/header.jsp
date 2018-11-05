@@ -20,7 +20,8 @@
 				<li><a href="#" id="current">더보기</a>
 					<ul>
 						<li><a href="controller?type=notice">공지사항</a></li>
-						<li><a href="controller?type=question">자주 묻는 질문</a></li>
+						<li><a href="controller?type=moreQue">자주 묻는 질문</a></li>
+						<li><a href="controller?type=que">문의사항</a></li>
 						<li><a href="controller?type=premium">프리미엄 후기</a></li>
 						<li><a href="controller?type=agree">약관 및 동의사항</a></li>
 					</ul></li>

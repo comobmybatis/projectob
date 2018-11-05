@@ -15,7 +15,8 @@ import com.ob.command.LocationCommand;
 import com.ob.command.MainCommand;
 import com.ob.command.NoticeCommand;
 import com.ob.command.PremiumCommand;
-import com.ob.command.QuestionCommand;
+import com.ob.command.QueCommand;
+import com.ob.command.MorequeCommand;
 import com.ob.command.Test1Command;
 import com.ob.command.Test2Command;
 import com.ob.command.TestListCommand;
@@ -37,8 +38,10 @@ public class Controller extends HttpServlet {
 			comm = new TestListCommand();
 		} else if (type.equals("notice")) {
 			comm = new NoticeCommand();
-		} else if (type.equals("question")) {
-			comm = new QuestionCommand();
+		} else if (type.equals("moreQue")) {
+			comm = new MorequeCommand();
+		} else if (type.equals("que")) {
+			comm = new QueCommand();
 		} else if (type.equals("premium")) {
 			comm = new PremiumCommand();
 		} else if (type.equals("agree")) {

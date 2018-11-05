@@ -3,41 +3,41 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>NOTICE.JSP</title>
-<meta charset="utf-8">
-<style>
-nav a {
-	text-decoration: none;
-}
-
-#li5 {
-	font-size: 2em;
-	font-weight: bold;
-}
-</style>
+<title>QUESTION.JSP</title>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<style>
+		nav a {
+			text-decoration: none;
+		}
+		#li2 {
+			font-size: 2em;
+			font-weight: bold;
+		}
+	</style>
 </head>
 <body>
 
 	<jsp:include page="header.jsp"></jsp:include>
 	<header>
-		<h2>약관 및 동의사항</h2>
+		<h2>탬플릿2</h2>
 	</header>
 	<section>
 		<nav>
 			<ul>
 				<li><a href="controller?type=notice">공지사항</a></li>
-				<li><a href="controller?type=moreQue">자주 묻는 질문</a></li>
+				<li id="li2">자주 묻는 질문</li>
 				<li><a href="controller?type=que">문의사항</a></li>
 				<li><a href="controller?type=premium">프리미엄 후기</a></li>
-				<li id="li5">약관 및 동의사항</li>
+				<li><a href="controller?type=agree">약관 및 동의사항</a></li>
 			</ul>
 		</nav>
 
 		<article>
-		
-		
+			
 		</article>
 	</section>
+
+
 
 	<!-- -----------------------------------------------------------------  ------------------------ -->
 	<footer>
