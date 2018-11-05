@@ -39,34 +39,34 @@ nav a {
 }
 </style>
 <script>
-	var actAns = null;
-	var actQue = null;
+	var Ans = null;
+	var Que = null;
 	showFaq = function() {
-		if (actAns != null)
-			actAns.style.display = "inline";
-		if (actQue != null)
-			actQue.style.backgroundColor = '#EFEFEF';
+		if (Ans != null)
+			Ans.style.display = "inline";
+		if (Que != null)
+			Que.style.backgroundColor = "white";
 	}
 
 	hideFaq = function() {
-		if (actAns != null)
-			actAns.style.display = "none";
-		if (actQue != null)
-			actQue.style.backgroundColor = '#FFFFFF';
-		actAns = null;
-		actQue = null;
+		if (Ans != null)
+			Ans.style.display = "none";
+		if (Que != null)
+			Que.style.backgroundColor = "white";
+		Ans = null;
+		Que = null;
 	}
 
 	toggleFaq = function(i) {
 		var oTrAns = document.getElementById("oTr_FaqAns_" + i);
 		var oTrQue = document.getElementById("oTr_FaqQue_" + i);
 		imax = oTrAns.length;
-		if (oTrAns == actAns) {
+		if (oTrAns == Ans) {
 			hideFaq();
 		} else {
 			hideFaq();
-			actAns = oTrAns;
-			actQue = oTrQue;
+			Ans = oTrAns;
+			Que = oTrQue;
 			showFaq();
 		}
 	}
@@ -97,7 +97,7 @@ nav a {
 						style="cursor: hand;">제목입니다</td>
 				</tr>
 				<tr id="oTr_FaqAns_0" style="display: none;">
-					<td colspan="2" bgcolor="#f8f8f8" class="bottomline pad10">답변하나
+					<td colspan="2" bgcolor="white" class="bottomline pad10">답변하나
 						입니다.</td>
 				</tr>
 
@@ -106,7 +106,7 @@ nav a {
 						style="cursor: hand;">제목입니다</td>
 				</tr>
 				<tr id="oTr_FaqAns_1" style="display: none;">
-					<td colspan="2" bgcolor="#f8f8f8" class="bottomline pad10">답변하나
+					<td colspan="2" bgcolor="white" class="bottomline pad10">답변하나
 						입니다.</td>
 				</tr>
 
@@ -115,7 +115,7 @@ nav a {
 						style="cursor: hand;">제목입니다</td>
 				</tr>
 				<tr id="oTr_FaqAns_2" style="display: none;">
-					<td colspan="2" bgcolor="#f8f8f8" class="bottomline pad10">답변하나
+					<td colspan="2" bgcolor="white" class="bottomline pad10">답변하나
 						입니다.</td>
 				</tr>
 
@@ -124,7 +124,7 @@ nav a {
 						style="cursor: hand;">제목입니다</td>
 				</tr>
 				<tr id="oTr_FaqAns_3" style="display: none;">
-					<td colspan="2" bgcolor="#f8f8f8" class="bottomline pad10">답변하나
+					<td colspan="2" bgcolor="white" class="bottomline pad10">답변하나
 						입니다.</td>
 				</tr>
 			</table>
