@@ -45,6 +45,7 @@ public class PremiumCommand implements Command {
 		Map<String,Integer> map = new HashMap<>();
 		map.put("begin", p.getBegin());
 		map.put("end", p.getEnd());
+		map.put("bbs_type", 3);
 		
 		List<PremiumVO> pPageList = DAO.getPremPageList(map);
 		

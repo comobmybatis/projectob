@@ -80,7 +80,7 @@
 				
 			<%-- ***[다음5개] 버튼 사용여부 처리 ***--%>
 			<c:choose>
-				<c:when test="${premPvo.totalPage == PagepremPvo.endPage }">
+				<c:when test="${premPvo.totalPage <= PagepremPvo.endPage }">
 					
 				</c:when>
 				<c:otherwise>
