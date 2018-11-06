@@ -9,10 +9,28 @@
 	<select id="list" resultType="com.ob.vo.RoomVO" >
 		SELECT * FROM ARS_T ORDER BY A_IDX
 	</select>
+	
+	
+<!-- ******프리미엄 후기************************************************* -->
+	<!-- 프리미엄후기 조회 -->
+	<select id="selectPremium" resultType="com.ob.vo.PremiumVO">
+		SELECT * FROM BBS_P_REVIEW ORDER BY P_IDX DESC
+	</select>
+	
+	<!-- 프리미엄후기 총 건수 조회 -->
+	<select id="totalPremiumCount" resultType="int">
+		SELECT COUNT(*) FROM BBS_P_REVIEW
+	</select>
+	
+	<!-- 프리미엄후기 페이지별 목록조회 -->
+	<select id="getPremPageList" resultType="com.ob.vo.PremiumVO"
+			parameterType="Map">
+		SELECT 	*
+		  FROM (SELECT ROWNUM R_NUM, B.*
+		  		  FROM (SELECT * FROM BBS_P_REVIEW ORDER BY P_IDX DESC) B)
+		 WHERE R_NUM BETWEEN #{begin} AND #{end}
+	</select>
+	
+<!-- ***************************************************************** -->
 </mapper>  
-
-
-
-
-
 

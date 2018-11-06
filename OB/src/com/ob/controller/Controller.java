@@ -12,12 +12,15 @@ import com.ob.command.AgreeCommand;
 import com.ob.command.Command;
 import com.ob.command.EventCommand;
 import com.ob.command.LocationCommand;
+import com.ob.command.LoginCommand;
 import com.ob.command.MainCommand;
 import com.ob.command.NoticeCommand;
+import com.ob.command.NoticeWriteCommand;
 import com.ob.command.PremiumCommand;
+import com.ob.command.PremiumOneCommand;
+import com.ob.command.PremiumWriteCommand;
 import com.ob.command.QuestionCommand;
 import com.ob.command.TestListCommand;
-import com.ob.command.LoginCommand;
 
 
 @WebServlet("/controller")
@@ -35,10 +38,16 @@ public class Controller extends HttpServlet {
 			comm = new TestListCommand();
 		} else if (type.equals("notice")) {
 			comm = new NoticeCommand();
+		} else if (type.equals("noticeWrite")) {
+			comm = new NoticeWriteCommand();
 		} else if (type.equals("question")) {
 			comm = new QuestionCommand();
 		} else if (type.equals("premium")) {
 			comm = new PremiumCommand();
+		} else if (type.equals("premiumWrite")) {
+			comm = new PremiumWriteCommand();
+		} else if (type.equals("premiumOne")) {
+			comm = new PremiumOneCommand();
 		} else if (type.equals("agree")) {
 			comm = new AgreeCommand();
 		} else if (type.equals("location")) {
