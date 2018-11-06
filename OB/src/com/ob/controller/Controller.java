@@ -11,10 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.ob.command.AgreeCommand;
 import com.ob.command.Command;
 import com.ob.command.EventCommand;
+import com.ob.command.LocaCommand;
 import com.ob.command.LocationCommand;
 import com.ob.command.MainCommand;
 import com.ob.command.NoticeCommand;
 import com.ob.command.PremiumCommand;
+import com.ob.command.PrivCommand;
 import com.ob.command.QueCommand;
 import com.ob.command.MorequeCommand;
 import com.ob.command.Test1Command;
@@ -46,6 +48,10 @@ public class Controller extends HttpServlet {
 			comm = new PremiumCommand();
 		} else if (type.equals("agree")) {
 			comm = new AgreeCommand();
+		} else if (type.equals("loca")){
+			comm = new LocaCommand();
+		} else if (type.equals("priv")){
+			comm = new PrivCommand();
 		} else if (type.equals("location")) {
 			comm = new LocationCommand();
 		} else if (type.equals("list")) {
