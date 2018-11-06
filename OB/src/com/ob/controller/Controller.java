@@ -15,7 +15,6 @@ import com.ob.command.LocationCommand;
 import com.ob.command.LoginCommand;
 import com.ob.command.MainCommand;
 import com.ob.command.NoticeCommand;
-import com.ob.command.NoticeWriteCommand;
 import com.ob.command.PremiumCommand;
 import com.ob.command.PremiumOneCommand;
 import com.ob.command.PremiumWriteCommand;
@@ -39,7 +38,6 @@ public class Controller extends HttpServlet {
 		} else if (type.equals("notice")) {
 			comm = new NoticeCommand();
 		} else if (type.equals("noticeWrite")) {
-			comm = new NoticeWriteCommand();
 		} else if (type.equals("question")) {
 			comm = new QuestionCommand();
 		} else if (type.equals("premium")) {
