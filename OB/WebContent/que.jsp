@@ -3,13 +3,13 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>PREMIUM.JSP</title>
+<title>QUESTION.JSP</title>
 <meta charset="utf-8">
 	<style>
 		nav a {
 			text-decoration: none;
 		}
-		#li4 {
+		#li3 {
 			font-size: 2em;
 			font-weight: bold;
 		}
@@ -26,8 +26,8 @@
 			<ul>
 				<li><a href="controller?type=notice">공지사항</a></li>
 				<li><a href="controller?type=moreQue">자주 묻는 질문</a></li>
-				<li><a href="controller?type=que">문의사항</a></li>
-				<li id="li4">프리미엄 후기</li>
+				<li id="li3">문의사항</li>
+				<li><a href="controller?type=premium">프리미엄 후기</a></li>
 				<li><a href="controller?type=agree">약관 및 동의사항</a></li>
 			</ul>
 		</nav>

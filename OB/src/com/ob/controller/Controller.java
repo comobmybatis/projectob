@@ -11,11 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.ob.command.AgreeCommand;
 import com.ob.command.Command;
 import com.ob.command.EventCommand;
+import com.ob.command.LocaCommand;
 import com.ob.command.LocationCommand;
 import com.ob.command.MainCommand;
 import com.ob.command.NoticeCommand;
 import com.ob.command.PremiumCommand;
-import com.ob.command.QuestionCommand;
+import com.ob.command.PrivCommand;
+import com.ob.command.QueCommand;
+import com.ob.command.MorequeCommand;
+import com.ob.command.Test1Command;
+import com.ob.command.Test2Command;
 import com.ob.command.TestListCommand;
 import com.ob.command.LoginCommand;
 
@@ -35,12 +40,18 @@ public class Controller extends HttpServlet {
 			comm = new TestListCommand();
 		} else if (type.equals("notice")) {
 			comm = new NoticeCommand();
-		} else if (type.equals("question")) {
-			comm = new QuestionCommand();
+		} else if (type.equals("moreQue")) {
+			comm = new MorequeCommand();
+		} else if (type.equals("que")) {
+			comm = new QueCommand();
 		} else if (type.equals("premium")) {
 			comm = new PremiumCommand();
 		} else if (type.equals("agree")) {
 			comm = new AgreeCommand();
+		} else if (type.equals("loca")){
+			comm = new LocaCommand();
+		} else if (type.equals("priv")){
+			comm = new PrivCommand();
 		} else if (type.equals("location")) {
 			comm = new LocationCommand();
 		} else if (type.equals("list")) {
@@ -51,6 +62,10 @@ public class Controller extends HttpServlet {
 			comm = new MainCommand();
 		} else if (type.equals("login")){
 			comm = new LoginCommand();
+		} else if (type.equals("test1")){
+			comm = new Test1Command();
+		}else if (type.equals("test2")){
+			comm = new Test2Command();
 		}
 		path = comm.exec(request, response);
 		request.getRequestDispatcher(path).forward(request, response);

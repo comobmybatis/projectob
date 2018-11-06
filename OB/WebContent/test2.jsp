@@ -3,17 +3,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>PREMIUM.JSP</title>
+<title>테스트 2페이지입니다</title>
 <meta charset="utf-8">
-	<style>
-		nav a {
-			text-decoration: none;
-		}
-		#li4 {
-			font-size: 2em;
-			font-weight: bold;
-		}
-	</style>
 </head>
 <body>
 
@@ -21,14 +12,14 @@
 	<header>
 		<h2>탬플릿2</h2>
 	</header>
+	<!-- -----------------------------------------------------------------  여기까지 살리고 밑에서 부터  내용 만드시면됩니다 -->
+	<!-- 내용 쓰는곳 -->
 	<section>
 		<nav>
 			<ul>
-				<li><a href="controller?type=notice">공지사항</a></li>
-				<li><a href="controller?type=moreQue">자주 묻는 질문</a></li>
-				<li><a href="controller?type=que">문의사항</a></li>
-				<li id="li4">프리미엄 후기</li>
-				<li><a href="controller?type=agree">약관 및 동의사항</a></li>
+				<li><a href="#">영역1</a></li>
+				<li><a href="#">영역2</a></li>
+				<li><a href="#">영역3</a></li>
 			</ul>
 		</nav>
 

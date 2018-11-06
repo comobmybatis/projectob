@@ -1,16 +1,14 @@
 package com.ob.command;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ob.command.Command;
-
-public class QuestionCommand implements Command {
+public class reviewCommand implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		// 자주 묻는 질문 게시판 커맨드
-		String path = "question.jsp";
-		
+		// 프리미엄 후기 게시판 커맨드
+		String path = "review.jsp";
 		return path;
 	}
 
