@@ -36,5 +36,14 @@
 	</select>
 	
 <!-- ***************************************************************** -->
+
+<!-- ******idcheck************************************* -->
+	<select id="checkId" resultType="com.ob.vo.UserVO"
+		parameterType="String">
+			SELECT *
+			FROM OBHOTEL_USER
+			WHERE ACCOUNT = #{account}
+	</select>
+
 </mapper>  
 

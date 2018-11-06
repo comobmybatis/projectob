@@ -9,6 +9,7 @@ import com.ob.mybatis.DBService;
 import com.ob.vo.NoticeVO;
 import com.ob.vo.PremiumVO;
 import com.ob.vo.RoomVO;
+import com.ob.vo.UserVO;
 
 public class DAO {
 	private static SqlSession ss;
@@ -20,7 +21,7 @@ public class DAO {
 		}
 		return ss;
 	}
-
+	/*
 	// 전체 데이타 조회
 	public static List<RoomVO> getList() {
 		return getSql().selectList("list");
@@ -45,5 +46,12 @@ public class DAO {
 	//프리미엄 후기 페이지별 조회
 	public static List<PremiumVO> getPremPageList(Map<String,Integer> map){
 		return getSql().selectList("getPremPageList", map);
+	}
+	*/
+	//아이디값 조회
+	public static UserVO checkId(String account) {
+		
+		return getSql().selectOne("checkId", account);
+		
 	}
 }

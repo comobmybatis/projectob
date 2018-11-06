@@ -13,6 +13,7 @@ import com.ob.command.Command;
 import com.ob.command.EventCommand;
 import com.ob.command.LocaCommand;
 import com.ob.command.LocationCommand;
+import com.ob.command.LoginCheckCommand;
 import com.ob.command.MainCommand;
 import com.ob.command.NoticeCommand;
 import com.ob.command.PremiumCommand;
@@ -68,6 +69,8 @@ public class Controller extends HttpServlet {
 			comm = new MainCommand();
 		} else if (type.equals("login")){
 			comm = new LoginCommand();
+		} else if (type.equals("loginCheck")){
+			comm = new LoginCheckCommand();
 		} else if (type.equals("test1")){
 			comm = new Test1Command();
 		}else if (type.equals("test2")){

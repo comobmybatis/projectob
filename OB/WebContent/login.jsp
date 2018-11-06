@@ -4,7 +4,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>login 페이지 입니다.</title>
+
+<% 
+ String id = request.getParameter("id");
+%>
 <script>
+
 	function login_go(frm) {
 		/* alert("id: -" + frm.id.value+"-"); */
 		if(frm.id.value=="") {
@@ -16,7 +21,7 @@
 			frm.pwd.focus();
 			return false;
 		} else{
-			frm.action = "controller?type=main"
+			frm.action = "controller?type=loginCheck";
 			frm.submit();
 		}
 	}
