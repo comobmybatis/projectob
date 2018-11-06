@@ -17,21 +17,25 @@
 </script>
 </head>
 <body>
+
 <!--<jsp:include page="header.jsp"/>-->
 
 <%-- ***[이전5개] 버튼 사용여부 처리 ******************--%>
-<choose>
-	<when test="${premPvo.beginPage == 1}">
+<c:choose>
+	<c:when test="${premPvo.beginPage == 1}">
 		
-	</when>
-	<otherwise>
-		<button id="buttonPrev" onclick="controller?type=premium&cPremPage=${premPvo.beginPage-1}">이전 5개</button>
-	</otherwise>
-</choose>
+	</c:when>
+	<c:otherwise>
+		<button id="buttonPrev" onclick="controller?type=premium&cPremPage=${premPvo.beginPage-1}">이전 6개</button>
+	</c:otherwise>
+</c:choose>
+<%-- *******************************************--%>
+
+
 <h1>프리미엄 리뷰</h1>
 	<div id="container">
-		<c:if test="${not empty pList }">
-			<c:forEach var="p" items="${pList }">
+		<c:if test="${not empty pPageList }">
+			<c:forEach var="p" items="${pPageList }">
 				<div id="pcontent">
 					<a id="pImg" href="#"><img src="" alt="썸네일이미지"></a>
 					<a id="title" href="#"><p>${p.title }</p></a>
@@ -44,14 +48,24 @@
 			</c:forEach>
 			
 		</c:if>
-		<c:if test="${empty pList }">
+		<c:if test="${empty pPageList }">
 			<h1>작성된 프리미엄 후기가 없습니다.</h1>
 		</c:if>
 		
 	</div>
 	
 <%-- ***[다음5개] 버튼 사용여부 처리 ******************--%>
-<button id="buttonNext" onclick="">다음 5개</button>
+<c:choose>
+	<c:when test="${premPvo.totalPage == PagepremPvo.endPage }">
+		
+	</c:when>
+	<c:otherwise>
+		<button id="buttonNext" onclick="">다음 5개</button>
+	</c:otherwise>
+</c:choose>
+<%-- *******************************************--%>
+
 <!--<jsp:include page="footer.jsp"/>-->
+
 </body>
 </html>

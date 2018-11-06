@@ -19,26 +19,12 @@ public class PremiumCommand implements Command {
 		// 프리미엄 후기 게시판 커맨드
 		//List<com.ob.vo.premiumVO> list = DAO.getPremium();
 		
-		PremiumVO vo1 = new PremiumVO("pidx1", "idx1", "image1", "file_name1", "ori_name1", "title1", "writer1", "id1"
-				, "summary1", "content1", "regdate1", "usedate1", "email1", "hit1");
-		PremiumVO vo2 = new PremiumVO("pidx2", "idx2", "image2", "file_name2", "ori_name2", "title2", "writer2", "id2"
-				, "summary2", "content2", "regdate2", "usedate2", "email2", "hit2");
-		PremiumVO vo3 = new PremiumVO("pidx3", "idx3", "image3", "file_name3", "ori_name3", "title3", "writer3", "id3"
-				, "summary3", "content3", "regdate3", "usedate3", "email3", "hit3");
-		
-		List<PremiumVO> list = new ArrayList<>();
-		list.add(vo1);
-		list.add(vo2);
-		list.add(vo3);
-
-		request.setAttribute("pList", list);
-		
 		/* ******************페이징처리*******************
+		 ********************************************** */
 		
 		//프리미엄 후기 현재 페이지
 		PagingPremium p = new PagingPremium();
-		//p.setTotalReview(DAO.getTotalPremium());
-		p.setTotalReview(list.size());
+		p.setTotalReview(DAO.getTotalPremium());
 		p.computeTotalPage();
 		
 		String cPage = request.getParameter("cPremPage");
@@ -65,9 +51,8 @@ public class PremiumCommand implements Command {
 		request.setAttribute("pPageList", pPageList);
 		request.setAttribute("cPremPage", cPage);
 		request.setAttribute("premPvo", p);
-		 ********************************************** */
 		
-		System.out.println("list : " + request.getAttribute("pList"));
+		//System.out.println("list : " + request.getAttribute("pList"));
 		
 		return "premium.jsp";
 	}
