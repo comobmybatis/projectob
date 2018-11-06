@@ -9,6 +9,9 @@
 	<select id="list" resultType="com.ob.vo.RoomVO" >
 		SELECT * FROM ARS_T ORDER BY A_IDX
 	</select>
+	<select id="notice" resultType="com.ob.vo.NoticeVO">
+		SELECT * FROM OBHOTEL_BOARD WHERE TYPE = #{type}
+	</select>
 </mapper>  
 
 

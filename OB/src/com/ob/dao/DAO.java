@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.ob.mybatis.DBService;
+import com.ob.vo.NoticeVO;
 import com.ob.vo.RoomVO;
 
 public class DAO {
@@ -22,4 +23,10 @@ public class DAO {
 	public static List<RoomVO> getList() {
 		return getSql().selectList("list");
 	}
+	
+	// 공지사항 전체 데이터 조회
+	public static List<NoticeVO> getListNotice() {
+		return getSql().selectList("notice");
+	}
+	
 }
