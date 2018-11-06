@@ -166,7 +166,7 @@ commit;
 CREATE TABLE obhotel_board (
 	id			NUMBER NOT NULL,		-- 게시물 고유번호
 	user_id		NUMBER NOT NULL,		-- 작성자 고유번호
-	type		NUMBER NOT NULL,		-- 게시물 종류 (0:잘못된값/1:공지사항/2:이벤트/3:방명록/4:ex-프리미엄후기 )
+	board_type		NUMBER NOT NULL,		-- 게시물 종류 (0:잘못된값/1:공지사항/2:이벤트/3:방명록/4:ex-프리미엄후기 )
 	title		VARCHAR2(40) NOT NULL,	-- 제목
 	content		VARCHAR2(400) NOT NULL,	-- 내용
 	write_date	DATE NOT NULL,			-- 작성일
