@@ -1,19 +1,10 @@
 package com.ob.vo;
 
 public class RoomVO {
-	String id, room_type_id, room_num, room_address1, room_address2;
+	String id, room_type_id, room_name, room_num, room_content, room_address1, room_address2;
 
 	public RoomVO() {
 		super();
-	}
-
-	public RoomVO(String id, String room_type_id, String room_num, String room_address1, String room_address2) {
-		super();
-		this.id = id;
-		this.room_type_id = room_type_id;
-		this.room_num = room_num;
-		this.room_address1 = room_address1;
-		this.room_address2 = room_address2;
 	}
 
 	public String getId() {
@@ -32,12 +23,28 @@ public class RoomVO {
 		this.room_type_id = room_type_id;
 	}
 
+	public String getRoom_name() {
+		return room_name;
+	}
+
+	public void setRoom_name(String room_name) {
+		this.room_name = room_name;
+	}
+
 	public String getRoom_num() {
 		return room_num;
 	}
 
 	public void setRoom_num(String room_num) {
 		this.room_num = room_num;
+	}
+
+	public String getRoom_content() {
+		return room_content;
+	}
+
+	public void setRoom_content(String room_content) {
+		this.room_content = room_content;
 	}
 
 	public String getRoom_address1() {
@@ -55,5 +62,6 @@ public class RoomVO {
 	public void setRoom_address2(String room_address2) {
 		this.room_address2 = room_address2;
 	}
+
 	
 }
