@@ -16,6 +16,8 @@ import com.ob.command.LocationCommand;
 import com.ob.command.MainCommand;
 import com.ob.command.NoticeCommand;
 import com.ob.command.PremiumCommand;
+import com.ob.command.PremiumOneCommand;
+import com.ob.command.PremiumWriteCommand;
 import com.ob.command.PrivCommand;
 import com.ob.command.QueCommand;
 import com.ob.command.MorequeCommand;
@@ -46,6 +48,10 @@ public class Controller extends HttpServlet {
 			comm = new QueCommand();
 		} else if (type.equals("premium")) {
 			comm = new PremiumCommand();
+		} else if (type.equals("premiumWrite")) {
+			comm = new PremiumWriteCommand();
+		} else if (type.equals("premiumOne")) {
+			comm = new PremiumOneCommand();
 		} else if (type.equals("agree")) {
 			comm = new AgreeCommand();
 		} else if (type.equals("loca")){

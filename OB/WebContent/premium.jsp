@@ -1,25 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
 <title>PREMIUM.JSP</title>
 <meta charset="utf-8">
-	<style>
-		nav a {
-			text-decoration: none;
-		}
-		#li4 {
-			font-size: 2em;
-			font-weight: bold;
-		}
-	</style>
+<title>프리미엄 리뷰</title>
+
+<style>
+	nav a {
+		text-decoration: none;
+	}
+	#li4 {
+		font-size: 2em;
+		font-weight: bold;
+	}
+</style>
+<link href="./css/premium.css" rel="stylesheet" type="text/css">
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+	$(function(){
+	});
+</script>
 </head>
 <body>
 
 	<jsp:include page="header.jsp"></jsp:include>
 	<header>
-		<h2>탬플릿2</h2>
+		<h2>프리미엄 후기</h2>
 	</header>
 	<section>
 		<nav>
@@ -31,12 +42,56 @@
 				<li><a href="controller?type=agree">약관 및 동의사항</a></li>
 			</ul>
 		</nav>
-
+<!-- ******프리미엄 후기 본문******************************** -->
 		<article>
-			<h1>가나다라마바사</h1>
-			<p>P 태그로 나눈 구역1.</p>
-			<p>p 태그로 나눈 구역2</p>
+			
+			<%-- ***[이전5개] 버튼 사용여부 처리 ****--%>
+			<c:choose>
+				<c:when test="${premPvo.beginPage == 1}">
+					
+				</c:when>
+				<c:otherwise>
+					<button id="buttonPrev" onclick="controller?type=premium&cPremPage=${premPvo.beginPage-1}">이전 6개</button>
+				</c:otherwise>
+			</c:choose>
+			<%-- *****************************--%>
+
+			<h1>프리미엄 리뷰</h1>
+				<div id="container">
+					<c:if test="${not empty pPageList }">
+						<c:forEach var="p" items="${pPageList }">
+							<div id="pcontent">
+								<a id="pImg" href="#"><img src="" alt="썸네일이미지"></a>
+								<a id="title" href="#"><p>${p.title }</p></a>
+								<span id="writer">${p.writer }(${p.id })</span><br>
+								<span id="usedate">숙박일 : ${p.usedate }</span><br>
+								
+								<span id="tag">#태그1 #태그2 #태그3</span><br>
+								<span id="regdate">작성일 : ${p.regdate }</span><br>
+							</div>
+						</c:forEach>
+						
+					</c:if>
+					<c:if test="${empty pPageList }">
+						<h1>작성된 프리미엄 후기가 없습니다.</h1>
+					</c:if>
+					
+				</div>
+				
+			<%-- ***[다음5개] 버튼 사용여부 처리 ***--%>
+			<c:choose>
+				<c:when test="${premPvo.totalPage == PagepremPvo.endPage }">
+					
+				</c:when>
+				<c:otherwise>
+					<button id="buttonNext" onclick="">다음 5개</button>
+				</c:otherwise>
+			</c:choose>
+			<%-- ****************************--%>
+						
+					
 		</article>
+<!-- *************************************************** -->
 	</section>
 
 
