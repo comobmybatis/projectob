@@ -1,11 +1,13 @@
 package com.ob.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
 import com.ob.mybatis.DBService;
 import com.ob.vo.NoticeVO;
+import com.ob.vo.PremiumVO;
 import com.ob.vo.RoomVO;
 
 public class DAO {
@@ -29,4 +31,19 @@ public class DAO {
 		return getSql().selectList("notice");
 	}
 	
+	//프리미엄 후기 조회
+	public static List<PremiumVO> getPremium(){
+		return getSql().selectList("selectPremium");
+	}
+	
+	//프리미엄 후기 전체 건수 조회 
+	public static int getTotalPremium() {
+		int totalCount = getSql().selectOne("totalPremiumCount");
+		return totalCount;
+	}
+	
+	//프리미엄 후기 페이지별 조회
+	public static List<PremiumVO> getPremPageList(Map<String,Integer> map){
+		return getSql().selectList("getPremPageList", map);
+	}
 }
