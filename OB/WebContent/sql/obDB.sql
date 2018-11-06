@@ -491,6 +491,8 @@ CREATE TABLE obhotel_room (
 	id			NUMBER NOT NULL,			-- 현황 고유번호
 	room_type_id		NUMBER NOT NULL,	-- 방정보 고유번호
 	room_num	NUMBER NOT NULL,			-- 호실
+	room_address1	VARCHAR2(200) NOT NULL,	-- 주소1  (서울시) // (경주시) // (부산)
+	room_address2	VARCHAR2(200) NOT NULL,	-- 주소2  마포구 ~~~~
 	CONSTRAINT obhotel_room PRIMARY KEY (id),
 	CONSTRAINT obhotel_room_rtype_id_fk FOREIGN KEY (room_type_id) REFERENCES obhotel_room_type (id) on delete cascade
 );
@@ -540,30 +542,30 @@ INSERT INTO obhotel_room_file VALUES (obhotel_room_file_seq.nextval, 5, 'luxury2
 INSERT INTO obhotel_room_file VALUES (obhotel_room_file_seq.nextval, 5, 'luxury3.jpg');
 
 
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 1, 101);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 1, 102);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 1, 103);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 1, 104);
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 1, 101 , '서울시','마포구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 1, 102 , '서울시','마포구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 1, 103 , '서울시','마포구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 1, 104 , '서울시','마포구');
 
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 2, 201);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 2, 202);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 2, 203);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 2, 204);
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 2, 201 , '서울시','강서구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 2, 202 , '서울시','강서구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 2, 203 , '서울시','강서구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 2, 204 , '서울시','강서구');
 
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 3, 301);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 3, 302);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 3, 303);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 3, 304);
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 3, 301 , '부산광역시','해운대구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 3, 302 , '부산광역시','해운대구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 3, 303 , '부산광역시','해운대구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 3, 304 , '부산광역시','해운대구');
 
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 4, 401);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 4, 402);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 4, 403);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 4, 404);
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 4, 401 , '부산광역시','사상구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 4, 402 , '부산광역시','사상구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 4, 403 , '부산광역시','사상구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 4, 404 , '부산광역시','사상구');
 
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 5, 401);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 5, 402);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 5, 403);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 5, 404);
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 5, 401 , '인천광역시','소래포구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 5, 402 , '인천광역시','소래포구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 5, 403 , '인천광역시','소래포구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 5, 404 , '인천광역시','소래포구');
 
 
 
