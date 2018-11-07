@@ -15,7 +15,7 @@ public class LoginCheckCommand implements Command {
 		String pwd = request.getParameter("pwd");
 		String result="";
 		
-		System.out.println(id + pwd);
+		System.out.println("입력된 id 값 " +id +"입력된 pw값 "+ pwd);
 		UserVO uvo = DAO.checkId(id);
 		
 		if(uvo==null) {

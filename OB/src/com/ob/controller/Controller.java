@@ -2,6 +2,7 @@ package com.ob.controller;
 
 import java.io.IOException;
 
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,20 +14,22 @@ import com.ob.command.Command;
 import com.ob.command.CommonCommand;
 import com.ob.command.EventCommand;
 import com.ob.command.JoinCommand;
+import com.ob.command.JoincheckCommand;
+import com.ob.command.LocaCommand;
 import com.ob.command.LocationCommand;
 import com.ob.command.LoginCheckCommand;
+import com.ob.command.LoginCommand;
 import com.ob.command.MainCommand;
+import com.ob.command.MorequeCommand;
 import com.ob.command.NoticeCommand;
-import com.ob.command.NoticeWriteCommand;
 import com.ob.command.PremiumCommand;
 import com.ob.command.PremiumOneCommand;
 import com.ob.command.PremiumWriteCommand;
 import com.ob.command.QueCommand;
-import com.ob.command.MorequeCommand;
 import com.ob.command.Test1Command;
 import com.ob.command.Test2Command;
-import com.ob.command.TestListCommand;
-import com.ob.command.joincheckCommand;
+import com.ob.command.NoticeWriteCommand;
+import com.ob.command.JoincheckCommand;
 import com.ob.command.LoginCommand;
 
 
@@ -41,9 +44,7 @@ public class Controller extends HttpServlet {
 		String path = "";
 		Command comm = null;
 		
-		if (type.equals("list")) {
-			comm = new TestListCommand();
-		} else if (type.equals("notice")) {
+		if (type.equals("notice")) {
 			comm = new NoticeCommand();
 		} else if (type.equals("moreQue")) {
 			comm = new MorequeCommand();
@@ -59,8 +60,6 @@ public class Controller extends HttpServlet {
 			comm = new AgreeCommand();
 		} else if (type.equals("location")) {
 			comm = new LocationCommand();
-		} else if (type.equals("list")) {
-			comm = new TestListCommand();
 		} else if (type.equals("event")) {
 			comm = new EventCommand();
 		} else if (type.equals("main")) {
@@ -81,8 +80,8 @@ public class Controller extends HttpServlet {
 			comm = new NoticeWriteCommand();
 		}  else if (type.equals("join")) {
 			comm = new JoinCommand();
-		} else if (type.equals("joincheck")) {
-			comm = new joincheckCommand();
+		}else if (type.equals("joincheck")) {
+			comm = new JoincheckCommand();
 		}
 		
 		path = comm.exec(request, response);
