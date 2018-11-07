@@ -2,26 +2,14 @@ package com.ob.vo;
 
 public class UserVO {
 	String id, account, password, nickname, birthday, zipcode, 
-				   address1, address2, email, e_confirm, tel;
+				   address1, address2, email;
+	
+	int  e_confirm;
+	
+	String tel;
 
 	public UserVO() {
 		super();
-	}
-
-	public UserVO(String id, String account, String password, String nickname, String birthday, String zipcode,
-			String address1, String address2, String email, String e_confirm, String tel) {
-		super();
-		this.id = id;
-		this.account = account;
-		this.password = password;
-		this.nickname = nickname;
-		this.birthday = birthday;
-		this.zipcode = zipcode;
-		this.address1 = address1;
-		this.address2 = address2;
-		this.email = email;
-		this.e_confirm = e_confirm;
-		this.tel = tel;
 	}
 
 	public String getId() {
@@ -96,11 +84,11 @@ public class UserVO {
 		this.email = email;
 	}
 
-	public String getE_confirm() {
+	public int getE_confirm() {
 		return e_confirm;
 	}
 
-	public void setE_confirm(String e_confirm) {
+	public void setE_confirm(int e_confirm) {
 		this.e_confirm = e_confirm;
 	}
 
@@ -111,8 +99,13 @@ public class UserVO {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	
-	
-	
 
+	@Override
+	public String toString() {
+		return "UserVO [id=" + id + ", account=" + account + ", password=" + password + ", nickname=" + nickname
+				+ ", birthday=" + birthday + ", zipcode=" + zipcode + ", address1=" + address1 + ", address2="
+				+ address2 + ", email=" + email + ", e_confirm=" + e_confirm + ", tel=" + tel + "]";
+	}
+	
+	
 }

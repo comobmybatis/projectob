@@ -49,9 +49,9 @@
 	<!--****checkJoin********************************** -->
 	<insert id="checkJoin" parameterType="com.ob.vo.UserVO">
 		INSERT INTO OBHOTEL_USER 
-			(ID, ACCOUNT, PASSWORD, NICKNAME, BIRTHDAY, ADDRESS1, ADDRESS2, EMAIL, TEL)
+			(ID, ACCOUNT, PASSWORD, NICKNAME, BIRTHDAY,ZIPCODE , ADDRESS1, ADDRESS2, EMAIL,E_CONFIRM,TEL)
 		VALUES (OBHOTEL_USER_SEQ.NEXTVAL, #{account}, #{password},
-			#{nickname}, #{birthday}, #{address1}, #{address2}, #{email}, #{tel})
+			#{nickname}, #{birthday},#{zipcode} ,#{address1}, #{address2}, #{email},#{e_confirm}, #{tel})
 	</insert>
 	
 
