@@ -18,7 +18,7 @@
 				<li><a href="controller?type=event">이벤트</a></li>
 				<li><a href="#" id="current">더보기</a>
 					<ul>
-						<li><a href="controller?type=notice&board_type=2">공지사항</a></li>
+						<li><a href="controller?type=notice&board_type=1">공지사항</a></li>
 						<li><a href="controller?type=moreQue">자주 묻는 질문</a></li>
 						<li><a href="controller?type=que">문의사항</a></li>
 						<li><a href="controller?type=premium&board_type=4">프리미엄 후기</a></li>

@@ -44,10 +44,10 @@
 		  		  		 WHERE BOARD_TYPE = #{board_type} ORDER BY ID DESC) B_LIST)
 >>>>>>> refs/remotes/origin/master
 		 WHERE R_NUM BETWEEN #{begin} AND #{end}
-<<<<<<< HEAD
+
 		   AND TYPE=#{bbs_type}
 	</select> -->
-=======
+
 	</select>
 
 >>>>>>> refs/remotes/origin/master
