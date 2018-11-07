@@ -20,15 +20,15 @@ public class DAO {
 		return ss;
 	}
 	
+	// 공지사항 전체 게시글을 표시
+	public static List<BoardplusVO> getNoticeList(Map<String, Integer> map) {
+		return getSql().selectList("noticeList", map);
+	}
+	
 	// 공지사항 페이지 전체 건수 조회
 	public static int getTotalCount() {
 		int totalCount = getSql().selectOne("noticeTotalCount");
 		return totalCount;
-	}
-	
-	// 공지사항 페이지 숫자 표시
-	public static List<BoardplusVO> getNoticeList(Map<String, Integer> map) {
-		return getSql().selectList("noticeList", map);
 	}
 	
 	// 공지사항 게시물 작성
@@ -36,6 +36,11 @@ public class DAO {
 		int result = getSql().insert("noticeInsert", vo);
 		getSql().commit();
 		return result;
+	}
+	
+	// 공지사항 조회수
+	public static int noticeHit(BoardplusVO vo) {
+		return getSql().update("noticeHit", vo);
 	}
 
 	//아이디값 조회

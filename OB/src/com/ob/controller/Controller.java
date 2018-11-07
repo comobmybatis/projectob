@@ -17,7 +17,7 @@ import com.ob.command.LocationCommand;
 import com.ob.command.LoginCheckCommand;
 import com.ob.command.MainCommand;
 import com.ob.command.NoticeCommand;
-import com.ob.command.NoticeWriteOkCommand;
+import com.ob.command.NoticeWriteCommand;
 import com.ob.command.PremiumCommand;
 import com.ob.command.PremiumOneCommand;
 import com.ob.command.PremiumWriteCommand;
@@ -78,12 +78,10 @@ public class Controller extends HttpServlet {
 		} else if (type.equals("priv")){
 			comm = new CommonCommand(type);
 		} else if (type.equals("noticeWrite")){
-			comm = new CommonCommand(type);
-		} else if (type.equals("noticeWriteOk")){
-			comm = new NoticeWriteOkCommand();
-		}else if (type.equals("join")) {
+			comm = new NoticeWriteCommand();
+		}  else if (type.equals("join")) {
 			comm = new JoinCommand();
-		}else if (type.equals("joincheck")) {
+		} else if (type.equals("joincheck")) {
 			comm = new joincheckCommand();
 		}
 		

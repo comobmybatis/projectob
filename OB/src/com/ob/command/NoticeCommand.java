@@ -51,9 +51,11 @@ public class NoticeCommand implements Command {
 		
 		map.put("begin", p.getBegin());
 		map.put("end", p.getEnd());
+		System.out.println(request.getParameter("board_type"));
 		map.put("board_type", Integer.parseInt(request.getParameter("board_type")));
 		
 		List<BoardplusVO> list = DAO.getNoticeList(map);
+		System.out.println(list);
 		
 		request.setAttribute("list", list);
 		request.setAttribute("cPage", cPage);
