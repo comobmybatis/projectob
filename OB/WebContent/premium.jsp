@@ -63,11 +63,11 @@
 							<div id="pcontent">
 								<a id="pImg" href="#"><img src="" alt="썸네일이미지"></a>
 								<a id="title" href="#"><p>${p.title }</p></a>
-								<span id="writer">${p.writer }(${p.id })</span><br>
-								<span id="usedate">숙박일 : ${p.usedate }</span><br>
+								<span id="writer">닉네임값(${p.user_id })</span><br>
+								<span id="usedate">숙박일 : xx년xx월xx일</span><br>
 								
 								<span id="tag">#태그1 #태그2 #태그3</span><br>
-								<span id="regdate">작성일 : ${p.regdate }</span><br>
+								<span id="regdate">작성일 : ${p.write_date }</span><br>
 							</div>
 						</c:forEach>
 						

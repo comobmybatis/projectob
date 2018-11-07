@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ob.command.Command;
 
-public class noticeWriteCommand implements Command {
+public class NoticeWriteCommand implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
