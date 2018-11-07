@@ -19,13 +19,6 @@ public class DAO {
 		}
 		return ss;
 	}
-	
-<<<<<<< HEAD
-	// 공지사항 전체 게시글을 표시
-	public static List<BoardplusVO> getNoticeList(Map<String, Integer> map) {
-		return getSql().selectList("noticeList", map);
-=======
-	
 /* **** 로그인, 회원가입 **********************************************/
 	//아이디값 조회
 	public static UserVO checkId(String account) {

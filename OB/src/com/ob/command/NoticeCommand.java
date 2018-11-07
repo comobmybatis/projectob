@@ -45,8 +45,9 @@ public class NoticeCommand implements Command {
 		Map<String, Integer> map = new HashMap<>();
 		map.put("begin", p.getBegin());
 		map.put("end", p.getEnd());
-		System.out.println(request.getParameter("board_type"));
 		map.put("board_type", Integer.parseInt(request.getParameter("board_type")));
+		
+		System.out.println(request.getParameter("board_type"));
 
 		List<BoardplusVO> list = DAO.getList(map);
 		
