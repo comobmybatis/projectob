@@ -11,6 +11,8 @@
 	<!-- 게시판별 전체 게시물 조회 -->
 	<select id="getList" resultType="com.ob.vo.BoardVO" parameterType="String">
 		SELECT * FROM OBHOTEL_BOARD WHERE BOARD_TYPE = #{board_type} ORDER BY ID DESC
+	</select>
+		
 		
 	<!-- 게시판별 총 게시물 건수 조회 -->
 	<select id="totalCount" resultType="int" parameterType="String">
@@ -18,7 +20,8 @@
 	</select>
 		
 	<!-- 게시판 페이지별 목록 조회 -->
-	<select id="getPageList" resultType="com.ob.vo.BoardVO">
+	<select id="getPageList" resultType="com.ob.vo.BoardVO"
+		parameterType="Map">
 		SELECT *
 		  FROM (SELECT ROWNUM R_NUM, B_LIST.*
 		  		  FROM (SELECT *
@@ -52,6 +55,5 @@
 <!-- ***************************************************************** -->
 	
 
->>>>>>> refs/remotes/origin/master
-</mapper>  
 
+</mapper>
