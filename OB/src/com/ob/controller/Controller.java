@@ -18,12 +18,8 @@ import com.ob.command.JoinCommand;
 import com.ob.command.JoincheckCommand;
 import com.ob.command.LocaCommand;
 
-
-
-
 import com.ob.command.LocationCommand;
 import com.ob.command.LoginCheckCommand;
-import com.ob.command.LoginCommand;
 import com.ob.command.MainCommand;
 import com.ob.command.MorequeCommand;
 import com.ob.command.NoticeCommand;
@@ -34,7 +30,6 @@ import com.ob.command.QueCommand;
 import com.ob.command.Test1Command;
 import com.ob.command.Test2Command;
 import com.ob.command.NoticeWriteCommand;
-import com.ob.command.JoincheckCommand;
 import com.ob.command.LoginCommand;
 
 

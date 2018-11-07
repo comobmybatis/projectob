@@ -42,32 +42,26 @@
 		  		  FROM (SELECT *
 		  		  		  FROM OBHOTEL_BOARD
 		  		  		 WHERE BOARD_TYPE = #{board_type} ORDER BY ID DESC) B_LIST)
->>>>>>> refs/remotes/origin/master
 		 WHERE R_NUM BETWEEN #{begin} AND #{end}
 
 		   AND TYPE=#{bbs_type}
-	</select> -->
-
-	</select>
-
->>>>>>> refs/remotes/origin/master
-<!-- ***************************************************************** -->
-
-
+	</select> 
 <!-- ****** 로그인 아이디체크 ******************************************** -->
 	<!-- 아이디 체크 -->
-	<select id="checkId" resultType="com.ob.vo.UserVO"
+		<select id="checkId" resultType="com.ob.vo.UserVO"
 		parameterType="String">
 			SELECT *
 			FROM OBHOTEL_USER
 			WHERE ACCOUNT = #{account}
-	</select>
+		</select>
 	
 	<!-- 회원가입 체크 -->
-	<insert id="checkJoin" parameterType="com.ob.vo.UserVO">
-		INSERT INTO 테이블명 SET NAME=#{name}, 
+		<insert id="checkJoin" parameterType="com.ob.vo.UserVO">
+		INSERT INTO OBHOTEL_USER 
+			(ID, ACCOUNT, PASSWORD, NICKNAME, BIRTHDAY, ZIPCODE , ADDRESS1, ADDRESS2, EMAIL,E_CONFIRM,TEL)
+		VALUES (OBHOTEL_USER_SEQ.NEXTVAL, #{account}, #{password},
+			#{nickname}, #{birthday},#{zipcode} ,#{address1}, #{address2}, #{email}, #{e_confirm}, #{tel})
 	</insert>
-	
 <!-- ****** 공지사항 ************************************************** -->
 
 	<select id="noticeTotalCount" resultType="int">
@@ -86,21 +80,4 @@
 		        )
 		WHERE R_NUM BETWEEN #{begin} AND #{end}
 	</select>
-	
-<!-- ******idcheck************************************* -->
-	<select id="checkId" resultType="com.ob.vo.UserVO"
-		parameterType="String">
-			SELECT *
-			FROM OBHOTEL_USER
-			WHERE ACCOUNT = #{account}
-	</select>
-	
-	<!--****checkJoin********************************** -->
-	<insert id="checkJoin" parameterType="com.ob.vo.UserVO">
-		INSERT INTO OBHOTEL_USER 
-			(ID, ACCOUNT, PASSWORD, NICKNAME, BIRTHDAY,ZIPCODE , ADDRESS1, ADDRESS2, EMAIL,E_CONFIRM,TEL)
-		VALUES (OBHOTEL_USER_SEQ.NEXTVAL, #{account}, #{password},
-			#{nickname}, #{birthday},#{zipcode} ,#{address1}, #{address2}, #{email},#{e_confirm}, #{tel})
-	</insert>
-
 </mapper>

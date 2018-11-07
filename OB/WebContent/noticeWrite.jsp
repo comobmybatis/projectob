@@ -8,7 +8,7 @@
 <script>
 	function sendData() {
 		var firstForm = document.forms[0];
-		for (var i = 0; i < firstForm.elements.lengrh; i++) {
+		for (var i = 0; i < firstForm.elements.length; i++) {
 			if (firstForm.elements[i].value.trim() == "") {
 				if (i == 3)
 					continue;
