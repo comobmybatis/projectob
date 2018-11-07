@@ -51,8 +51,8 @@
 	<select id="getUserReservation" parameterType="String" resultType="com.ob.vo.ReservationVO">
 		SELECT * FROM OBHOTEL_RESERVATION WHERE USER_ID=#{id}
 	</select>
+	
 <!-- ****** 공지사항 ************************************************** -->
-
 	<select id="noticeTotalCount" resultType="int">
 		SELECT COUNT(ID) FROM OBHOTEL_BOARD
 	</select>
@@ -74,6 +74,14 @@
 			(ID, USER_ID, BOARD_TYPE, TITLE, CONTENT, WRITE_DATE, READ_COUNT)
 		VALUES (OBHOTEL_BOARD_SEQ.NEXTVAL, #{user_id}, #{board_type}, #{title}, #{content}, SYSDATE, 0)
 	</insert>
+	
+	<select id="noticeOne" resultType="com.ob.vo.BoardplusVO">
+  		SELECT * FROM OBHOTEL_BOARD WHERE ID = #{id}
+  	</select>
+  	
+  	<delete id="noticeDel" parameterType="int">
+  		DELETE FROM OBHOTEL_BOARD WHERE ID = #{id}
+  	</delete>
 	
 	<!-- 조회수 수정(1증가) -->
 	<update id="noticeHit" parameterType="com.ob.vo.BoardplusVO">

@@ -67,6 +67,19 @@ public class DAO {
 	public static int noticeHit(BoardplusVO vo) {
 		return getSql().update("noticeHit", vo);
 	}
+	
+	// 공지사항 게시물 보기
+	public static BoardplusVO noticeSelOne(String id) {
+		BoardplusVO vo = getSql().selectOne("noticeOne", id);
+		return vo;
+	}
+	
+	// 공지사항 게시물 삭제
+	public static int noticeDel(String id) {
+		int result = getSql().delete("noticeDel", id);
+		getSql().commit();
+		return result;
+	}
 
 	public static List<ReservationVO> getUserReservation(String id) {
 		return getSql().selectList("getUserReservation", id);

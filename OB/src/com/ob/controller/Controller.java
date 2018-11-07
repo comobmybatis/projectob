@@ -2,7 +2,6 @@ package com.ob.controller;
 
 import java.io.IOException;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,22 +14,21 @@ import com.ob.command.CommonCommand;
 import com.ob.command.EventCommand;
 import com.ob.command.JoinCommand;
 import com.ob.command.JoincheckCommand;
-import com.ob.command.LocaCommand;
 import com.ob.command.LocationCommand;
 import com.ob.command.LoginCheckCommand;
 import com.ob.command.LoginCommand;
 import com.ob.command.MainCommand;
 import com.ob.command.MorequeCommand;
 import com.ob.command.NoticeCommand;
+import com.ob.command.NoticeDelCommand;
+import com.ob.command.NoticeViewCommand;
+import com.ob.command.NoticeWriteCommand;
 import com.ob.command.PremiumCommand;
 import com.ob.command.PremiumOneCommand;
 import com.ob.command.PremiumWriteCommand;
 import com.ob.command.QueCommand;
 import com.ob.command.Test1Command;
 import com.ob.command.Test2Command;
-import com.ob.command.NoticeWriteCommand;
-import com.ob.command.JoincheckCommand;
-import com.ob.command.LoginCommand;
 
 
 @WebServlet("/controller")
@@ -78,10 +76,14 @@ public class Controller extends HttpServlet {
 			comm = new CommonCommand(type);
 		} else if (type.equals("noticeWrite")){
 			comm = new NoticeWriteCommand();
-		}  else if (type.equals("join")) {
+		} else if (type.equals("join")) {
 			comm = new JoinCommand();
-		}else if (type.equals("joincheck")) {
+		} else if (type.equals("joincheck")) {
 			comm = new JoincheckCommand();
+		} else if (type.equals("noticeView")) {
+			comm = new NoticeViewCommand();
+		} else if (type.equals("noticeDel")) {
+			comm = new NoticeDelCommand();
 		}
 		
 		path = comm.exec(request, response);
