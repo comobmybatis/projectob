@@ -87,7 +87,7 @@
 						</c:when>
 						<c:otherwise>
 							<li>
-								<a href="controller?type=premium&cPage=${k}">${k}</a>
+								<a href="controller?type=premium&board_type=1&cPage=${k}">${k}</a>
 							</li>
 						</c:otherwise>
 					</c:choose>

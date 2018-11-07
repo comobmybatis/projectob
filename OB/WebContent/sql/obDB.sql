@@ -1,7 +1,7 @@
 
 ----------------------------------------------------------------------------------------------------------
 -- 시퀸스
--------------------------------
+----------------------------------
 
 CREATE SEQUENCE obhotel_user_seq START WITH 2 INCREMENT BY 1;
 CREATE SEQUENCE obhotel_admin_seq START WITH 2 INCREMENT BY 1;

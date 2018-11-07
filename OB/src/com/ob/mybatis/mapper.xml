@@ -5,8 +5,7 @@
 
 <!-- mapper 태그의 namespace 속성 필수 작성 -->
 <mapper namespace="Room">
-	
-	
+
 <!-- ****** 게시판 공동 ************************************************* -->
 	<!-- 게시판별 전체 게시물 조회 -->
 	<select id="getList" resultType="com.ob.vo.BoardplusVO" parameterType="String">
@@ -31,9 +30,6 @@
 		 WHERE R_NUM BETWEEN #{begin} AND #{end}
 	</select>
 
-<!-- ***************************************************************** -->
-
-
 <!-- ****** 로그인 아이디체크 ******************************************** -->
 	<!-- *** idcheck ********* -->
 	<select id="checkId" resultType="com.ob.vo.UserVO"
@@ -57,17 +53,25 @@
 	</select>
 	
 	<select id="noticeList" resultType="com.ob.vo.BoardplusVO" parameterType="map">
-		SELECT R_NUM, ID, USER_ID, BOARD_TYPE, CONTENT, 
-			   WRITE_DATE, READ_COUNT
+		SELECT *
 		  FROM (SELECT ROWNUM R_NUM, B.*
-		          FROM (SELECT *
-		                  FROM OBHOTEL_BOARD
-		                 WHERE BOARD_TYPE = #{board_type} 
-		                 ORDER BY ID DESC
-		               ) B
-		        )
+          FROM (SELECT *
+                  FROM OBHOTEL_BOARD
+                 WHERE BOARD_TYPE = #{board_type} 
+                 ORDER BY ID DESC
+               ) B
+		  )
 		WHERE R_NUM BETWEEN #{begin} AND #{end}
 	</select>
 	
-
+	<insert id="noticeInsert" parameterType="com.ob.vo.BoardplusVO">
+		INSERT INTO OBHOTEL_BOARD
+			(ID, USER_ID, BOARD_TYPE, TITLE, CONTENT, WRITE_DATE, READ_COUNT)
+		VALUES (OBHOTEL_BOARD_SEQ.NEXTVAL, #{user_id}, #{board_type}, #{title}, #{content}, SYSDATE, 0)
+	</insert>
+	
+	<!-- 조회수 수정(1증가) -->
+	<update id="noticeHit" parameterType="com.ob.vo.BoardplusVO">
+		UPDATE OBHOTEL_BOARD SET READ_COUNT = #{read_count} + 1 WHERE ID = #{id}
+	</update>
 </mapper>

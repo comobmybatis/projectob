@@ -23,10 +23,6 @@ public class CommonCommand implements Command {
 		case "priv":
 			path = "priv.jsp";
 			break;
-		// 공지사항 게시물 작성 페이지
-		case "noticeWrite":
-			path = "noticeWrite.jsp";
-			break;
 		}
 		return path;
 	}

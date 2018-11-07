@@ -89,7 +89,7 @@ nav a {
 					</thead>
 					<tbody>
 						<c:choose>
-							<c:when test="${empty lsit}">
+							<c:when test="${empty list}">
 								<tr>
 									<td colspan="5">
 										<h2>현재 등록된 게시글이 없습니다.</h2>
@@ -101,7 +101,7 @@ nav a {
 									<tr>
 										<td>${vo.id}</td>
 										<td><a
-											href="controller?type=noticeView&board_type=2&cPage=${pvo.nowPage}">${vo.title}</a></td>
+											href="controller?type=noticeView&board_type=1&cNoticePage=${noticePvo.nowPage}">${vo.title}</a></td>
 										<td>관리자</td>
 										<td>${vo.write_date.substring(0, 10)}</td>
 										<td>${vo.read_count}
@@ -117,29 +117,29 @@ nav a {
 									<%-- [이전으로]에 대한 사용 여부를 처리 --%>
 									<c:choose>
 										<%-- 사용불가(disable): 첫번째 블록인 경우에만 --%>
-										<c:when test="${pvo.beginPage < pvo.pagePerBlock }">
-											<%-- <c:when test="${pvo.beginPage != 1}"> 같은 의미--%>
+										<c:when test="${noticePvo.beginPage < noticePvo.pagePerBlock }">
+											<%-- <c:when test="${noticePvo.beginPage != 1}"> 같은 의미--%>
 											<li class="disable">이전으로</li>
 										</c:when>
 										<%-- 사용가능(enable): 두번재 블록 이상(첫번째만 아닌 경우) --%>
 										<c:otherwise>
 											<li><a
-												href="controller?type=notice&board_type=2&cPage=${pvo.beginPage - 1 }">이전으로</a>
+												href="controller?type=notice&board_type=1&cNoticePage=${noticePvo.beginPage - 1 }">이전으로</a>
 											</li>
 										</c:otherwise>
 									</c:choose>
 
 									<%-- 블록내에 표시할 페이지 반복처리(시작 페이지 ~ 끝 페이지) --%>
-									<c:forEach var="k" begin="${pvo.beginPage }"
-										end="${pvo.endPage }">
+									<c:forEach var="k" begin="${noticePvo.beginPage}"
+										end="${noticePvo.endPage}">
 										<c:choose>
-											<c:when test="${k == pvo.nowPage }">
+											<c:when test="${k == noticePvo.nowPage}">
 												<li class="now">${k }
 												</li>
 											</c:when>
 											<c:otherwise>
 												<li><a
-													href="controller?type=notice&board_type=2&cPage=${k }">${k }</a>
+													href="controller?type=notice&board_type=1&cNoticePage=${k }">${k }</a>
 												</li>
 											</c:otherwise>
 										</c:choose>
@@ -148,20 +148,20 @@ nav a {
 									<%-- [다음으로]에 대한 사용여부 처리 --%>
 									<c:choose>
 										<%-- 사용불가(disable): 끝 페이지(endPage) 수가 전체 페이지(totalPage) 수 보다  크거나 같은 경우 --%>
-										<c:when test="${pvo.endPage >= pvo.totalPage }">
+										<c:when test="${noticePvo.endPage >= noticePvo.totalPage }">
 											<li class="disable">다음으로</li>
 										</c:when>
 										<%-- 사용가능(enable) --%>
 										<c:otherwise>
 											<li><a
-												href="controller?type=notice&board_type=2&cPage=${pvo.endPage + 1 }">다음으로</a>
+												href="controller?type=notice&board_type=1&cNoticePage=${noticePvo.endPage + 1 }">다음으로</a>
 											</li>
 										</c:otherwise>
 									</c:choose>
 								</ol>
 							</td>
 
-							<td><input type="button" value="작성하기" onclick="javascript:location.href='controller?type=noticeWrite&board_type=2'"></td>
+							<td><input type="button" value="작성하기" onclick="javascript:location.href='controller?type=noticeWrite&board_type=1'"></td>
 						</tr>
 					</tfoot>
 				</table>
