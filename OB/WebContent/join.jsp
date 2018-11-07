@@ -5,17 +5,24 @@
 <head>
 <meta charset="UTF-8">
 <title>join 페이지입니다</title>
-</head>
 <script>
 	function join_go(frm) {
-		if(frm.value.trim() == "") {
+		/* if(frm.value.trim() == "") {
 			alert("입력되지않은 항목이 있습니다.");
+		return false;	
 		} else{	
 		frm.action = "controller?type=joincheck";
-		frm.submit;		
-		}
+		frm.submit;	
+		return false;
+		} */
+		alert("ㅎㅇ");
+		alert("입력한 아이디 "+frm.account.value);
+		frm.action = "controller?type=joincheck"; /* 형 이제 조인체크 커멘드로 가지니깐 맵퍼에 insert문 치시면 입력될거에요 */
+		frm.submit();		
 	}
 </script>
+</head>
+
 <body>
 <jsp:include page="header.jsp"></jsp:include>
 	<header>
@@ -24,7 +31,7 @@
 	<div id="join">
 	<form method = "post">
 	<h3>이용약관</h3>
-	<textarea rows="20" cols="50">가. 수집하는 개인정보의 항목첫째, 회사는 회원가 입, 원활한 고객상담, 각종 서비스의 제공을 위해 최초 회원가입 당시 아래와 같은 최소한의 개인정보를 필수항목으로 수집하고 있습니다.
+	<!-- <textarea rows="20" cols="50">가. 수집하는 개인정보의 항목첫째, 회사는 회원가 입, 원활한 고객상담, 각종 서비스의 제공을 위해 최초 회원가입 당시 아래와 같은 최소한의 개인정보를 필수항목으로 수집하고 있습니다.
 	회원가입
 	- 이름, 생년월일, 성별, 아이디, 비밀번호, 별명, 연락처(메일주소, 휴대폰 번호 중 선택), 가입인증정보
 	만14세 미만 아동 회원가입 
@@ -48,60 +55,60 @@
 	- 생성정보 수집 툴을 통한 수집
    </textarea>
    <br>
-   <td><input type="checkbox" name="req">약관에 동의합니다.</td>
+   <td><input type="checkbox" name="req">약관에 동의합니다.</td> -->
 		<table>
 		<tbody>
 			<tr>
 			 	<th>ID</th>
 			 	<td>
-			 		<input type="text" name="id">
+			 		<input type="text" name="account">
 			 	</td>
 			<tr>
 			 	<th>패스워드</th>
 			 	<td>
-			 		<input type="password" name="pwd2">
+			 		<input type="password" name="password">
 			 	</td>
 			</tr>
-			<tr>
+			<!-- <tr>
 			 	<th>패스워드확인</th>
 			 	<td>
-			 		<input type="password" name="pwd">
+			 		<input type="password" name="pwd2">
 			 	</td>
-			</tr>
+			</tr> -->
 			<tr>
 			 	<th>NICKNAME</th>
 			 	<td>
-			 		<input type="text" name="name">
+			 		<input type="text" name="nickname">
 			 	</td>
 			</tr>
 			<tr>
 			 	<th>생년월일</th>
 			 	<td>
-			 		<input type="date" name="birthdate">
+			 		<input type="text" name="birthday">
 			 	</td>
 			</tr>
 			<tr>
 			 	<th>주소1</th>
 			 	<td>
-			 		<input type="date" name="address1">
+			 		<input type="text" name="address1">
 			 	</td>
 			</tr>
 			<tr>
 			 	<th>주소2</th>
 			 	<td>
-			 		<input type="date" name="address2">
+			 		<input type="text" name="address2">
 			 	</td>
 			</tr>
 			<tr>
 			 	<th>EMAIL</th>
 			 	<td>
-			 		<input type="date" name="email">
+			 		<input type="text" name="email">
 			 	</td>
 			</tr>
 			<tr>
 			 	<th>전화번호</th>
 			 	<td>
-			 		<input type="date" name="tel">
+			 		<input type="text" name="tel">
 			 	</td>
 			</tr>
 		</tbody>

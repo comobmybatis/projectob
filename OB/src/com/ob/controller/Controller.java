@@ -26,6 +26,7 @@ import com.ob.command.MorequeCommand;
 import com.ob.command.Test1Command;
 import com.ob.command.Test2Command;
 import com.ob.command.TestListCommand;
+import com.ob.command.joincheckCommand;
 import com.ob.command.LoginCommand;
 
 
@@ -36,7 +37,7 @@ public class Controller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String type = request.getParameter("type");
-
+		System.out.println("type:"+ type);
 		String path = "";
 		Command comm = null;
 		
@@ -78,6 +79,8 @@ public class Controller extends HttpServlet {
 			comm = new Test2Command();
 		}else if (type.equals("join")) {
 			comm = new JoinCommand();
+		}else if (type.equals("joincheck")) {
+			comm = new joincheckCommand();
 		}
 		path = comm.exec(request, response);
 		request.getRequestDispatcher(path).forward(request, response);

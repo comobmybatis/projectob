@@ -52,4 +52,9 @@ public class DAO {
 		return getSql().selectOne("checkId", account);
 		
 	}
+	
+	//회원가입 insert
+	public static int checkJoin(UserVO vo) {
+		return getSql().insert("checkJoin", vo);
+	}
 }
