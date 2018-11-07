@@ -42,17 +42,18 @@ public class DAO {
 /* **** 게시판 공용 ***************************************************/
 	
 	//게시판별 전체 게시물 조회
-	public static List<BoardplusVO> getList(String board_type){
+	public static List<BoardplusVO> getAllList(int board_type){
 		return getSql().selectList("getList", board_type);
 	}
 
 	//게시판별 총 게시물 건수 조회
-	public static List<BoardplusVO> totalCount(String board_type){
-		return getSql().selectList("totalCount", board_type);
+	public static int totalCount(int board_type) {
+		int totalCount = getSql().selectOne("totalCount", board_type);
+		return totalCount;
 	}
 	
 	//게시판 페이지별 목록조회
-	public static List<BoardplusVO> getPageList(Map map){
+	public static List<BoardplusVO> getList(Map map){
 		return getSql().selectList("getPageList", map);
 	}
 	  

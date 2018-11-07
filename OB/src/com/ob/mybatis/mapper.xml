@@ -9,13 +9,13 @@
 	
 <!-- ****** 게시판 공동 ************************************************* -->
 	<!-- 게시판별 전체 게시물 조회 -->
-	<select id="getList" resultType="com.ob.vo.BoardplusVO" parameterType="String">
+	<select id="getList" resultType="com.ob.vo.BoardplusVO" parameterType="int">
 		SELECT * FROM OBHOTEL_BOARD WHERE BOARD_TYPE = #{board_type} ORDER BY ID DESC
 	</select>
 		
 		
 	<!-- 게시판별 총 게시물 건수 조회 -->
-	<select id="totalCount" resultType="int" parameterType="String">
+	<select id="totalCount" resultType="int" parameterType="int">
 		SELECT COUNT(*) FROM OBHOTEL_BOARD WHERE BOARD_TYPE = #{board_type}
 	</select>
 		
