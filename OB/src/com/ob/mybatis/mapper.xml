@@ -9,20 +9,21 @@
 	<select id="list" resultType="com.ob.vo.RoomVO">
 		SELECT * FROM ARS_T ORDER BY A_IDX
 	</select>
-  -->	
+ -->	
 <!-- ******프리미엄 후기************************************************* -->
 	<!-- 프리미엄후기 조회 -->
-<!-- 
 	<select id="selectPremium" resultType="com.ob.vo.PremiumVO">
 		SELECT * FROM OBHOTEL_BOARD ORDER BY ID DESC
 	</select>
 	
-	프리미엄후기 총 건수 조회
+	<!-- 프리미엄후기 총 건수 조회 -->
 	<select id="totalPremiumCount" resultType="int">
 		SELECT COUNT(*) FROM OBHOTEL_BOARD
-	</select>
+	</select> 
 	
-	프리미엄후기 페이지별 목록조회
+	<!-- 프리미엄후기 페이지별 목록조회  -->
+	<select id="getPremPageList" resultType="com.ob.vo.PremiumVO"
+	
 	<select id="getPremPageList" resultType="com.ob.vo.PremiumVO"
 			parameterType="Map">
 		SELECT 	*
@@ -31,7 +32,6 @@
 		 WHERE R_NUM BETWEEN #{begin} AND #{end}
 		   AND TYPE=#{bbs_type}
 	</select>
- -->
 <!-- ***************************************************************** -->
 	<select id="noticeTotalCount" resultType="int">
 		SELECT COUNT(ID) FROM OBHOTEL_BOARD
@@ -49,6 +49,17 @@
 		        )
 		WHERE R_NUM BETWEEN #{begin} AND #{end}
 	</select>
+	
+<!-- ******idcheck************************************* -->
+	<select id="checkId" resultType="com.ob.vo.UserVO"
+		parameterType="String">
+			SELECT *
+			FROM OBHOTEL_USER
+			WHERE ACCOUNT = #{account}
+	</select>
+	
+	<insert id="checkJoin" parameterType="com.ob.vo.UserVO">
+		INSERT INTO 테이블명 SET NAME=#{name}, 
+	</insert>
 
-</mapper>  
-
+</mapper>

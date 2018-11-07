@@ -25,8 +25,8 @@
 						<li><a href="controller?type=premium">프리미엄 후기</a></li>
 						<li><a href="controller?type=agree">약관 및 동의사항</a></li>
 					</ul></li>
-				<li><a href="controller?type=login">로그인</a></li>
-
+				<li id="login"><a href="controller?type=login">로그인</a></li>
+				<li id="loginOK"><a href="#">마이페이지</a></li>
 			</ul>
 		</div>
 	</div>
