@@ -10,8 +10,7 @@
 		var firstForm = document.forms[0];
 		for (var i = 0; i < firstForm.elements.length; i++) {
 			if (firstForm.elements[i].value.trim() == "") {
-				if (i == 3)
-					continue;
+				if (i == 3) continue;
 				alert(firstForm.elements[i].title + " 입력하세요.");
 				firstForm.element[i].focus();
 				return;
@@ -43,8 +42,7 @@
 
 		<article>
 			<div id="write">
-				<form action="controller?type=noticeWrite&board_type=1"
-					method="POST">
+				<form method="POST">
 					<table>
 						<caption>공지사항 작성하기</caption>
 						<tbody>
