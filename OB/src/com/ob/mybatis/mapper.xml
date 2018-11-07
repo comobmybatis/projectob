@@ -16,6 +16,7 @@
  -->	
 <!-- ******프리미엄 후기************************************************* -->
 	<!-- 프리미엄후기 조회 -->
+	<!-- 
 	<select id="selectPremium" resultType="com.ob.vo.PremiumVO">
 		SELECT * FROM OBHOTEL_BOARD ORDER BY ID DESC
 	</select>
@@ -34,7 +35,7 @@
 		 WHERE R_NUM BETWEEN #{begin} AND #{end}
 		   AND TYPE=#{bbs_type}
 	</select>
-	
+	 -->
 <!-- ***************************************************************** -->
 
 <!-- ******idcheck************************************* -->

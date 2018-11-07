@@ -6,8 +6,6 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.ob.mybatis.DBService;
-import com.ob.vo.NoticeVO;
-import com.ob.vo.PremiumVO;
 import com.ob.vo.RoomVO;
 import com.ob.vo.UserVO;
 
