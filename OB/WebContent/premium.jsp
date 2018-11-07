@@ -44,17 +44,6 @@
 		</nav>
 <!-- ******프리미엄 후기 본문******************************** -->
 		<article>
-			
-			<%-- ***[이전5개] 버튼 사용여부 처리 ****--%>
-			<c:choose>
-				<c:when test="${premPvo.beginPage == 1}">
-					
-				</c:when>
-				<c:otherwise>
-					<button id="buttonPrev" onclick="controller?type=premium&cPremPage=${premPvo.beginPage-1}">이전 6개</button>
-				</c:otherwise>
-			</c:choose>
-			<%-- *****************************--%>
 
 			<h1>프리미엄 리뷰</h1>
 				<div id="container">
@@ -78,10 +67,35 @@
 					
 				</div>
 				
+				
+			<%-- ***[이전5개] 버튼 사용여부 처리 ****--%>
+			<c:choose>
+				<c:when test="${premPvo.beginPage == 1}">
+				</c:when>
+				<c:otherwise>
+					<button id="buttonPrev" onclick="controller?type=premium&cPremPage=${premPvo.beginPage-1}">이전 6개</button>
+				</c:otherwise>
+			</c:choose>
+			<%-- *****************************--%>
+				
+			<%-- 블록 내에 표시할 페이지 반복처리 --%>
+					<%-- 현재블록 시작페이지~ 끝페이지 표시 --%>
+					<c:forEach var="k" begin="${premPvo.beginPage}" end="${premPvo.endPage }">
+					<c:choose>
+						<c:when test="${k == premPvo.nowPage }">
+							<li class="now">${k}</li>
+						</c:when>
+						<c:otherwise>
+							<li>
+								<a href="controller?type=premium&cPage=${k}">${k}</a>
+							</li>
+						</c:otherwise>
+					</c:choose>
+					</c:forEach>
+				
 			<%-- ***[다음5개] 버튼 사용여부 처리 ***--%>
 			<c:choose>
-				<c:when test="${premPvo.totalPage <= PagepremPvo.endPage }">
-					
+				<c:when test="${premPvo.totalPage <= premPvo.endPage }">
 				</c:when>
 				<c:otherwise>
 					<button id="buttonNext" onclick="">다음 5개</button>
@@ -90,6 +104,7 @@
 			<%-- ****************************--%>
 						
 					
+			
 		</article>
 <!-- *************************************************** -->
 	</section>
