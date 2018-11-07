@@ -85,7 +85,7 @@
 			<tr>
 			 	<th>생년월일</th>
 			 	<td>
-			 		<input type="text" name="birthday">
+			 		<input type="text" name="birthday"> EX)XX/XX/XX
 			 	</td>
 			</tr>
 			<tr>

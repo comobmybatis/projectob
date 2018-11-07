@@ -22,7 +22,7 @@
 	</select> 
 	
 	<!-- 프리미엄후기 페이지별 목록조회  -->
-	<select id="getPremPageList" resultType="com.ob.vo.PremiumVO"
+<!-- 	<select id="getPremPageList" resultType="com.ob.vo.PremiumVO"
 	
 	<select id="getPremPageList" resultType="com.ob.vo.PremiumVO"
 			parameterType="Map">
@@ -31,7 +31,7 @@
 		  		  FROM (SELECT * FROM OBHOTEL_BOARD ORDER BY ID DESC) B)
 		 WHERE R_NUM BETWEEN #{begin} AND #{end}
 		   AND TYPE=#{bbs_type}
-	</select>
+	</select> -->
 <!-- ***************************************************************** -->
 	<select id="noticeTotalCount" resultType="int">
 		SELECT COUNT(ID) FROM OBHOTEL_BOARD
