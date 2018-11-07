@@ -9,14 +9,15 @@
 	function join_go(frm) {
 		/* if(frm.value.trim() == "") {
 			alert("입력되지않은 항목이 있습니다.");
-		return false;	
+			frm.id.focus();
+			return false;	
 		} else{	
 		frm.action = "controller?type=joincheck";
 		frm.submit;	
 		return false;
 		} */
-		alert("ㅎㅇ");
-		alert("입력한 아이디 "+frm.account.value);
+		alert("정상처리 되었습니다.");
+		alert("입력한 아이디  : " + frm.account.value);
 		frm.action = "controller?type=joincheck"; /* 형 이제 조인체크 커멘드로 가지니깐 맵퍼에 insert문 치시면 입력될거에요 */
 		frm.submit();		
 	}
@@ -88,6 +89,12 @@
 			 	</td>
 			</tr>
 			<tr>
+			 	<th>우편번호</th>
+			 	<td>
+			 		<input type="text" name="zipcode" maxlength="5">
+			 	</td>
+			</tr>
+			<tr>
 			 	<th>주소1</th>
 			 	<td>
 			 		<input type="text" name="address1">
@@ -103,6 +110,13 @@
 			 	<th>EMAIL</th>
 			 	<td>
 			 		<input type="text" name="email">
+			 	</td>
+			</tr>
+				<tr>
+			 	<th>광고 동의</th>
+			 	<td>
+			 		<input type="radio" name="e_confirm" value="0">수신동의
+			 		<input type="radio" name="e_confirm" value="1">거절
 			 	</td>
 			</tr>
 			<tr>

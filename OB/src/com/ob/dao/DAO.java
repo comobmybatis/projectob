@@ -1,6 +1,6 @@
 package com.ob.dao;
 
-import java.util.List;
+import java.util.List; 
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -15,7 +15,7 @@ public class DAO {
 	// 싱글턴패턴 : 하나의 객체만을 만들어 사용
 	private synchronized static SqlSession getSql() {
 		if (ss == null) {
-			ss = DBService.getFactory().openSession();
+			ss = DBService.getFactory().openSession(true);
 		}
 		return ss;
 	}
