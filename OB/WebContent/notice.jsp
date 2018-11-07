@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -15,10 +17,44 @@ nav a {
 	font-size: 2em;
 	font-weight: bold;
 }
+
+.paging {
+	list-style: none;
+}
+
+.paging li {
+	float: left;
+	margin-right: 8px;
+}
+
+.paging li a {
+	text-decoration: none;
+	display: block;
+	padding: 3px 7px;
+	border: 1px solid #00B3DC;
+	font-weight: bold;
+	color: black;
+}
+
+.paging li a:hover {
+	background-color: #00B3DC;
+	color: white;
+}
+
+.paging .disable {
+	padding: 3px 7px;
+	border: 1px solid silver;
+	color: silver;
+}
+
+.paging .now {
+	padding: 3px 7px;
+	border: 1px solid #ff4aa5;
+	background-color: #ff4aa5;
+	color: white;
+	font-weight: bold;
+}
 </style>
-<script>
-	
-</script>
 </head>
 <body>
 
@@ -39,20 +75,21 @@ nav a {
 
 		<article>
 			<div id="notice_bbs">
+
 				<table border="1">
-					<h2>공지사항</h2>
+					<caption>공 지 사 항</caption>
 					<thead>
 						<tr class="title">
 							<th class="no">번호</th>
-							<th class="subject">제목</th>
-							<th class="writer">글쓴이</th>
-							<th class="regdate">날짜</th>
-							<th class="hit">조회수</th>
+							<th class="title">제목</th>
+							<th class="writer">작성자</th>
+							<th class="write_date">작성일</th>
+							<th class="read_count">조회순</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:choose>
-							<c:when test="${empty list }">
+							<c:when test="${empty lsit}">
 								<tr>
 									<td colspan="5">
 										<h2>현재 등록된 게시글이 없습니다.</h2>
@@ -60,15 +97,14 @@ nav a {
 								</tr>
 							</c:when>
 							<c:otherwise>
-								<c:forEach var="vo" items="${list }">
+								<c:forEach var="vo" items="${list}">
 									<tr>
-										<td>${vo.b_idx }</td>
+										<td>${vo.id}</td>
 										<td><a
-											href="view.jsp?b_idx=${vo.b_idx }&cPage=${pvo.nowPage }">${vo.subject }</a>
-										</td>
-										<td>${vo.writer }</td>
-										<td>${vo.write_date.substring(0, 10) }</td>
-										<td>${vo.hit }</td>
+											href="controller?type=noticeView&board_type=2&cPage=${pvo.nowPage}">${vo.title}</a></td>
+										<td>관리자</td>
+										<td>${vo.write_date.substring(0, 10)}</td>
+										<td>${vo.read_count}
 									</tr>
 								</c:forEach>
 							</c:otherwise>
@@ -87,7 +123,8 @@ nav a {
 										</c:when>
 										<%-- 사용가능(enable): 두번재 블록 이상(첫번째만 아닌 경우) --%>
 										<c:otherwise>
-											<li><a href="list.jsp?cPage=${pvo.beginPage - 1 }">이전으로</a>
+											<li><a
+												href="controller?type=notice&board_type=2&cPage=${pvo.beginPage - 1 }">이전으로</a>
 											</li>
 										</c:otherwise>
 									</c:choose>
@@ -97,11 +134,13 @@ nav a {
 										end="${pvo.endPage }">
 										<c:choose>
 											<c:when test="${k == pvo.nowPage }">
-												<li class="now">${k } <!-- 링크를 제거하여 현재 페이지임을 알 수 있게 해줌 -->
+												<li class="now">${k }
 												</li>
 											</c:when>
 											<c:otherwise>
-												<li><a href="list.jsp?cPage=${k }">${k }</a></li>
+												<li><a
+													href="controller?type=notice&board_type=2&cPage=${k }">${k }</a>
+												</li>
 											</c:otherwise>
 										</c:choose>
 									</c:forEach>
@@ -114,15 +153,15 @@ nav a {
 										</c:when>
 										<%-- 사용가능(enable) --%>
 										<c:otherwise>
-											<li><a href="list.jsp?cPage=${pvo.endPage + 1 }">다음으로</a>
+											<li><a
+												href="controller?type=notice&board_type=2&cPage=${pvo.endPage + 1 }">다음으로</a>
 											</li>
 										</c:otherwise>
 									</c:choose>
 								</ol>
 							</td>
 
-							<td><input type="button" value="글쓰기"
-								onclick="javascript:location.href='writer.jsp'"></td>
+							<td><input type="button" value="작성하기" onclick="javascript:location.href='controller?type=noticeWrite&board_type=2'"></td>
 						</tr>
 					</tfoot>
 				</table>

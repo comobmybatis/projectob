@@ -403,7 +403,7 @@ CREATE TABLE obhotel_board_file (
 	CONSTRAINT obhotel_board_file_pk PRIMARY KEY (id),
 	CONSTRAINT obhotel_board_file_aid_fk FOREIGN KEY (board_id) REFERENCES obhotel_board (id) on delete cascade
     --ON DELETE CASCADE : 기준 테이블의 데이터가 삭제되었을 때 외래 키 테이블의 데이터들도 자동으로 삭제
-    --obhotel_board 테이블에 delete from obhotel_borad where id = '5'; 를 하면 obhotel_board_file; 에 있는 id = '5'도 함께 지워짐
+    --obhotel_board 테이블에 delete from obhotel_borad where id = '5'; 를 하면 obhotel_board_file; 에 있는 board_id = '5'도 함께 지워짐
     
     --추가적으로 : ON UPDATE CASCADE : 기준 테이블의 데이터가 변경되었을 때 외래 키 테이블도 자동으로 변경
     

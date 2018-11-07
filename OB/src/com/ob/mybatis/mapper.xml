@@ -5,39 +5,51 @@
 
 <!-- mapper 태그의 namespace 속성 필수 작성 -->
 <mapper namespace="Room">
-<!-- 예시  -->
-	<select id="list" resultType="com.ob.vo.RoomVO" >
+<!-- 예시
+	<select id="list" resultType="com.ob.vo.RoomVO">
 		SELECT * FROM ARS_T ORDER BY A_IDX
-	</select>
-<!-- 	
-	<select id="notice" resultType="com.ob.vo.NoticeVO">
-		SELECT ROWNUM FROM OBHOTEL_BOARD WHERE TYPE = #{type}
 	</select>
  -->	
 <!-- ******프리미엄 후기************************************************* -->
 	<!-- 프리미엄후기 조회 -->
-	<!-- 
 	<select id="selectPremium" resultType="com.ob.vo.PremiumVO">
 		SELECT * FROM OBHOTEL_BOARD ORDER BY ID DESC
 	</select>
-	-->
+	
 	<!-- 프리미엄후기 총 건수 조회 -->
 	<select id="totalPremiumCount" resultType="int">
 		SELECT COUNT(*) FROM OBHOTEL_BOARD
 	</select> 
 	
-	<!-- 프리미엄후기 페이지별 목록조회 -->
-	<!-- <select id="getPremPageList" resultType="com.ob.vo.PremiumVO"
+	<!-- 프리미엄후기 페이지별 목록조회  -->
+	<select id="getPremPageList" resultType="com.ob.vo.PremiumVO"
+	
+	<select id="getPremPageList" resultType="com.ob.vo.PremiumVO"
 			parameterType="Map">
 		SELECT 	*
 		  FROM (SELECT ROWNUM R_NUM, B.*
 		  		  FROM (SELECT * FROM OBHOTEL_BOARD ORDER BY ID DESC) B)
 		 WHERE R_NUM BETWEEN #{begin} AND #{end}
 		   AND TYPE=#{bbs_type}
-	</select> -->
-	
+	</select>
 <!-- ***************************************************************** -->
-
+	<select id="noticeTotalCount" resultType="int">
+		SELECT COUNT(ID) FROM OBHOTEL_BOARD
+	</select>
+	
+	<select id="noticeList" resultType="com.ob.vo.BoardplusVO" parameterType="map">
+		SELECT R_NUM, ID, USER_ID, BOARD_TYPE, CONTENT, 
+			   WRITE_DATE, READ_COUNT
+		  FROM (SELECT ROWNUM R_NUM, B.*
+		          FROM (SELECT *
+		                  FROM OBHOTEL_BOARD
+		                 WHERE BOARD_TYPE = #{board_type} 
+		                 ORDER BY ID DESC
+		               ) B
+		        )
+		WHERE R_NUM BETWEEN #{begin} AND #{end}
+	</select>
+	
 <!-- ******idcheck************************************* -->
 	<select id="checkId" resultType="com.ob.vo.UserVO"
 		parameterType="String">
@@ -53,7 +65,5 @@
 		VALUES (OBHOTEL_USER_SEQ.NEXTVAL, #{account}, #{password},
 			#{nickname}, #{birthday},#{zipcode} ,#{address1}, #{address2}, #{email},#{e_confirm}, #{tel})
 	</insert>
-	
 
-</mapper>  
-
+</mapper>
