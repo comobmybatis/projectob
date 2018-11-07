@@ -29,7 +29,7 @@
 		  		  		 WHERE BOARD_TYPE = #{board_type} ORDER BY ID DESC) B_LIST)
 		 WHERE R_NUM BETWEEN #{begin} AND #{end}
 	</select>
-		  		  		 
+
 <!-- ***************************************************************** -->
 
 <!-- 	

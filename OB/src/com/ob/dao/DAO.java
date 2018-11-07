@@ -7,7 +7,6 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.ob.mybatis.DBService;
 import com.ob.vo.BoardplusVO;
-import com.ob.vo.RoomVO;
 import com.ob.vo.UserVO;
 
 public class DAO {
