@@ -166,7 +166,7 @@ commit;
 CREATE TABLE obhotel_board (
 	id			NUMBER NOT NULL,		-- 게시물 고유번호
 	user_id		NUMBER NOT NULL,		-- 작성자 고유번호
-	type		NUMBER NOT NULL,		-- 게시물 종류 (0:잘못된값/1:공지사항/2:이벤트/3:방명록/4:ex-프리미엄후기 )
+	board_type		NUMBER NOT NULL,		-- 게시물 종류 (0:잘못된값/1:공지사항/2:이벤트/3:방명록/4:ex-프리미엄후기 )
 	title		VARCHAR2(40) NOT NULL,	-- 제목
 	content		VARCHAR2(400) NOT NULL,	-- 내용
 	write_date	DATE NOT NULL,			-- 작성일
@@ -464,7 +464,7 @@ INSERT INTO obhotel_board_reply VALUES (obhotel_board_reply_seq.nextval, 11, 1, 
 
 CREATE TABLE obhotel_room_type (
 	id			NUMBER NOT NULL,		-- 방정보 고유번호
-	type		NUMBER NOT NULL,		-- 방 유형 (1:standard/2:deluxe/3:twin-deluxe/4:superior/5:luxury)
+	room_type		NUMBER NOT NULL,		-- 방 유형 (1:standard/2:deluxe/3:twin-deluxe/4:superior/5:luxury) 6:펜션
 	max_pax		NUMBER NOT NULL,		-- 수용 가능 인원
 	cost		NUMBER NOT NULL,		-- 1일 사용요금
 	CONSTRAINT obhotel_room_type PRIMARY KEY (id)
@@ -489,8 +489,12 @@ CREATE TABLE obhotel_room_file (
 -------------------------------
 CREATE TABLE obhotel_room (
 	id			NUMBER NOT NULL,			-- 현황 고유번호
-	room_type_id		NUMBER NOT NULL,	-- 방정보 고유번호
-	room_num	NUMBER NOT NULL,			-- 호실
+	room_type_id		NUMBER NOT NULL,	-- 방정보 고유번호 -- 방 유형 (1:standard/2:deluxe/3:twin-deluxe/4:superior/5:luxury)
+    room_name VARCHAR2(200) NOT NULL,    -- 룸 이름 // 펜션 이름  ex)하늘아래펜션      호텔이름 ex) 비트호텔 
+	room_num	VARCHAR2(200) NOT NULL,		--   국화방 , 진달래방, 민들레방,     ex )300호실    
+    room_content VARCHAR2(200) NOT NULL,   -- 방 간단한 소개
+	room_address1	VARCHAR2(200) NOT NULL,	-- 주소1  (서울시) // (경주시) // (부산)
+	room_address2	VARCHAR2(200) NOT NULL,	-- 주소2  마포구 ~~~~
 	CONSTRAINT obhotel_room PRIMARY KEY (id),
 	CONSTRAINT obhotel_room_rtype_id_fk FOREIGN KEY (room_type_id) REFERENCES obhotel_room_type (id) on delete cascade
 );
@@ -522,6 +526,7 @@ INSERT INTO obhotel_room_type VALUES (obhotel_room_type_seq.nextval, 2,  4, 20);
 INSERT INTO obhotel_room_type VALUES (obhotel_room_type_seq.nextval, 3,  6, 30);
 INSERT INTO obhotel_room_type VALUES (obhotel_room_type_seq.nextval, 4,  8, 40);
 INSERT INTO obhotel_room_type VALUES (obhotel_room_type_seq.nextval, 5, 10, 50);
+INSERT INTO obhotel_room_type VALUES (obhotel_room_type_seq.nextval, 6, 10, 50);
 
 INSERT INTO obhotel_room_file VALUES (obhotel_room_file_seq.nextval, 1, 'standard1.jpg');
 INSERT INTO obhotel_room_file VALUES (obhotel_room_file_seq.nextval, 1, 'standard2.jpg');
@@ -538,34 +543,40 @@ INSERT INTO obhotel_room_file VALUES (obhotel_room_file_seq.nextval, 4, 'superio
 INSERT INTO obhotel_room_file VALUES (obhotel_room_file_seq.nextval, 5, 'luxury1.jpg');
 INSERT INTO obhotel_room_file VALUES (obhotel_room_file_seq.nextval, 5, 'luxury2.jpg');
 INSERT INTO obhotel_room_file VALUES (obhotel_room_file_seq.nextval, 5, 'luxury3.jpg');
+INSERT INTO obhotel_room_file VALUES (obhotel_room_file_seq.nextval, 6, 'luxury1.jpg');
+INSERT INTO obhotel_room_file VALUES (obhotel_room_file_seq.nextval, 6, 'someday2.jpg');
+INSERT INTO obhotel_room_file VALUES (obhotel_room_file_seq.nextval, 6, 'someday3.jpg');
 
 
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 1, 101);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 1, 102);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 1, 103);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 1, 104);
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 1,'비트캠프', '101' ,'노트북무료대여', '서울시','마포구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 1,'비트캠프', '102' ,'pc방급 ', '서울시','마포구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 1,'비트캠프', '103' ,'동영상강의 무료', '서울시','마포구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 1,'비트캠프', '104' ,'ㅋㅋㅋㅋㅋㅋㅋㅋ', '서울시','마포구');
 
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 2, 201);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 2, 202);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 2, 203);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 2, 204);
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 2,'안녕호텔', '201' ,'안녕호텔-간단한내용test', '서울시','강서구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 2,'안녕호텔', '202' ,'안녕호텔-간단한내용test', '서울시','강서구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 2,'안녕호텔', '203' ,'안녕호텔-간단한내용test', '서울시','강서구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 2,'안녕호텔', '204' ,'안녕호텔-간단한내용test', '서울시','강서구');
 
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 3, 301);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 3, 302);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 3, 303);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 3, 304);
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 3,'해운대호텔', '301','영화(해운대) 24시간 무료!' , '부산광역시','해운대구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 3,'해운대호텔', '302','아이디어가 없어 아이디어 생각중' , '부산광역시','해운대구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 3,'해운대호텔', '303','이벤트룸 ' , '부산광역시','해운대구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 3,'해운대호텔', '304','객실내 워터파크 오픈' , '부산광역시','해운대구');
+-- 방 유형 (1:standard/2:deluxe/3:twin-deluxe/4:superior/5:luxury)
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 4,'사상호텔', '401','내용을 채울까' , '부산광역시','사상구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 4,'사상호텔','402','크크크크크크' , '부산광역시','사상구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 4,'사상호텔', '403','아무거나 써야지' , '부산광역시','사상구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 4,'사상호텔', '404','하하하하하하' , '부산광역시','사상구');
 
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 4, 401);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 4, 402);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 4, 403);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 4, 404);
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 5,'갈매기호텔', '401','경치가 끝내주는 방' , '인천광역시','소래포구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 5,'갈매기호텔', '402','마취방 그냥 들어오면 기절' , '인천광역시','소래포구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 5,'갈매기호텔', '403','파티허용' , '인천광역시','소래포구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 5,'갈매기호텔', '404','흡연가능한 방입니다' , '인천광역시','소래포구');
 
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 5, 401);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 5, 402);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 5, 403);
-INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval, 5, 404);
-
-
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval,6,'하늘아래팬션', '진달래','진달래향기와 함께하는 편안한 숙소' , '인천광역시','소래포구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval,6,'하늘아래팬션', '민들레', '민들레를 좋아합니까 함께해요', '인천광역시','소래포구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval,6,'하늘아래팬션', '국화' ,'국화빵 국화빵', '인천광역시','소래포구');
+INSERT INTO obhotel_room VALUES (obhotel_room_seq.nextval,6,'하늘아래팬션', '장미' ,'장미장미 빨간장미', '인천광역시','소래포구');
 
 
 commit;
@@ -601,8 +612,3 @@ CREATE TABLE obhotel_reservation (
 INSERT INTO obhotel_reservation VALUES (obhotel_reservation_seq.nextval, 1, 1, '2017/01/10', '2017/01/15', sysdate, 2, 1);
 INSERT INTO obhotel_reservation VALUES (obhotel_reservation_seq.nextval, 1, 2, '2017/01/20', '2017/01/25', sysdate, 3, 1);
 commit;
-
-----------------------------------------------------------------------------------------------------------
-
-
-
