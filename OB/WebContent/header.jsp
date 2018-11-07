@@ -6,7 +6,6 @@
 <title>HEADER</title>
 <link href="./css/plus.css" rel="stylesheet" type="text/css">
 </head>
-
 <body>
 	<div class="fixhead">
 		<a href="controller?type=main"><img id="logo"
@@ -30,4 +29,5 @@
 			</ul>
 		</div>
 	</div>
+</body>
 </html>
