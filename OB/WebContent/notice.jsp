@@ -101,7 +101,7 @@ nav a {
 									<tr>
 										<td>${vo.id}</td>
 										<td><a
-											href="controller?type=noticeView&board_type=1&cNoticePage=${noticePvo.nowPage}">${vo.title}</a></td>
+											href="controller?type=notice&board_type=1&cNoticePage=${noticePvo.nowPage}">${vo.title}</a></td>
 										<td>관리자</td>
 										<td>${vo.write_date.substring(0, 10)}</td>
 										<td>${vo.read_count}
