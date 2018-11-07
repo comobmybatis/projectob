@@ -46,8 +46,12 @@
 			WHERE ACCOUNT = #{account}
 	</select>
 	
+	<!--****checkJoin********************************** -->
 	<insert id="checkJoin" parameterType="com.ob.vo.UserVO">
-		INSERT INTO 테이블명 SET NAME=#{name}, 
+		INSERT INTO OBHOTEL_USER 
+			(ID, ACCOUNT, PASSWORD, NICKNAME, BIRTHDAY, ADDRESS1, ADDRESS2, EMAIL, TEL)
+		VALUES (OBHOTEL_USER_SEQ.NEXTVAL, #{account}, #{password},
+			#{nickname}, #{birthday}, #{address1}, #{address2}, #{email}, #{tel})
 	</insert>
 	
 

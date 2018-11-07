@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ob.dao.DAO;
 import com.ob.vo.UserVO;
 
-public class joincheckCommand implements Command {
+public class JoincheckCommand implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {

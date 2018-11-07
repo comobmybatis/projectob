@@ -15,8 +15,8 @@
 		frm.submit;	
 		return false;
 		} */
-		alert("ㅎㅇ");
-		alert("입력한 아이디 "+frm.account.value);
+		alert("정상처리 되었습니다.");
+		alert("입력한 아이디  : " + frm.account.value);
 		frm.action = "controller?type=joincheck"; /* 형 이제 조인체크 커멘드로 가지니깐 맵퍼에 insert문 치시면 입력될거에요 */
 		frm.submit();		
 	}
