@@ -1,6 +1,6 @@
 package com.ob.controller;
 
-import java.io.IOException;  
+import java.io.IOException;   
 
 
 import javax.servlet.ServletException;
@@ -14,17 +14,13 @@ import com.ob.command.Command;
 import com.ob.command.CommonCommand;
 import com.ob.command.EventCommand;
 import com.ob.command.JoinCommand;
-<<<<<<< HEAD
 
-=======
->>>>>>> refs/remotes/origin/master
 import com.ob.command.JoincheckCommand;
 import com.ob.command.LocaCommand;
-<<<<<<< HEAD
 
 
-=======
->>>>>>> refs/remotes/origin/master
+
+
 import com.ob.command.LocationCommand;
 import com.ob.command.LoginCheckCommand;
 import com.ob.command.LoginCommand;
