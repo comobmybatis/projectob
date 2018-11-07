@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ob.command.AgreeCommand;
 import com.ob.command.Command;
 import com.ob.command.EventCommand;
+import com.ob.command.JoinCommand;
 import com.ob.command.LocaCommand;
 import com.ob.command.LocationCommand;
 import com.ob.command.LoginCheckCommand;
@@ -75,6 +76,8 @@ public class Controller extends HttpServlet {
 			comm = new Test1Command();
 		}else if (type.equals("test2")){
 			comm = new Test2Command();
+		}else if (type.equals("join")) {
+			comm = new JoinCommand();
 		}
 		path = comm.exec(request, response);
 		request.getRequestDispatcher(path).forward(request, response);

@@ -17,7 +17,7 @@ public class LoginCheckCommand implements Command {
 		
 		System.out.println(id + pwd);
 		UserVO uvo = DAO.checkId(id);
-
+		
 		if(uvo==null) {
 			result = "loginFailed.jsp?errorType=nullId";
 		} else {
