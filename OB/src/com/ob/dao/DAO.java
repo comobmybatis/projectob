@@ -6,8 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.ob.mybatis.DBService;
-import com.ob.vo.NoticeVO;
-import com.ob.vo.PremiumVO;
+import com.ob.vo.BoardplusVO;
 import com.ob.vo.RoomVO;
 
 public class DAO {
@@ -26,11 +25,25 @@ public class DAO {
 		return getSql().selectList("list");
 	}
 	
-	// 공지사항 전체 데이터 조회
-	public static List<NoticeVO> getListNotice() {
-		return getSql().selectList("notice");
+	// 공지사항 페이지 전체 건수 조회
+	public static int getTotalCount() {
+		int totalCount = getSql().selectOne("noticeTotalCount");
+		return totalCount;
 	}
 	
+	// 공지사항 페이지 숫자 표시
+	public static List<BoardplusVO> getNoticeList(Map<String, Integer> map) {
+		return getSql().selectList("noticeList", map);
+	}
+	
+	// 공지사항 게시물 작성
+	public static int noticeInsert(BoardplusVO vo) {
+		int result = getSql().insert("noticeInsert", vo);
+		getSql().commit();
+		return result;
+	}
+	
+/*	
 	//프리미엄 후기 조회
 	public static List<PremiumVO> getPremium(){
 		return getSql().selectList("selectPremium");
@@ -46,4 +59,8 @@ public class DAO {
 	public static List<PremiumVO> getPremPageList(Map<String,Integer> map){
 		return getSql().selectList("getPremPageList", map);
 	}
+*/	
+	
+	
+	
 }
