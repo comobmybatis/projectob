@@ -19,6 +19,7 @@ public class DAO {
 		}
 		return ss;
 	}
+	
 /* **** 로그인, 회원가입 **********************************************/
 	//아이디값 조회
 	public static UserVO checkId(String account) {
