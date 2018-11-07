@@ -46,6 +46,11 @@
 		VALUES (OBHOTEL_USER_SEQ.NEXTVAL, #{account}, #{password},
 			#{nickname}, #{birthday},#{zipcode} ,#{address1}, #{address2}, #{email},#{e_confirm}, #{tel})
 	</insert>
+	
+	<!-- 로그인 후 해당 유저 예약 기록 조회 -->
+	<select id="getUserReservation" parameterType="String" resultType="com.ob.vo.ReservationVO">
+		SELECT * FROM OBHOTEL_RESERVATION WHERE USER_ID=#{id}
+	</select>
 <!-- ****** 공지사항 ************************************************** -->
 
 	<select id="noticeTotalCount" resultType="int">

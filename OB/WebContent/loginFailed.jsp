@@ -5,6 +5,7 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"/>
 <script>
 	$(function(){
 		var errorType = request.getParameter("errorType");
