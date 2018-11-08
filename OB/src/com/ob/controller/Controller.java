@@ -44,8 +44,10 @@ public class Controller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String type = request.getParameter("type");
+		
 		// ----------------------------------------------- 나중에 지우기
 		System.out.println("Controller.java 까지 넘어온 type: --->>  " + type);
+		System.out.println("Controller.java 까지 넘어온 board_type: --->>  "+request.getParameter("board_type"));
 		// -----------------------------------------------
 		String path = "";
 		Command comm = null;
