@@ -84,8 +84,7 @@ public class Controller extends HttpServlet {
 			comm = new NoticeViewCommand();
 		} else if (type.equals("noticeDel")) {
 			comm = new NoticeDelCommand();
-		}
-		
+		} 
 		path = comm.exec(request, response);
 		request.getRequestDispatcher(path).forward(request, response);
 	}

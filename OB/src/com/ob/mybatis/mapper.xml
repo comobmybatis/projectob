@@ -79,7 +79,7 @@
   		SELECT * FROM OBHOTEL_BOARD WHERE ID = #{id}
   	</select>
   	
-  	<delete id="noticeDel" parameterType="int">
+  	<delete id="noticeDel" parameterType="String">
   		DELETE FROM OBHOTEL_BOARD WHERE ID = #{id}
   	</delete>
 	

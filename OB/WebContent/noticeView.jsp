@@ -33,18 +33,21 @@
 }
 </style>
 <script>
-		function modify_go(frm) {
-			frm.action = "modify.jsp";
+		function modify_go() {
+			frm.action = "controller?type=noticeModi&board_type=1";
 			frm.submit();
 		}
-		function delete_go(frm) {
+		function delete_go() {
 			var isDeleteOk = confirm("정말 삭제하시겠습니까?");
+			
 			if (isDeleteOk) {
-				frm.action = "controller?type=noticeDel&board_type=1";
+				frm.action = "controller?type=noticeDel&board_type=1&id=${BPVO.id}";
 				frm.submit();
+			} else {
+				alert("취소되었습니다.");
 			}
 		} 
-		function list_go(frm) {
+		function list_go() {
 			frm.action = "controller?type=notice&board_type=1";
 			frm.submit();
 		}
@@ -86,14 +89,14 @@
 								<th>내용</th>
 								<td><pre>${BPVO.content}</pre></td>
 							</tr>
-								<tr>
+							<tr>
 								<td colspan="2">
-								<input type="button" value="수정" onclick="modify_go(this.form)"> 
-								<input type="button" value="삭제" onclick="delete_go(this.form)"> 
-								<input type="button" value="목록" onclick="list_go(this.form)"> 
+								<input type="button" value="수정" onclick="modify_go()"> 
+								<input type="button" value="삭제" onclick="delete_go()"> 
+								<input type="button" value="목록" onclick="list_go()"> 
 								
-								<input type="hidden" name="delete_chk" value="chk">	
-								<input type="hidden" name="id" value="id">	
+								<input type="hidden" name="delete_chk" value="chk">
+								<input type="hidden" name="delete_id" value="${BPVO.id}">
 								</td>
 							</tr>
 						</tbody>
