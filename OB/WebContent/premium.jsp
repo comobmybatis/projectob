@@ -18,6 +18,7 @@
 		font-weight: bold;
 	}
 </style>
+
 <link href="./css/premium.css" rel="stylesheet" type="text/css">
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -26,80 +27,129 @@
 	});
 </script>
 </head>
+
+<!-- ******* <body> 영역 시작******************************** -->
 <body>
 
-	<jsp:include page="header.jsp"></jsp:include>
-	<header>
-		<h2>프리미엄 후기</h2>
-	</header>
-	<section>
-		<nav>
+<jsp:include page="header.jsp"></jsp:include>
+
+<header>
+	<h2>프리미엄 후기</h2>
+</header>
+
+<section>
+	<nav>
+		<ul>
+			<li><a href="controller?type=notice&board_type=1">공지사항</a></li>
+			<li><a href="controller?type=moreQue">자주 묻는 질문</a></li>
+			<li><a href="controller?type=que">문의사항</a></li>
+			<li id="li4">프리미엄 후기</li>
+			<li><a href="controller?type=agree">약관 및 동의사항</a></li>
+		</ul>
+	</nav>
+	
+<!-- ******프리미엄 후기 본문********************* -->
+	<article>
+	
+		<%-- ***[게시글목록]******************--%>
+		<div id="container">
 			<ul>
-				<li><a href="controller?type=notice&board_type=1">공지사항</a></li>
-				<li><a href="controller?type=moreQue">자주 묻는 질문</a></li>
-				<li><a href="controller?type=que">문의사항</a></li>
-				<li id="li4">프리미엄 후기</li>
-				<li><a href="controller?type=agree">약관 및 동의사항</a></li>
-			</ul>
-		</nav>
-<!-- ******프리미엄 후기 본문******************************** -->
-		<article>
-			
-			<%-- ***[이전5개] 버튼 사용여부 처리 ****--%>
-			<c:choose>
-				<c:when test="${premPvo.beginPage == 1}">
-					
-				</c:when>
-				<c:otherwise>
-					<button id="buttonPrev" onclick="controller?type=premium&cPremPage=${premPvo.beginPage-1}">이전 6개</button>
-				</c:otherwise>
-			</c:choose>
-			<%-- *****************************--%>
-
-			<h1>프리미엄 리뷰</h1>
-				<div id="container">
-					<c:if test="${not empty pPageList }">
-						<c:forEach var="p" items="${pPageList }">
-							<div id="pcontent">
-								<a id="pImg" href="#"><img src="" alt="썸네일이미지"></a>
-								<a id="title" href="#"><p>${p.title }</p></a>
-								<span id="writer">${p.writer }(${p.id })</span><br>
-								<span id="usedate">숙박일 : ${p.usedate }</span><br>
+				<c:if test="${not empty pPageList }">
+					<c:forEach var="p" items="${pPageList }">
+						<li id="pcontentLi">
+						<div id="pcontentDiv">
+							<a id="pImg" href="#"><img src="" alt="썸네일이미지"></a>
+							<a id="pTitle" href="#"><p>${p.title }</p></a>
+							<div id="pcontentInfo">
+								<span id="pWriter">닉네임값(${p.user_id })</span><br>
+								<span id="pUsedate">숙박일 : xx년xx월xx일</span><br>
 								
-								<span id="tag">#태그1 #태그2 #태그3</span><br>
-								<span id="regdate">작성일 : ${p.regdate }</span><br>
+								<span id="pTag">#태그1 #태그2 #태그3</span><br>
+								<span id="pRegdate">작성일 : ${p.write_date }</span><br>
 							</div>
-						</c:forEach>
-						
-					</c:if>
-					<c:if test="${empty pPageList }">
-						<h1>작성된 프리미엄 후기가 없습니다.</h1>
-					</c:if>
-					
-				</div>
+						</div>
+						</li>
+					</c:forEach>
+				</c:if>
 				
-			<%-- ***[다음5개] 버튼 사용여부 처리 ***--%>
-			<c:choose>
-				<c:when test="${premPvo.totalPage <= PagepremPvo.endPage }">
-					
-				</c:when>
-				<c:otherwise>
-					<button id="buttonNext" onclick="">다음 5개</button>
-				</c:otherwise>
-			</c:choose>
-			<%-- ****************************--%>
-						
-					
-		</article>
+				<c:if test="${empty pPageList }">
+					<li>
+						<h1>작성된 프리미엄 후기가 없습니다.</h1>
+					</li>
+				</c:if>
+			</ul>
+		</div>
+		
+		<%-- ***[버튼란]******************--%>
+			<table id="buttons">
+				<tr>
+					<td></td>
+					<td id="pages" colspan="3">
+						<ol class="paging">
+							<%--[이전으로]에 대한 사용여부 처리  --%>
+							<c:choose>
+							<%-- 사용불가(disalbe) : 첫번째 블록인 경우 --%>
+								<c:when test="${premPvo.beginPage == 1}">
+								</c:when>
+							<%--사용가능(enable) : 두번째 이상(첫번째가 아닌 경우) --%>
+								<c:otherwise>
+									<li>
+									<a href="controller?type=premium&board_type=3&cPremPage=1">◀◀</a>
+									</li>
+									<li>
+									<a href="controller?type=premium&board_type=3&cPremPage=${premPvo.beginPage - 1 }">◀</a>
+									</li>
+								</c:otherwise>
+							</c:choose>
+							
+								
+							<%-- 블록 내에 표시할 페이지 반복처리 --%>
+							<%-- 현재블록 시작페이지~ 끝페이지 표시 --%>
+							<c:forEach var="k" begin="${premPvo.beginPage}" end="${premPvo.endPage }">
+							<c:choose>
+								<c:when test="${k == premPvo.nowPage }">
+									<li class="now">${k}</li>
+								</c:when>
+								<c:otherwise>
+									<li>
+										<a href="controller?type=premium&board_type=3&cPremPage=${k}">${k}</a>
+									</li>
+								</c:otherwise>
+							</c:choose>
+							</c:forEach>
+							
+							<%--[다음으로]에 대한 사용여부 처리 --%>
+							<c:choose>
+							<%--사용불가(disable) : endPage가 totalPage 보다  크거나 같으면 --%>
+								<c:when test="${premPvo.endPage >= premPvo.totalPage }">
+								</c:when>
+							<%--사용가능(enable) --%>
+								<c:otherwise>
+								<li>
+									<a href="controller?type=premium&board_type=3&cPremPage=${premPvo.endPage + 1 }">▶</a>
+								</li>
+								<li>
+									<a href="controller?type=premium&board_type=3&cPremPage=${premPvo.totalPage}">▶▶</a>
+								</li>
+								</c:otherwise>
+							</c:choose>
+						</ol>
+					</td>
+					<td id="writeButton">
+						<input type="button" value="글쓰기" onclick="javascript:location.href=''">
+					</td>
+				</tr>	
+			</table>
+	</article>
+	
 <!-- *************************************************** -->
-	</section>
+</section>
 
+<!-- -----------------------------------------------------------------  ------------------------ -->
 
-
-	<!-- -----------------------------------------------------------------  ------------------------ -->
-	<footer>
-		<jsp:include page="footer.jsp"></jsp:include>
-	</footer>
+<footer>
+	<jsp:include page="footer.jsp"></jsp:include>
+</footer>
 
 </body>
 </html>

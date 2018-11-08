@@ -3,6 +3,7 @@ package com.ob.command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ob.command.Command;
 import com.ob.dao.DAO;
 import com.ob.vo.BoardplusVO;
 
