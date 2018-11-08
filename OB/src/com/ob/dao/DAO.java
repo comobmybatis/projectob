@@ -80,9 +80,23 @@ public class DAO {
 		getSql().commit();
 		return result;
 	}
+	
+	// 문의사항 게시물 작성
+	public static int queInsert(BoardplusVO vo) {
+		int result = getSql().insert("queInsert", vo);
+		getSql().commit();
+		return result;
+	}
+	
+	// 문의사항 
 
 	public static List<ReservationVO> getUserReservation(String id) {
 		return getSql().selectList("getUserReservation", id);
 	}
+	
+	//boardVOplust 모든 이벤트 데이터값 불러오기 
+		public static List<BoardplusVO> getEventALLList(Map<String,Integer> map){
+			return getSql().selectList("getEventALLcol", map);
+		}
 
 }

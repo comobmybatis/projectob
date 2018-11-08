@@ -103,7 +103,7 @@ nav a {
 										<td><a href="controller?type=noticeView&board_type=1&id=${vo.id}&cNoticePage=${noticePvo.nowPage}">${vo.title}</a></td>
 										<td>관리자</td>
 										<td>${vo.write_date.substring(0, 10)}</td>
-										<td>${vo.read_count}
+										<td>${vo.read_count}</td>
 									</tr>
 								</c:forEach>
 							</c:otherwise>

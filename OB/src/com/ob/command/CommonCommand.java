@@ -23,6 +23,9 @@ public class CommonCommand implements Command {
 		case "priv":
 			path = "priv.jsp";
 			break;
+			
+		case "event":
+			path = "eventMain.jsp?board_type=2";
 		}
 		return path;
 	}
