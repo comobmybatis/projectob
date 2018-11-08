@@ -5,7 +5,7 @@ public class PagingPremium{
 	private int nowBlock = 1;	//현재 블락
 	
 	private int reviewPerPage = 6;
-	private int pagePerBlock = 3;
+	private int pagePerBlock = 5;
 	
 	private int totalReview = 0;
 	private int totalPage  = 0;
