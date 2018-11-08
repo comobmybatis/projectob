@@ -102,6 +102,10 @@ nav a {
 										<td colspan="2"><a href="controller?type=noticeView&board_type=1&id=${vo.id}&cNoticePage=${noticePvo.nowPage}">${vo.title}</a></td>
 										<td><b>관리자(admin)</b></td>
 										<td>${vo.write_date.substring(0, 10)}</td>
+<<<<<<< HEAD
+										<td>${vo.read_count}</td>
+=======
+>>>>>>> refs/remotes/origin/master
 									</tr>
 								</c:forEach>
 							</c:otherwise>

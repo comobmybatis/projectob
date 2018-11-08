@@ -1,6 +1,6 @@
 package com.ob.controller;
 
-import java.io.IOException;
+import java.io.IOException;     
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,10 +16,13 @@ import com.ob.command.CommonCommand;
 import com.ob.command.EventAddCommand;
 import com.ob.command.Event_RoomALLCommand;
 import com.ob.command.JoinCommand;
+
 import com.ob.command.JoincheckCommand;
+
+import com.ob.command.LocaCommand;
+
 import com.ob.command.LocationCommand;
 import com.ob.command.LoginCheckCommand;
-import com.ob.command.LoginCommand;
 import com.ob.command.MainCommand;
 import com.ob.command.MorequeCommand;
 import com.ob.command.NoticeCommand;
@@ -33,6 +36,9 @@ import com.ob.command.PremiumWriteCommand;
 import com.ob.command.QueCommand;
 import com.ob.command.Test1Command;
 import com.ob.command.Test2Command;
+import com.ob.command.queWriteCommand;
+import com.ob.command.LoginCommand;
+
 
 @WebServlet("/controller")
 public class Controller extends HttpServlet {
@@ -93,6 +99,8 @@ public class Controller extends HttpServlet {
 			comm = new Event_RoomALLCommand();
 		} else if (type.equals("event_add_go")) {
 			comm = new EventAddCommand();
+		} else if (type.equals("queWrite")){
+			comm = new queWriteCommand();
 		} else if (type.equals("noticeModi")) {
 			comm = new NoticeModiCommand();
 		} else if (type.equals("admin_system")) {
@@ -104,6 +112,7 @@ public class Controller extends HttpServlet {
 		}else if (type.equals("admin_add_file")){
 			comm = new Admin_file_systemCommand();
 		}
+
 		path = comm.exec(request, response);
 		request.getRequestDispatcher(path).forward(request, response);
 	}

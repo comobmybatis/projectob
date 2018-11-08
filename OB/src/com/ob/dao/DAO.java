@@ -80,6 +80,15 @@ public class DAO {
 		getSql().commit();
 		return result;
 	}
+	
+	// 문의사항 게시물 작성
+	public static int queInsert(BoardplusVO vo) {
+		int result = getSql().insert("queInsert", vo);
+		getSql().commit();
+		return result;
+	}
+	
+	// 문의사항 
 
 	// 공지사항 게시물 수정
 	public static int noticeUp(BoardplusVO vo) {
