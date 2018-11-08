@@ -83,4 +83,11 @@ public class ReservationVO {
 	public void setBreakfast(String breakfast) {
 		this.breakfast = breakfast;
 	}
+
+	@Override
+	public String toString() {
+		return "ReservationVO [id=" + id + ", user_id=" + user_id + ", room_id=" + room_id + ", s_date=" + s_date
+				+ ", e_date=" + e_date + ", r_date=" + r_date + ", pax=" + pax + ", breakfast=" + breakfast + "]";
+	}
+	
 }

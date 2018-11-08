@@ -118,4 +118,22 @@
 		#{board_type} order by id desc)H)WHERE R_NUM BETWEEN
 		#{begin} AND #{end}
 	</select>
+	<select id="getUserBoardTotalList" parameterType="String"
+		resultType="com.ob.vo.BoardplusVO">
+			SELECT b.id,user_id, board_type, title, content, write_date, read_count,	board_id,		filename,
+		saved_filename,	filesize
+		FROM obhotel_board b LEFT OUTER JOIN
+		obhotel_board_file f ON b.id =	f.id where user_id =#{id}
+		</select>
+		
+			<!-- **파일 삽입* -->
+	<insert id="file_insert" parameterType="com.ob.vo.BoardplusVO">
+		INSERT INTO
+		OBHOTEL_BOARD_file
+		(ID, BOARD_ID, FILENAME, SAVED_FILENAME, FILESIZE )
+		VALUES (OBHOTEL_BOARD_FILE_SEQ.NEXTVAL, #{board_id}, #{filename},
+		#{saved_filename}, 248000)
+	</insert>
+		
+		
 </mapper>

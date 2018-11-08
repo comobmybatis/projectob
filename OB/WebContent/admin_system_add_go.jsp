@@ -22,21 +22,16 @@
 <p>${uservo}
 </p>
 <hr>
-<p>${user_boardAllList}</p>
+<p>${userboardtotalList}</p>
 <table>
 
 
 		<tbody>
-		<tr>
-				<th>ID</th>
-				<td>
-					<input type="text" name="id" readonly> 자동부여 입력 x
-				</td>
-			</tr>
+		
 			<tr>
 				<th>USER_ID</th>
 				<td>
-					<input type="text" name="user_id" value="1"> 관리자 1
+					<input type="text" name="user_id" value="${uservo.id } "readonly> 관리자 1
 				</td>
 			</tr>
 			<tr>
