@@ -35,7 +35,7 @@
 	<section>
 		<nav>
 			<ul>
-				<li><a href="controller?type=notice">공지사항</a></li>
+				<li><a href="controller?type=notice&board_type=1">공지사항</a></li>
 				<li><a href="controller?type=moreQue">자주 묻는 질문</a></li>
 				<li><a href="controller?type=que">문의사항</a></li>
 				<li id="li4">프리미엄 후기</li>

@@ -18,7 +18,7 @@
 		} */
 		alert("정상처리 되었습니다.");
 		alert("입력한 아이디  : " + frm.account.value);
-		frm.action = "controller?type=joincheck"; /* 형 이제 조인체크 커멘드로 가지니깐 맵퍼에 insert문 치시면 입력될거에요 */
+		frm.action = "controller?type=joincheck"; 
 		frm.submit();		
 	}
 </script>
@@ -31,8 +31,8 @@
 	</header>
 	<div id="join">
 	<form method = "post">
-	<h3>이용약관</h3>
-	<!-- <textarea rows="20" cols="50">가. 수집하는 개인정보의 항목첫째, 회사는 회원가 입, 원활한 고객상담, 각종 서비스의 제공을 위해 최초 회원가입 당시 아래와 같은 최소한의 개인정보를 필수항목으로 수집하고 있습니다.
+	<!--<h3>이용약관</h3>
+	<textarea rows="20" cols="50">가. 수집하는 개인정보의 항목첫째, 회사는 회원가 입, 원활한 고객상담, 각종 서비스의 제공을 위해 최초 회원가입 당시 아래와 같은 최소한의 개인정보를 필수항목으로 수집하고 있습니다.
 	회원가입
 	- 이름, 생년월일, 성별, 아이디, 비밀번호, 별명, 연락처(메일주소, 휴대폰 번호 중 선택), 가입인증정보
 	만14세 미만 아동 회원가입 
@@ -85,7 +85,7 @@
 			<tr>
 			 	<th>생년월일</th>
 			 	<td>
-			 		<input type="text" name="birthday"> EX)XX/XX/XX
+			 		<input type="date" name="birthday"> EX)XX/XX/XX
 			 	</td>
 			</tr>
 			<tr>

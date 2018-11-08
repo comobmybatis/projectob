@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.ob.mybatis.DBService;
 import com.ob.vo.BoardplusVO;
+import com.ob.vo.ReservationVO;
 import com.ob.vo.UserVO;
 
 public class DAO {
@@ -65,6 +66,23 @@ public class DAO {
 	// 공지사항 조회수
 	public static int noticeHit(BoardplusVO vo) {
 		return getSql().update("noticeHit", vo);
+	}
+	
+	// 공지사항 게시물 보기
+	public static BoardplusVO noticeSelOne(String id) {
+		BoardplusVO vo = getSql().selectOne("noticeOne", id);
+		return vo;
+	}
+	
+	// 공지사항 게시물 삭제
+	public static int noticeDel(String id) {
+		int result = getSql().delete("noticeDel", id);
+		getSql().commit();
+		return result;
+	}
+
+	public static List<ReservationVO> getUserReservation(String id) {
+		return getSql().selectList("getUserReservation", id);
 	}
 
 }
