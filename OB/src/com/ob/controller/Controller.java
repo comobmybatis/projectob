@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.ob.command.AgreeCommand;
 import com.ob.command.Command;
 import com.ob.command.CommonCommand;
-import com.ob.command.EventCommand;
+import com.ob.command.EventAddCommand;
+import com.ob.command.Event_RoomALLCommand;
 import com.ob.command.JoinCommand;
 import com.ob.command.JoincheckCommand;
 import com.ob.command.LocationCommand;
@@ -38,7 +39,9 @@ public class Controller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String type = request.getParameter("type");
-		System.out.println("type:"+ type);
+		//----------------------------------------------- 나중에 지우기
+		System.out.println("Controller.java 까지 넘어온 type: --->>  "+ type);
+		//-----------------------------------------------
 		String path = "";
 		Command comm = null;
 		
@@ -59,7 +62,7 @@ public class Controller extends HttpServlet {
 		} else if (type.equals("location")) {
 			comm = new LocationCommand();
 		} else if (type.equals("event")) {
-			comm = new EventCommand();
+			comm = new CommonCommand(type);
 		} else if (type.equals("main")) {
 			comm = new MainCommand();
 		} else if (type.equals("login")){
@@ -84,6 +87,10 @@ public class Controller extends HttpServlet {
 			comm = new NoticeViewCommand();
 		} else if (type.equals("noticeDel")) {
 			comm = new NoticeDelCommand();
+		} else if (type.equals("event_roomALL")){
+			comm = new Event_RoomALLCommand();
+		}else if (type.equals("event_add_go")){
+			comm = new EventAddCommand();
 		}
 		
 		path = comm.exec(request, response);

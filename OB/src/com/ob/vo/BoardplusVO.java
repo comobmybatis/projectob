@@ -132,5 +132,13 @@ public class BoardplusVO {
 	public void setFilesize(String filesize) {
 		this.filesize = filesize;
 	}
+
+	@Override
+	public String toString() {
+		return "BoardplusVO [id=" + id + ", user_id=" + user_id + ", board_type=" + board_type + ", title=" + title
+				+ ", content=" + content + ", write_date=" + write_date + ", read_count=" + read_count + ", board_id="
+				+ board_id + ", filename=" + filename + ", saved_filename=" + saved_filename + ", filesize=" + filesize
+				+ "]";
+	}
 	
 }
