@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ob.command.Admin_systemCommand;
 import com.ob.command.AgreeCommand;
 import com.ob.command.Command;
 import com.ob.command.CommonCommand;
@@ -25,6 +26,7 @@ import com.ob.command.MainCommand;
 import com.ob.command.MorequeCommand;
 import com.ob.command.NoticeCommand;
 import com.ob.command.NoticeDelCommand;
+import com.ob.command.NoticeModiCommand;
 import com.ob.command.NoticeViewCommand;
 import com.ob.command.NoticeWriteCommand;
 import com.ob.command.PremiumCommand;
@@ -37,7 +39,6 @@ import com.ob.command.queWriteCommand;
 import com.ob.command.LoginCommand;
 
 
-
 @WebServlet("/controller")
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -45,12 +46,12 @@ public class Controller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String type = request.getParameter("type");
-		//----------------------------------------------- 나중에 지우기
-		System.out.println("Controller.java 까지 넘어온 type: --->>  "+ type);
-		//-----------------------------------------------
+		// ----------------------------------------------- 나중에 지우기
+		System.out.println("Controller.java 까지 넘어온 type: --->>  " + type);
+		// -----------------------------------------------
 		String path = "";
 		Command comm = null;
-		
+
 		if (type.equals("notice")) {
 			comm = new NoticeCommand();
 		} else if (type.equals("moreQue")) {
@@ -71,19 +72,19 @@ public class Controller extends HttpServlet {
 			comm = new CommonCommand(type);
 		} else if (type.equals("main")) {
 			comm = new MainCommand();
-		} else if (type.equals("login")){
+		} else if (type.equals("login")) {
 			comm = new LoginCommand();
-		} else if (type.equals("loginCheck")){
+		} else if (type.equals("loginCheck")) {
 			comm = new LoginCheckCommand();
-		} else if (type.equals("test1")){
+		} else if (type.equals("test1")) {
 			comm = new Test1Command();
-		} else if (type.equals("test2")){
+		} else if (type.equals("test2")) {
 			comm = new Test2Command();
-		} else if (type.equals("loca")){
+		} else if (type.equals("loca")) {
 			comm = new CommonCommand(type);
-		} else if (type.equals("priv")){
+		} else if (type.equals("priv")) {
 			comm = new CommonCommand(type);
-		} else if (type.equals("noticeWrite")){
+		} else if (type.equals("noticeWrite")) {
 			comm = new NoticeWriteCommand();
 		} else if (type.equals("join")) {
 			comm = new JoinCommand();
@@ -93,17 +94,26 @@ public class Controller extends HttpServlet {
 			comm = new NoticeViewCommand();
 		} else if (type.equals("noticeDel")) {
 			comm = new NoticeDelCommand();
-		} else if (type.equals("event_roomALL")){
+		} else if (type.equals("event_roomALL")) {
 			comm = new Event_RoomALLCommand();
-		} else if (type.equals("event_add_go")){
+		} else if (type.equals("event_add_go")) {
 			comm = new EventAddCommand();
 		} else if (type.equals("queWrite")){
 			comm = new queWriteCommand();
-		}	
+		} else if (type.equals("noticeModi")) {
+			comm = new NoticeModiCommand();
+		} else if (type.equals("admin_system")) {
+			comm = new Admin_systemCommand();
+		}else if (type.equals("admin_system_add_go")){
+			comm = new CommonCommand(type);
+		}else if (type.equals("admin_system_addfile_go")){
+			comm = new CommonCommand(type);
+		}
+
 		path = comm.exec(request, response);
 		request.getRequestDispatcher(path).forward(request, response);
 	}
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
