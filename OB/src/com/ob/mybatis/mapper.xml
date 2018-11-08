@@ -113,7 +113,7 @@
 		saved_filename,
 		filesize
 		FROM obhotel_board b LEFT OUTER JOIN
-		obhotel_board_file f ON b.board_type =
+		obhotel_board_file f ON b.id =
 		f.board_id WHERE board_type =
 		#{board_type} order by id desc)H)WHERE R_NUM BETWEEN
 		#{begin} AND #{end}

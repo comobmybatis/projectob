@@ -101,7 +101,7 @@ public class DAO {
 		return getSql().selectList("getUserReservation", id);
 	}
 	
-	//boardVOplust 모든 이벤트 데이터값 불러오기 
+	//boardVOplus 모든 이벤트 데이터값 불러오기 
 		public static List<BoardplusVO> getEventALLList(Map<String,Integer> map){
 			return getSql().selectList("getEventALLcol", map);
 		}
