@@ -115,4 +115,8 @@ public class DAO {
 			return getSql().insert("file_insert", bvo);
 		}
 
+		public static BoardplusVO getDeatil(String b_id) {
+			return getSql().selectOne("getDeatil", b_id);
+		}
+
 }

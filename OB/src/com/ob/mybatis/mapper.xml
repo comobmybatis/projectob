@@ -25,10 +25,12 @@
 		parameterType="Map">
 		SELECT *
 		FROM (SELECT ROWNUM R_NUM, B_LIST.*
-		FROM (SELECT *
+		FROM (SELECT
+		*
 		FROM OBHOTEL_BOARD
 		WHERE BOARD_TYPE = #{board_type} ORDER BY ID DESC
-		) B_LIST
+		)
+		B_LIST
 		)
 		WHERE R_NUM BETWEEN #{begin} AND #{end}
 	</select>
@@ -49,7 +51,8 @@
 		ADDRESS2, EMAIL,E_CONFIRM,TEL)
 		VALUES (OBHOTEL_USER_SEQ.NEXTVAL,
 		#{account}, #{password},
-		#{nickname}, #{birthday},#{zipcode} ,#{address1}, #{address2},
+		#{nickname}, #{birthday},#{zipcode}
+		,#{address1}, #{address2},
 		#{email},#{e_confirm}, #{tel})
 	</insert>
 
@@ -61,7 +64,8 @@
 
 	<!-- ****** 공지사항 ************************************************** -->
 	<select id="noticeTotalCount" resultType="int">
-		SELECT COUNT(ID) FROM OBHOTEL_BOARD
+		SELECT COUNT(ID) FROM
+		OBHOTEL_BOARD
 	</select>
 
 	<select id="noticeList" resultType="com.ob.vo.BoardplusVO"
@@ -80,28 +84,36 @@
 	<insert id="noticeInsert" parameterType="com.ob.vo.BoardplusVO">
 		INSERT INTO
 		OBHOTEL_BOARD
-		(ID, USER_ID, BOARD_TYPE, TITLE, CONTENT, WRITE_DATE, READ_COUNT)
+		(ID, USER_ID, BOARD_TYPE, TITLE, CONTENT, WRITE_DATE,
+		READ_COUNT)
 		VALUES
-		(OBHOTEL_BOARD_SEQ.NEXTVAL, #{user_id}, #{board_type}, #{title},
+		(OBHOTEL_BOARD_SEQ.NEXTVAL, #{user_id},
+		#{board_type}, #{title},
 		#{content}, SYSDATE, 0)
 	</insert>
 
 	<select id="noticeOne" resultType="com.ob.vo.BoardplusVO">
-  		SELECT * FROM OBHOTEL_BOARD WHERE ID = #{id}
-  	</select>
-  	
-  	<delete id="noticeDel" parameterType="String">
-  		DELETE FROM OBHOTEL_BOARD WHERE ID = #{id}
-  	</delete>
-  	
-  	<update id="noticeUp" parameterType="com.ob.vo.BoardplusVO">
-  		UPDATE OBHOTEL_BOARD SET USER_ID = #{user_id}, BOARD_TYPE = #{board_type},
-  								 TITLE = #{title}, CONTENT = #{content}, WRITE_DATE = SYSDATE, READ_COUNT = 0
-  								 WHERE ID = #{id}
-  	</update>
-	
+		SELECT * FROM OBHOTEL_BOARD
+		WHERE ID = #{id}
+	</select>
+
+	<delete id="noticeDel" parameterType="String">
+		DELETE FROM OBHOTEL_BOARD
+		WHERE ID = #{id}
+	</delete>
+
+	<update id="noticeUp" parameterType="com.ob.vo.BoardplusVO">
+		UPDATE OBHOTEL_BOARD SET
+		USER_ID = #{user_id}, BOARD_TYPE = #{board_type},
+		TITLE = #{title},
+		CONTENT = #{content}, WRITE_DATE = SYSDATE,
+		READ_COUNT = 0
+		WHERE ID =
+		#{id}
+	</update>
+
 	<!-- ******이벤트 게시판 ******** -->
-	
+
 	<!-- 두테이블 아웃 조인 로우럼 셀렉문 -->
 	<select id="getEventALLcol" resultType="com.ob.vo.BoardplusVO"
 		parameterType="Map">
@@ -116,18 +128,23 @@
 		obhotel_board_file f ON b.id =
 		f.board_id WHERE board_type =
 		#{board_type} order by id desc)H)WHERE R_NUM BETWEEN
-		#{begin} AND #{end}
+		#{begin} AND
+		#{end}
 	</select>
 
 	<select id="getUserBoardTotalList" parameterType="String"
 		resultType="com.ob.vo.BoardplusVO">
-			SELECT b.id,user_id, board_type, title, content, write_date, read_count,	board_id,		filename,
-		saved_filename,	filesize
-		FROM obhotel_board b LEFT OUTER JOIN
-		obhotel_board_file f ON b.id =	f.id where user_id =#{id}
-		</select>
-		
-			<!-- **파일 삽입* -->
+		SELECT b.id,user_id, board_type, title, content,
+		write_date, read_count,
+		board_id, filename,
+		saved_filename, filesize
+		FROM obhotel_board b LEFT
+		OUTER JOIN
+		obhotel_board_file f ON b.id = f.id
+		where user_id =#{id}
+	</select>
+
+	<!-- **파일 삽입* -->
 	<insert id="file_insert" parameterType="com.ob.vo.BoardplusVO">
 		INSERT INTO
 		OBHOTEL_BOARD_file
@@ -135,7 +152,26 @@
 		VALUES (OBHOTEL_BOARD_FILE_SEQ.NEXTVAL, #{board_id}, #{filename},
 		#{saved_filename}, 248000)
 	</insert>
-		
-		
+
+	<select id="getDeatil" resultType="com.ob.vo.BoardplusVO">
+		select* FROM (select H.* FROM
+		(SELECT b.id,
+		user_id, board_type, title,
+		content, write_date,
+		read_count,
+		board_id,
+		filename,
+		saved_filename,
+		filesize
+		FROM obhotel_board
+		b LEFT OUTER JOIN
+		obhotel_board_file f ON
+		b.id =	f.board_id WHERE b.id =
+		#{b_id} order by id desc)H)
+
+	</select>
+
+
+
 </mapper>
 
