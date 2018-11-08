@@ -25,7 +25,7 @@ import com.ob.command.NoticeDelCommand;
 import com.ob.command.NoticeViewCommand;
 import com.ob.command.NoticeWriteCommand;
 import com.ob.command.PremiumCommand;
-import com.ob.command.PremiumOneCommand;
+import com.ob.command.PremiumViewCommand;
 import com.ob.command.PremiumWriteCommand;
 import com.ob.command.QueCommand;
 import com.ob.command.Test1Command;
@@ -55,8 +55,8 @@ public class Controller extends HttpServlet {
 			comm = new PremiumCommand();
 		} else if (type.equals("premiumWrite")) {
 			comm = new PremiumWriteCommand();
-		} else if (type.equals("premiumOne")) {
-			comm = new PremiumOneCommand();
+		} else if (type.equals("premiumView")) {
+			comm = new PremiumViewCommand();
 		} else if (type.equals("agree")) {
 			comm = new AgreeCommand();
 		} else if (type.equals("location")) {

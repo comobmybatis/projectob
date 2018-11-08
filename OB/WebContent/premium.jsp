@@ -58,8 +58,8 @@
 					<c:forEach var="p" items="${pPageList }">
 						<li id="pcontentLi">
 						<div id="pcontentDiv">
-							<a id="pImg" href="#"><img src="" alt="썸네일이미지"></a>
-							<a id="pTitle" href="#"><p>${p.title }</p></a>
+							<a id="pImg" href="controller?type=premiumView&board_type=3&cPremPage=${k}&pId=${p.id}"><img src="" alt="썸네일이미지"></a>
+							<a id="pTitle" href="controller?type=premiumView&board_type=3&cPremPage=${k}&pId=${p.id}"><p>${p.title }</p></a>
 							<div id="pcontentInfo">
 								<span id="pWriter">닉네임값(${p.user_id })</span><br>
 								<span id="pUsedate">숙박일 : xx년xx월xx일</span><br>
