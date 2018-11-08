@@ -81,10 +81,9 @@ nav a {
 					<thead>
 						<tr class="title">
 							<th class="no">번호</th>
-							<th class="title">제목</th>
+							<th colspan="2" class="title">제목</th>
 							<th class="writer">작성자</th>
 							<th class="write_date">작성일</th>
-							<th class="read_count">조회수</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -100,10 +99,9 @@ nav a {
 								<c:forEach var="vo" items="${list}">
 									<tr>
 										<td>${vo.id}</td>
-										<td><a href="controller?type=noticeView&board_type=1&id=${vo.id}&cNoticePage=${noticePvo.nowPage}">${vo.title}</a></td>
-										<td>관리자</td>
+										<td colspan="2"><a href="controller?type=noticeView&board_type=1&id=${vo.id}&cNoticePage=${noticePvo.nowPage}">${vo.title}</a></td>
+										<td><b>관리자(admin)</b></td>
 										<td>${vo.write_date.substring(0, 10)}</td>
-										<td>${vo.read_count}
 									</tr>
 								</c:forEach>
 							</c:otherwise>

@@ -22,6 +22,7 @@ import com.ob.command.MainCommand;
 import com.ob.command.MorequeCommand;
 import com.ob.command.NoticeCommand;
 import com.ob.command.NoticeDelCommand;
+import com.ob.command.NoticeModiCommand;
 import com.ob.command.NoticeViewCommand;
 import com.ob.command.NoticeWriteCommand;
 import com.ob.command.PremiumCommand;
@@ -91,6 +92,8 @@ public class Controller extends HttpServlet {
 			comm = new Event_RoomALLCommand();
 		} else if (type.equals("event_add_go")){
 			comm = new EventAddCommand();
+		} else if (type.equals("noticeModi")){
+			comm = new NoticeModiCommand();
 		}
 		path = comm.exec(request, response);
 		request.getRequestDispatcher(path).forward(request, response);

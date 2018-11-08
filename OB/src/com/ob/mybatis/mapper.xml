@@ -61,8 +61,7 @@
 
 	<!-- ****** 공지사항 ************************************************** -->
 	<select id="noticeTotalCount" resultType="int">
-		SELECT COUNT(ID) FROM
-		OBHOTEL_BOARD
+		SELECT COUNT(ID) FROM OBHOTEL_BOARD
 	</select>
 
 	<select id="noticeList" resultType="com.ob.vo.BoardplusVO"
@@ -94,13 +93,13 @@
   	<delete id="noticeDel" parameterType="String">
   		DELETE FROM OBHOTEL_BOARD WHERE ID = #{id}
   	</delete>
+  	
+  	<update id="noticeUp" parameterType="com.ob.vo.BoardplusVO">
+  		UPDATE OBHOTEL_BOARD SET USER_ID = #{user_id}, BOARD_TYPE = #{board_type},
+  								 TITLE = #{title}, CONTENT = #{content}, WRITE_DATE = SYSDATE, READ_COUNT = 0
+  								 WHERE ID = #{id}
+  	</update>
 	
-	<!-- 조회수 수정(1증가) -->
-	<update id="noticeHit" parameterType="com.ob.vo.BoardplusVO">
-		UPDATE OBHOTEL_BOARD SET
-		READ_COUNT = #{read_count} + 1 WHERE ID = #{id}
-	</update>
-
 	<!-- ******이벤트 게시판 ******** -->
 	
 	<!-- 두테이블 아웃 조인 로우럼 셀렉문 -->
