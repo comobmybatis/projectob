@@ -15,7 +15,7 @@
 				<li><a href="controller?type=test1">TEST1</a></li>
 				<li><a href="controller?type=test2">TEST2</a></li>
 				<li><a href="controller?type=location">지역</a></li>
-				<li><a href="controller?type=event">이벤트</a></li>
+				<li><a href="controller?type=event&board_type=2">이벤트</a></li>
 				<li><a href="#" id="current">더보기</a>
 					<ul>
 						<li><a href="controller?type=notice&board_type=1">공지사항</a></li>
