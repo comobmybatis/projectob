@@ -54,7 +54,7 @@
 							</tr>
 							<tr>
 								<th>작성자</th>
-								<td>관리자(admin)</td>
+								<td><b>관리자(admin)</b></td>
 							</tr>
 							<tr>
 								<th>내용</th>
@@ -64,8 +64,8 @@
 							<tr>
 								<td colspan="2">
 								<input type="button" value="저 장" onclick="sendData()"> 
-								<input type="reset" value="다시작성">
-								<input type="button" value="돌아가기" onclick="notice_go()">
+								<input type="reset" value="다 시 작 성">
+								<input type="button" value="돌 아 가 기" onclick="notice_go()">
 								<input type="hidden" name="write_chk" value="chk"> 
 								<input type="hidden" name="board_type" value="1"> 
 								<input type="hidden" name="sysdate" value="sysdate"> 

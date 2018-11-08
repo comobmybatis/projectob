@@ -64,8 +64,8 @@ public class DAO {
 	}
 	
 	// 공지사항 조회수
-	public static int noticeHit(BoardplusVO vo) {
-		return getSql().update("noticeHit", vo);
+	public static int noticeHit(int id) {
+		return getSql().update("noticeHit", id);
 	}
 	
 	// 공지사항 게시물 보기
@@ -81,6 +81,13 @@ public class DAO {
 		return result;
 	}
 
+	// 공지사항 게시물 수정
+	public static int noticeUp(BoardplusVO vo) {
+		int result = getSql().update("noticeUp", vo);
+		getSql().commit();
+		return result;
+	}
+	
 	public static List<ReservationVO> getUserReservation(String id) {
 		return getSql().selectList("getUserReservation", id);
 	}

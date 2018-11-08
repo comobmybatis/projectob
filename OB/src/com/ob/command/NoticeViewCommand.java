@@ -11,7 +11,7 @@ public class NoticeViewCommand implements Command {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		String id = request.getParameter("id");
-		
+
 		BoardplusVO vo = DAO.noticeSelOne(id);
 		
 		request.getSession().setAttribute("BPVO", vo);
