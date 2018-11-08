@@ -1,6 +1,6 @@
 package com.ob.controller;
 
-import java.io.IOException;    
+import java.io.IOException;     
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,6 +33,7 @@ import com.ob.command.PremiumWriteCommand;
 import com.ob.command.QueCommand;
 import com.ob.command.Test1Command;
 import com.ob.command.Test2Command;
+import com.ob.command.queWriteCommand;
 import com.ob.command.LoginCommand;
 
 
@@ -96,7 +97,9 @@ public class Controller extends HttpServlet {
 			comm = new Event_RoomALLCommand();
 		} else if (type.equals("event_add_go")){
 			comm = new EventAddCommand();
-		}
+		} else if (type.equals("queWrite")){
+			comm = new queWriteCommand();
+		}	
 		path = comm.exec(request, response);
 		request.getRequestDispatcher(path).forward(request, response);
 	}

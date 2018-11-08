@@ -28,7 +28,7 @@ public class QueCommand implements Command {
 		p.setTotalPage();
 		
 		p.setEnd(p.getNowPage() * p.getNumPerPage());
-		p.setBegin(p.getEnd() - p.getNumPerPage());
+		p.setBegin(p.getEnd() - p.getNumPerPage() + 1);
 		
 		p.setBeginPage((p.getNowPage() - 1) / p.getPagePerBlock() * p.getPagePerBlock() + 1);
 		p.setEndPage(p.getBeginPage() + p.getPagePerBlock() - 1);

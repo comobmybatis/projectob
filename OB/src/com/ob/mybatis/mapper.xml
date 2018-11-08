@@ -6,13 +6,7 @@
 <!-- mapper 태그의 namespace 속성 필수 작성 -->
 <mapper namespace="Room">
 
-	
-	
-<!-- ****** 게시판 공동 ************************************************* -->
-
-
 	<!-- ****** 게시판 공동 ************************************************* -->
-
 	<!-- 게시판별 전체 게시물 조회 -->
 	<select id="getList" resultType="com.ob.vo.BoardplusVO"
 		parameterType="String">
@@ -26,32 +20,10 @@
 		COUNT(*) FROM OBHOTEL_BOARD WHERE BOARD_TYPE = #{board_type}
 	</select>
 
-	<!-- 프리미엄후기 총 건수 조회 -->
-	<select id="totalPremiumCount" resultType="int">
-		SELECT COUNT(*) FROM OBHOTEL_BOARD
-	</select> 
-	
-	<!-- 프리미엄후기 페이지별 목록조회  -->
-<!-- 	<select id="getPremPageList" resultType="com.ob.vo.PremiumVO"
-	
-	<select id="getPremPageList" resultType="com.ob.vo.PremiumVO"
-			parameterType="Map">
-		SELECT 	*
-		  FROM (SELECT ROWNUM R_NUM, B.*
-		  		  FROM (SELECT * FROM OBHOTEL_BOARD ORDER BY ID DESC) B)
-
-		-->
 	<!-- 게시판 페이지별 목록 조회 -->
 	<select id="getPageList" resultType="com.ob.vo.BoardplusVO"
 		parameterType="Map">
 		SELECT *
-
-		  FROM (SELECT ROWNUM R_NUM, B_LIST.*
-		  		  FROM (SELECT *
-		  		  		  FROM OBHOTEL_BOARD
-		  		  		 WHERE BOARD_TYPE = #{board_type} ORDER BY ID DESC) B_LIST)
-		 WHERE R_NUM BETWEEN #{begin} AND #{end}
-		 
 		FROM (SELECT ROWNUM R_NUM, B_LIST.*
 		FROM (SELECT *
 		FROM OBHOTEL_BOARD
@@ -61,27 +33,10 @@
 		WHERE R_NUM BETWEEN #{begin} AND #{end}
 	</select>
 
-		   AND TYPE=#{bbs_type}
-	</select> 
-<!-- ****** 로그인 아이디체크 ******************************************** -->
-	<!-- 아이디 체크 -->
-		<select id="checkId" resultType="com.ob.vo.UserVO"
-
 	<!-- ****** 로그인 아이디체크 ******************************************** -->
 	<!-- *** idcheck ********* -->
 	<select id="checkId" resultType="com.ob.vo.UserVO"
 		parameterType="String">
-			SELECT *
-			FROM OBHOTEL_USER
-			WHERE ACCOUNT = #{account}
-		</select>
-	
-	<!-- 회원가입 체크 -->
-		<insert id="checkJoin" parameterType="com.ob.vo.UserVO">
-		INSERT INTO OBHOTEL_USER 
-			(ID, ACCOUNT, PASSWORD, NICKNAME, BIRTHDAY, ZIPCODE , ADDRESS1, ADDRESS2, EMAIL, E_CONFIRM, TEL)
-		VALUES (OBHOTEL_USER_SEQ.NEXTVAL, #{account}, #{password},
-			#{nickname}, #{birthday}, #{zipcode} ,#{address1}, #{address2}, #{email}, #{e_confirm}, #{tel})
 		SELECT *
 		FROM OBHOTEL_USER
 		WHERE ACCOUNT = #{account}
@@ -106,21 +61,8 @@
 
 	<!-- ****** 공지사항 ************************************************** -->
 	<select id="noticeTotalCount" resultType="int">
-		SELECT COUNT(ID) FROM
-		OBHOTEL_BOARD
+		SELECT COUNT(ID) FROM OBHOTEL_BOARD
 	</select>
-
-	
-	<select id="noticeList" resultType="com.ob.vo.BoardplusVO" parameterType="map">
-		SELECT R_NUM, ID, USER_ID, BOARD_TYPE, CONTENT, 
-			   WRITE_DATE, READ_COUNT
-		  FROM (SELECT ROWNUM R_NUM, B.*
-		          FROM (SELECT *
-		                  FROM OBHOTEL_BOARD
-		                 WHERE BOARD_TYPE = #{board_type} 
-		                 ORDER BY ID DESC
-		               ) B
-		        )
 
 	<select id="noticeList" resultType="com.ob.vo.BoardplusVO"
 		parameterType="map">
@@ -134,7 +76,6 @@
 		)
 		WHERE R_NUM BETWEEN #{begin} AND #{end}
 	</select>
-
 
 	<insert id="noticeInsert" parameterType="com.ob.vo.BoardplusVO">
 		INSERT INTO
@@ -152,30 +93,13 @@
   	<delete id="noticeDel" parameterType="String">
   		DELETE FROM OBHOTEL_BOARD WHERE ID = #{id}
   	</delete>
+  	
+  	<update id="noticeUp" parameterType="com.ob.vo.BoardplusVO">
+  		UPDATE OBHOTEL_BOARD SET USER_ID = #{user_id}, BOARD_TYPE = #{board_type},
+  								 TITLE = #{title}, CONTENT = #{content}, WRITE_DATE = SYSDATE, READ_COUNT = 0
+  								 WHERE ID = #{id}
+  	</update>
 	
-	<!-- 조회수 수정(1증가) -->
-	<update id="noticeHit" parameterType="com.ob.vo.BoardplusVO">
-		UPDATE OBHOTEL_BOARD SET
-		READ_COUNT = #{read_count} + 1 WHERE ID = #{id}
-	</update>
-	
-	
-	<!-- 문의 사항 -->
-	<select id="queTotalCount" resultType="int">
-		SELECT COUNT(ID) FROM
-		OBHOTEL_BOARD
-	</select>
-	
-	<select id="queList" resultType="com.ob.vo.BoardplusVO" parameterType="map">
-		SELECT R_NUM, ID, USER_ID, BOARD_TYPE, CONTENT, 
-			   WRITE_DATE, READ_COUNT
-		  FROM (SELECT ROWNUM R_NUM, B.*
-		          FROM (SELECT *
-		                  FROM OBHOTEL_BOARD
-		                 WHERE BOARD_TYPE = #{board_type} 
-		                 ORDER BY ID DESC
-		               ) B
-		        )
 	<!-- ******이벤트 게시판 ******** -->
 	
 	<!-- 두테이블 아웃 조인 로우럼 셀렉문 -->
@@ -194,7 +118,4 @@
 		#{board_type} order by id desc)H)WHERE R_NUM BETWEEN
 		#{begin} AND #{end}
 	</select>
-	
-	
-	
 </mapper>
