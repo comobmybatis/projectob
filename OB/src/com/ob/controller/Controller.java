@@ -2,7 +2,6 @@ package com.ob.controller;
 
 import java.io.IOException;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,25 +11,25 @@ import javax.servlet.http.HttpServletResponse;
 import com.ob.command.AgreeCommand;
 import com.ob.command.Command;
 import com.ob.command.CommonCommand;
-import com.ob.command.EventCommand;
+import com.ob.command.EventAddCommand;
+import com.ob.command.Event_RoomALLCommand;
 import com.ob.command.JoinCommand;
 import com.ob.command.JoincheckCommand;
-import com.ob.command.LocaCommand;
 import com.ob.command.LocationCommand;
 import com.ob.command.LoginCheckCommand;
 import com.ob.command.LoginCommand;
 import com.ob.command.MainCommand;
 import com.ob.command.MorequeCommand;
 import com.ob.command.NoticeCommand;
+import com.ob.command.NoticeDelCommand;
+import com.ob.command.NoticeViewCommand;
+import com.ob.command.NoticeWriteCommand;
 import com.ob.command.PremiumCommand;
 import com.ob.command.PremiumOneCommand;
 import com.ob.command.PremiumWriteCommand;
 import com.ob.command.QueCommand;
 import com.ob.command.Test1Command;
 import com.ob.command.Test2Command;
-import com.ob.command.NoticeWriteCommand;
-import com.ob.command.JoincheckCommand;
-import com.ob.command.LoginCommand;
 
 
 @WebServlet("/controller")
@@ -40,7 +39,9 @@ public class Controller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String type = request.getParameter("type");
-		System.out.println("type:"+ type);
+		//----------------------------------------------- 나중에 지우기
+		System.out.println("Controller.java 까지 넘어온 type: --->>  "+ type);
+		//-----------------------------------------------
 		String path = "";
 		Command comm = null;
 		
@@ -61,7 +62,7 @@ public class Controller extends HttpServlet {
 		} else if (type.equals("location")) {
 			comm = new LocationCommand();
 		} else if (type.equals("event")) {
-			comm = new EventCommand();
+			comm = new CommonCommand(type);
 		} else if (type.equals("main")) {
 			comm = new MainCommand();
 		} else if (type.equals("login")){
@@ -78,12 +79,19 @@ public class Controller extends HttpServlet {
 			comm = new CommonCommand(type);
 		} else if (type.equals("noticeWrite")){
 			comm = new NoticeWriteCommand();
-		}  else if (type.equals("join")) {
+		} else if (type.equals("join")) {
 			comm = new JoinCommand();
-		}else if (type.equals("joincheck")) {
+		} else if (type.equals("joincheck")) {
 			comm = new JoincheckCommand();
+		} else if (type.equals("noticeView")) {
+			comm = new NoticeViewCommand();
+		} else if (type.equals("noticeDel")) {
+			comm = new NoticeDelCommand();
+		} else if (type.equals("event_roomALL")){
+			comm = new Event_RoomALLCommand();
+		} else if (type.equals("event_add_go")){
+			comm = new EventAddCommand();
 		}
-		
 		path = comm.exec(request, response);
 		request.getRequestDispatcher(path).forward(request, response);
 	}

@@ -11,8 +11,8 @@ public class NoticeWriteCommand implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		String chk = request.getParameter("wrtie_chk");
-		String uId = request.getParameter("id");
+		String chk = request.getParameter("write_chk");
+		String uId = "1";
 		String bType = request.getParameter("board_type");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
@@ -22,11 +22,11 @@ public class NoticeWriteCommand implements Command {
 		String path = null;
 		
 		if (chk == null) {
-			path = "controller?type=noticeWrite&board_type=1";
+			path = "noticeWrite.jsp";
 		} else {
 			BoardplusVO vo = new BoardplusVO();
 			
-			vo.setId(uId);
+			vo.setUser_id(uId);
 			vo.setBoard_type(bType);
 			vo.setTitle(title);
 			vo.setContent(content);
@@ -36,7 +36,6 @@ public class NoticeWriteCommand implements Command {
 			DAO.noticeInsert(vo);
 			
 			path = "controller?type=notice&board_type=1";
-			
 		}
 		return path;
 	}

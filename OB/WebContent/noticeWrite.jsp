@@ -8,7 +8,7 @@
 <script>
 	function sendData() {
 		var firstForm = document.forms[0];
-		for (var i = 0; i < firstForm.elements.lengrh; i++) {
+		for (var i = 0; i < firstForm.elements.length; i++) {
 			if (firstForm.elements[i].value.trim() == "") {
 				if (i == 3)
 					continue;
@@ -43,8 +43,7 @@
 
 		<article>
 			<div id="write">
-				<form action="controller?type=noticeWrite&board_type=1"
-					method="POST">
+				<form method="POST">
 					<table>
 						<caption>공지사항 작성하기</caption>
 						<tbody>
@@ -63,14 +62,14 @@
 								</td>
 							</tr>
 							<tr>
-								<td colspan="2"><input type="button" value="저 장"
-									onclick="sendData()"> <input type="reset" value="다시작성">
-									<input type="button" value="돌아가기" onclick="notice_go()">
-									<input type="hidden" name="write_chk" value="chk">
-									<input type="hidden" name="board_type" value="1">
-									<input type="hidden" name="sysdate" value="sysdate">
-									<input type="hidden" name="read_count" value="0">
-									
+								<td colspan="2">
+								<input type="button" value="저 장" onclick="sendData()"> 
+								<input type="reset" value="다시작성">
+								<input type="button" value="돌아가기" onclick="notice_go()">
+								<input type="hidden" name="write_chk" value="chk"> 
+								<input type="hidden" name="board_type" value="1"> 
+								<input type="hidden" name="sysdate" value="sysdate"> 
+								<input type="hidden" name="read_count" value="0">
 								</td>
 							</tr>
 						</tbody>

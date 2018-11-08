@@ -43,7 +43,7 @@ article {
 	padding: 20px;
 	width: 85%;
 	background-color: #f1f1f1;
-	height: 300px; /* only for demonstration, should be removed */
+	height: auto; /* only for demonstration, should be removed */
 }
 
 /* Clear floats after the columns */
@@ -66,7 +66,7 @@ section:after {
 </head>
 <body>
 
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="/header.jsp"></jsp:include>
 	<header>
 		<h2>EVENT게시판</h2>
 	</header>
@@ -76,16 +76,15 @@ section:after {
 	<section>
 		<nav>
 			<ul>
-				<li><a href="#">영역1</a></li>
-				<li><a href="#">영역2</a></li>
-				<li><a href="#">영역3</a></li>
+				<li><a href="controller?type=event_roomALL&board_type=2">전체리스트1</a></li>
+						<li><a href="controller?type=event2">전체board리스트test</a></li>
+				<li><a href="event3.jsp">수정중</a></li>
+				<li><a href="event_adminMode.jsp" >관리자모드</a>
 			</ul>
 		</nav>
 
 		<article>
-			<h1>가나다라마바사</h1>
-			<p>P 태그로 나눈 구역1.</p>
-			<p>p 태그로 나눈 구역2</p>
+			<jsp:include page="eventBody.jsp"></jsp:include>
 		</article>
 	</section>
 
@@ -93,7 +92,7 @@ section:after {
 
 	<!-- -----------------------------------------------------------------  ------------------------ -->
 	<footer>
-		<jsp:include page="footer.jsp"></jsp:include>
+		<jsp:include page="/footer.jsp"></jsp:include>
 	</footer>
 
 </body>
