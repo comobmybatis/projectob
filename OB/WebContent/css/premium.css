@@ -19,10 +19,19 @@
 	font-size:0.8em;
 }
 
-#pcontentDiv *{
+#pcontentDiv #pImg{
+	width:100%;
+	height:auto;
+}
+#pcontentDiv #pTitle{
+	text-align:center;
+}
+	
+#pcontentInfo *{
 	float: right;
 	margin:5px;
 }
+
 
 #pcontentLi{
 	display:inline-block;

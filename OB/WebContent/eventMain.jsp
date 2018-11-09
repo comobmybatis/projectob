@@ -81,7 +81,7 @@ section:after {
 				<li><a href="controller?type=event2">전체board리스트test</a></li>
 				<li><a href="event3.jsp">수정중</a></li>
 				<c:if test="${uservo.id eq 1}">
-					<li><a href="controller?type=admin_system">관리자모드</a>
+					<li><a href="controller?type=admin_system">관리자모드</a></li>
 				</c:if>
 
 			</ul>

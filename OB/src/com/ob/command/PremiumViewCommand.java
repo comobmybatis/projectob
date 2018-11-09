@@ -15,7 +15,7 @@ public class PremiumViewCommand implements Command {
 		String resId = request.getParameter("resId");
 		//String cPremPage = request.getParameter("cPremPage");
 		BoardplusVO premVO = DAO.selectOne(id);
-		DAO.selectOne(id)
+		DAO.selectOne(id);
 		
 		request.setAttribute("premVO", premVO);
 		//request.setAttribute("cPremPage",cPremPage);
