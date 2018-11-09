@@ -131,6 +131,9 @@
 		#{begin} AND
 		#{end}
 	</select>
+<<<<<<< HEAD
+</mapper>
+=======
 
 	<select id="getUserBoardTotalList" parameterType="String"
 		resultType="com.ob.vo.BoardplusVO">
@@ -175,3 +178,4 @@
 
 </mapper>
 
+>>>>>>> branch 'master' of https://github.com/comobmybatis/projectob.git
