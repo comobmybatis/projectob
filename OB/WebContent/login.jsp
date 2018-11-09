@@ -26,6 +26,31 @@
 		}
 	}
 
+	function pwd_chk() {
+		var inputPwd = document.myForm.pwd.value;
+		var dbPwd = "${uservo.password}";
+		if (inputPwd != dbPwd) {
+			alert("비밀번호가 일치하지 않습니다.");
+			document.myForm.pwd.value="";
+			document.myForm.pwd.focus();
+			return false;
+		} else if(inputPwd == dbPwd) {
+			document.frm.action = "controller?type=main";
+			document.frm.submit();
+		} else if(frm.id.value=="") {
+			alert("ID를 입력하세요.");
+			frm.id.focus();
+			return false;
+		} else if(frm.pwd.value=="") {
+			alert("PASSWORD를 입력하세요.");
+			frm.pwd.focus();
+			return false;
+		} else if (frm.id.value != "" || frm.pwd.value != "") {
+			frm.action = "controller?type=loginCheck";
+			frm.submit();
+		}
+	}
+	
 	function join_go(frm) {
 		frm.action = "controller?type=join"
 		frm.submit();
@@ -40,29 +65,27 @@
 	<h2>로그인</h2>
 	</header>
 	<div class ="login">
-		<form method= "post">
+		<form method= "post" name="myForm">
 			<table>
 			<tbody>
 				<tr>
 					<th>ID</th>
 					<td>
-						<input type="text" name ="id">
+						<input type="text" name="id">
 					</td>
 				</tr>
 				<tr>
 					<th>PASSWORD</th>
 					<td>
-						<input type="password" name = "pwd">
+						<input type="password" name="pwd">
 					</td>
 				</tr>
 			</tbody>
 			<tfoot>
 				<tr>
 					<td colspan="2">
-						<input type = "button" value = "LOGIN"
-							onclick = "login_go(this.form)">
-						<input type = "button" value = "JOIN"
-							onclick = "join_go(this.form)">	
+						<input type = "button" value = "LOGIN" onclick = "pwd_chk(this.form)">
+						<input type = "button" value = "JOIN" onclick = "join_go(this.form)">	
 					</td>
 				</tr>
 			</tfoot>	

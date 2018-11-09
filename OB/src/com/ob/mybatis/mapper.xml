@@ -146,6 +146,7 @@
 		#{end}
 	</select>
 
+
 	<select id="getUserBoardTotalList" parameterType="String"
 		resultType="com.ob.vo.BoardplusVO">
 		SELECT b.id,user_id, board_type, title, content,
