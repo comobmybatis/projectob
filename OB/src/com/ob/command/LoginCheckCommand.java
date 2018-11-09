@@ -26,12 +26,11 @@ public class LoginCheckCommand implements Command {
 				result = "loginFailed.jsp?errorType=wrongPwd";
 			} else {
 				result = "main.jsp";
-				System.out.println("여기까진왔나");
 				//request.getSession().setAttribute("account", id);
 				//request.getSession().setAttribute("pwd", pwd);
-				request.getSession().setAttribute("uservo", uvo);
-				request.getSession().setAttribute("userReservationvo", DAO.getUserReservation(uvo.getId()));
-				System.out.println(request.getSession().getAttribute("userReservationvo"));
+				request.getSession().setAttribute("userVO", uvo);
+				request.getSession().setAttribute("userReservationVO", DAO.getUserReservation(uvo.getId()));
+				System.out.println(request.getSession().getAttribute("userReservationVO"));
 				//UserVO uvo2 = (UserVO)request.getSession().getAttribute("uservo");
 				//String id3 = uvo2.getAccount();
 			}

@@ -2,7 +2,7 @@ package com.ob.vo;
 
 public class BoardplusVO {
 	String id, user_id, board_type, title, content, write_date, read_count,
-			board_id, filename, saved_filename,	filesize;
+			board_id, filename, saved_filename,	filesize, reservation_id;
 
 	public BoardplusVO() {
 		super();
@@ -43,6 +43,14 @@ public class BoardplusVO {
 		this.filename = filename;
 		this.saved_filename = saved_filename;
 		this.filesize = filesize;
+	}
+
+	public String getReservation_id() {
+		return reservation_id;
+	}
+
+	public void setReservation_id(String reservation_id) {
+		this.reservation_id = reservation_id;
 	}
 
 	public String getId() {

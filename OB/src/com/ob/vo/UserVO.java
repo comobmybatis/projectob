@@ -2,11 +2,8 @@ package com.ob.vo;
 
 public class UserVO {
 	String id, account, password, nickname, birthday, zipcode, 
-				   address1, address2, email;
-	
+				   address1, address2, email, tel;
 	int  e_confirm;
-	
-	String tel;
 
 	public UserVO() {
 		super();

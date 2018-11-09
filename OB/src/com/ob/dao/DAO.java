@@ -55,6 +55,26 @@ public class DAO {
 	public static List<BoardplusVO> getList(Map map){
 		return getSql().selectList("getPageList", map);
 	}
+	
+	//게시판 페이지별 게시글 작성자 조회
+	//public static List<UserVO> getWriterUserList(List<BoardplusVO> user_id){
+	//	return getSql().selectList("getWriterUserList",user_id);
+	//}
+	
+	//게시물 상세조회
+	public static BoardplusVO selectOne(String id) {
+		return getSql().selectOne("selectOne",id);
+	}
+	
+	//사용자 예약기록 조회(로그인된 아이디)
+	public static List<ReservationVO> getUserReservation(String id) {
+		return getSql().selectList("getUserReservation", id);
+	}
+	
+	//사용자 예약기록 조회(프리미엄 후기에서 언급된 )
+	public static ReservationVO getReservationFromReview() {
+		return null;
+	}
 
 	// 공지사항 게시물 작성
 	public static int noticeInsert(BoardplusVO vo) {
@@ -88,9 +108,6 @@ public class DAO {
 		return result;
 	}
 	
-	public static List<ReservationVO> getUserReservation(String id) {
-		return getSql().selectList("getUserReservation", id);
-	}
 	
 	//boardVOplust 모든 이벤트 데이터값 불러오기 
 		public static List<BoardplusVO> getEventALLList(Map<String,Integer> map){

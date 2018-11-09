@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ob.dao.DAO;
 import com.ob.mybatis.PagingPremium;
 import com.ob.vo.BoardplusVO;
+import com.ob.vo.UserVO;
 
 public class PremiumCommand implements Command {
 
@@ -50,9 +51,9 @@ public class PremiumCommand implements Command {
 		
 		List<BoardplusVO> pPageList = DAO.getList(map);	//설정한 map파라미터 값으로 페이지의 게시물 목록 불러옴
 		
-		request.setAttribute("pPageList", pPageList);	//request에 
+		request.setAttribute("pPageList", pPageList);	//request에 현제 페이지 게시물 리스트 저장
 		request.setAttribute("cPremPage", cPremPage);	//request에 현재 페이지 값 저장
-		request.setAttribute("premPvo", p);
+		request.setAttribute("premPVO", p);
 		
 		//System.out.println("list : " + request.getAttribute("pList"));
 		

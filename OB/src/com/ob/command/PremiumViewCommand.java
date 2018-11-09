@@ -4,17 +4,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ob.command.Command;
+import com.ob.dao.DAO;
+import com.ob.vo.BoardplusVO;
 
 public class PremiumViewCommand implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		String id = request.getParameter("pId");
-		String board_type = request.getParameter("board_type");
+		String id = request.getParameter("id");
+		String resId = request.getParameter("resId");
+		//String cPremPage = request.getParameter("cPremPage");
+		BoardplusVO premVO = DAO.selectOne(id);
+		DAO.selectOne(id)
 		
+		request.setAttribute("premVO", premVO);
+		//request.setAttribute("cPremPage",cPremPage);
 		
-		request.setAttribute("pId", id);
-		request.setAttribute("board_type", board_type);
 		return "premiumView.jsp";
 	}
 

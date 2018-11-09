@@ -4,9 +4,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>프리미엄 후기 상세페이지</title>
 </head>
 <body>
+	<div id="container">
+		<table>
+			<tr id="titleRow">
+				<th id="thumbnail"><img src="" alt="이미지썸네일"></th>
+				<th id="title">${premVO.title }</th>
+			</tr>
+			<tr>
+				roomname, add1, add2, roomtype, pax1/pax2
+			</tr>
+			
+		</table>
+	</div>
 
 </body>
 </html>
