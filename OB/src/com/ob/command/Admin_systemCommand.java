@@ -38,8 +38,6 @@ public class Admin_systemCommand implements Command {
 			System.out.println("정상적으로  입력 처리 되었습니다.");
 			path = "admin_system.jsp";
 			//request.getSession().setAttribute("pwd", pwd);
-			request.getSession().setAttribute("addfile", vo);
-			System.out.println(request.getSession().getAttribute("user_boardAllList"));
 		}
 		return path;
 	}

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ob.command.Admin_file_systemCommand;
 import com.ob.command.Admin_systemCommand;
 import com.ob.command.AgreeCommand;
 import com.ob.command.Command;
@@ -108,6 +109,8 @@ public class Controller extends HttpServlet {
 			comm = new CommonCommand(type);
 		}else if (type.equals("admin_system_addfile_go")){
 			comm = new CommonCommand(type);
+		}else if (type.equals("admin_add_file")){
+			comm = new Admin_file_systemCommand();
 		}
 
 		path = comm.exec(request, response);

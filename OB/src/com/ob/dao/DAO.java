@@ -106,4 +106,13 @@ public class DAO {
 			return getSql().selectList("getEventALLcol", map);
 		}
 
+		public static List<BoardplusVO> getUserBoardTotalList(String id) {
+			return getSql().selectList("getUserBoardTotalList", id);
+		}
+
+		// 파일 데이타 입력 처리
+		public static int insert(BoardplusVO bvo) {
+			return getSql().insert("file_insert", bvo);
+		}
+
 }
