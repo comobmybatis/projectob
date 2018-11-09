@@ -26,31 +26,6 @@
 		}
 	}
 
-	function pwd_chk() {
-		var inputPwd = document.myForm.pwd.value;
-		var dbPwd = "${uservo.password}";
-		if (inputPwd != dbPwd) {
-			alert("비밀번호가 일치하지 않습니다.");
-			document.myForm.pwd.value="";
-			document.myForm.pwd.focus();
-			return false;
-		} else if(inputPwd == dbPwd) {
-			document.frm.action = "controller?type=main";
-			document.frm.submit();
-		} else if(frm.id.value=="") {
-			alert("ID를 입력하세요.");
-			frm.id.focus();
-			return false;
-		} else if(frm.pwd.value=="") {
-			alert("PASSWORD를 입력하세요.");
-			frm.pwd.focus();
-			return false;
-		} else if (frm.id.value != "" || frm.pwd.value != "") {
-			frm.action = "controller?type=loginCheck";
-			frm.submit();
-		}
-	}
-	
 	function join_go(frm) {
 		frm.action = "controller?type=join"
 		frm.submit();
@@ -84,7 +59,7 @@
 			<tfoot>
 				<tr>
 					<td colspan="2">
-						<input type = "button" value = "LOGIN" onclick = "pwd_chk(this.form)">
+						<input type = "button" value = "LOGIN" onclick = "login_go(this.form)">
 						<input type = "button" value = "JOIN" onclick = "join_go(this.form)">	
 					</td>
 				</tr>
