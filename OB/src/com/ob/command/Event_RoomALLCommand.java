@@ -56,7 +56,7 @@ public class Event_RoomALLCommand implements Command {
 		request.setAttribute("pvo", p);
 		System.out.println("@@"+list);
 
-		return "event_All_List.jsp";
+		return "event_All_List.jsp?";
 	}
 
 }

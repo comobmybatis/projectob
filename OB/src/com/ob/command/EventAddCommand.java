@@ -9,8 +9,6 @@ public class EventAddCommand implements Command {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		String chk = request.getParameter("chk");
 		String path = null;
-		String id = "obhotel_board_seq.nextval";
-		String write_date= "SYSDATE";
 		if (chk == null) {
 			path = "event_add.jsp";
 		} else {
