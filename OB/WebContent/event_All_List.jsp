@@ -180,10 +180,13 @@ height :650px;
 	<section>
 		<nav>
 			<ul>
-				<li><a href="controller?type=event_roomALL?board_type=2">전체리스트1</a></li>
-						<li><a href="controller?type=event2">전체board리스트test</a></li>
+				<li><a href="controller?type=event_roomALL&board_type=2">전체리스트1</a></li>
+				<li><a href="controller?type=event2">전체board리스트test</a></li>
 				<li><a href="event3.jsp">수정중</a></li>
-				<li><a href="event_adminMode.jsp" >관리자모드</a>
+				<c:if test="${uservo.id eq 1}">
+					<li><a href="controller?type=admin_system">관리자모드</a>
+				</c:if>
+
 			</ul>
 		</nav>
 
