@@ -225,7 +225,7 @@ height :650px;
 							</c:when>
 							<%--사용가능(enable) : 두번째 이상(첫번째 아닌경우) --%>
 							<c:otherwise>
-								<li><a href="controller?type=event_roomALL&cPage=${pvo.beginPage - 1 }">이전으로</a>
+								<li><a href="controller?type=event_roomALL&board_type=2&cPage=${pvo.beginPage - 1 }">이전으로</a>
 								</li>
 							</c:otherwise>
 						</c:choose>
@@ -237,7 +237,7 @@ height :650px;
 									<li class="now">${k }</li>
 								</c:when>
 								<c:otherwise>
-									<li><a href="controller?type=event_roomALL&cPage=${k }">${k }</a></li>
+									<li><a href="controller?type=event_roomALL&board_type=2&cPage=${k }">${k }</a></li>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
@@ -250,7 +250,7 @@ height :650px;
 							</c:when>
 							<%--사용가능(enable) --%>
 							<c:otherwise>
-								<li><a href="controller?type=event_roomALL&cPage=${pvo.endPage + 1 }">다음으로</a>
+								<li><a href="controller?type=event_roomALL&board_type=2&cPage=${pvo.endPage + 1 }">다음으로</a>
 								</li>
 							</c:otherwise>
 						</c:choose>

@@ -14,22 +14,9 @@
 	</header>
 	<!-- -----------------------------------------------------------------  여기까지 살리고 밑에서 부터  내용 만드시면됩니다 -->
 	<!-- 내용 쓰는곳 -->
-	<h1>메인페이지~~</h1>
-	<p>HELLO HELLO 비트캠프 배고파.</p>
-	<p>HELLO HELLO 비트캠프 배고파.</p>
-	<p>HELLO HELLO 비트캠프 배고파.</p>
-	<p>HELLO HELLO 비트캠프 배고파.</p>
-	<p>HELLO HELLO 비트캠프 배고파.</p>
-	<p>HELLO HELLO 비트캠프 배고파.</p>
-	<p>HELLO HELLO 비트캠프 배고파.</p>
-	<p>HELLO HELLO 비트캠프 배고파.</p>
-	<p>HELLO HELLO 비트캠프 배고파.</p>
-	<p>HELLO HELLO 비트캠프 배고파.</p>
-	<p>HELLO HELLO 비트캠프 배고파.</p>
-	<p>HELLO HELLO 비트캠프 배고파.</p>
-	<p>HELLO HELLO 비트캠프 배고파.</p>
-
-
+<section>
+<jsp:include page="mainBody.jsp"></jsp:include>
+</section>
 
 
 	<!-- -----------------------------------------------------------------  ------------------------ -->

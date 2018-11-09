@@ -1,10 +1,15 @@
 package com.ob.command;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ob.command.Command;
 import com.ob.dao.DAO;
+import com.ob.vo.BoardplusVO;
 import com.ob.vo.UserVO;
 
 public class LoginCheckCommand implements Command {
@@ -33,6 +38,11 @@ public class LoginCheckCommand implements Command {
 				System.out.println(request.getSession().getAttribute("userReservationVO"));
 				//UserVO uvo2 = (UserVO)request.getSession().getAttribute("uservo");
 				//String id3 = uvo2.getAccount();
+				
+				//--김재현 추가부분
+				//--> 유저 고유 id 번호에 대한 boardplusVO 리스트로 전체 보기
+			request.getSession().setAttribute("userboardtotalList", DAO.getUserBoardTotalList(uvo.getId()));
+				//--
 			}
 		}
 		return result;

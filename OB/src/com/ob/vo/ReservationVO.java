@@ -1,14 +1,14 @@
 package com.ob.vo;
 
 public class ReservationVO {
-	String id, user_id, room_id, s_date, e_date, r_date, pax, breakfast;
+	String id, user_id, room_id, s_date, e_date, r_date, pax, review_id;
 
 	public ReservationVO() {
 		super();
 	}
 
 	public ReservationVO(String id, String user_id, String room_id, String s_date, String e_date, String r_date,
-			String pax, String breakfast) {
+			String pax, String review_id) {
 		super();
 		this.id = id;
 		this.user_id = user_id;
@@ -17,7 +17,7 @@ public class ReservationVO {
 		this.e_date = e_date;
 		this.r_date = r_date;
 		this.pax = pax;
-		this.breakfast = breakfast;
+		this.review_id = review_id;
 	}
 
 	public String getId() {
@@ -76,11 +76,18 @@ public class ReservationVO {
 		this.pax = pax;
 	}
 
-	public String getBreakfast() {
-		return breakfast;
+	public String getreview_id() {
+		return review_id;
 	}
 
-	public void setBreakfast(String breakfast) {
-		this.breakfast = breakfast;
+	public void setreview_id(String review_id) {
+		this.review_id = review_id;
 	}
+
+	@Override
+	public String toString() {
+		return "ReservationVO [id=" + id + ", user_id=" + user_id + ", room_id=" + room_id + ", s_date=" + s_date
+				+ ", e_date=" + e_date + ", r_date=" + r_date + ", pax=" + pax + ", review_id=" + review_id + "]";
+	}
+	
 }

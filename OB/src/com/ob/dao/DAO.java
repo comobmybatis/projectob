@@ -100,6 +100,15 @@ public class DAO {
 		getSql().commit();
 		return result;
 	}
+	
+	// 문의사항 게시물 작성
+	public static int queInsert(BoardplusVO vo) {
+		int result = getSql().insert("queInsert", vo);
+		getSql().commit();
+		return result;
+	}
+	
+	// 문의사항 
 
 	// 공지사항 게시물 수정
 	public static int noticeUp(BoardplusVO vo) {
@@ -109,9 +118,22 @@ public class DAO {
 	}
 	
 	
-	//boardVOplust 모든 이벤트 데이터값 불러오기 
+	//boardVOplus 모든 이벤트 데이터값 불러오기 
 		public static List<BoardplusVO> getEventALLList(Map<String,Integer> map){
 			return getSql().selectList("getEventALLcol", map);
+		}
+
+		public static List<BoardplusVO> getUserBoardTotalList(String id) {
+			return getSql().selectList("getUserBoardTotalList", id);
+		}
+
+		// 파일 데이타 입력 처리
+		public static int insert(BoardplusVO bvo) {
+			return getSql().insert("file_insert", bvo);
+		}
+
+		public static BoardplusVO getDeatil(String b_id) {
+			return getSql().selectOne("getDeatil", b_id);
 		}
 
 }
